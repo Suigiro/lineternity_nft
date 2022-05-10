@@ -17,6 +17,7 @@ import net.sf.l2j.commons.mmocore.SelectorThread;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.Lineternity;
 import net.sf.l2j.loginserver.network.LoginClient;
 import net.sf.l2j.loginserver.network.LoginPacketHandler;
 
@@ -49,7 +50,8 @@ public class LoginServer
 			LogManager.getLogManager().readConfiguration(is);
 		}
 		
-		StringUtil.printSection("aCis");
+		Lineternity.infoLS();
+		StringUtil.printSection("aCis - Tryskell");
 		
 		// Initialize config
 		Config.loadLoginServer();

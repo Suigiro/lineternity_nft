@@ -1,4 +1,4 @@
-@echo off
+@echo off & color 0a
 title aCis gameserver console
 :start
 REM -------------------------------------
