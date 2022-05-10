@@ -15,6 +15,7 @@ import net.sf.l2j.commons.util.SysUtil;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.Lineternity;
 import net.sf.l2j.gameserver.communitybbs.Manager.ForumsBBSManager;
 import net.sf.l2j.gameserver.data.ItemTable;
 import net.sf.l2j.gameserver.data.SkillTable;
@@ -132,7 +133,8 @@ public class GameServer
 			LogManager.getLogManager().readConfiguration(is);
 		}
 		
-		StringUtil.printSection("aCis");
+		Lineternity.infoGS();
+		StringUtil.printSection("aCis - Tryskell");
 		
 		// Initialize config
 		Config.loadGameServer();
@@ -140,6 +142,9 @@ public class GameServer
 		// Factories
 		L2DatabaseFactory.getInstance();
 		ThreadPool.init();
+		
+		
+
 		
 		StringUtil.printSection("IdFactory");
 		IdFactory.getInstance();

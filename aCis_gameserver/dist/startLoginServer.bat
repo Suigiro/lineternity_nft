@@ -1,4 +1,4 @@
-@echo off
+@echo off & color 0a
 title aCis loginserver console
 :start
 java -Xmx32m -cp ./libs/*; net.sf.l2j.loginserver.LoginServer
