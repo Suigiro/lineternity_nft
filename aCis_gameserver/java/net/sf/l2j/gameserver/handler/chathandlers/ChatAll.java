@@ -1,6 +1,8 @@
 package net.sf.l2j.gameserver.handler.chathandlers;
 
 import net.sf.l2j.gameserver.handler.IChatHandler;
+import net.sf.l2j.gameserver.handler.IVoicedCommandHandler;
+import net.sf.l2j.gameserver.handler.VoicedCommandHandler;
 import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.model.actor.player.BlockList;
 import net.sf.l2j.gameserver.network.FloodProtectors;
@@ -19,6 +21,15 @@ public class ChatAll implements IChatHandler
 	{
 		if (!FloodProtectors.performAction(activeChar.getClient(), Action.GLOBAL_CHAT))
 			return;
+
+        if (text.startsWith(".")){
+            var command = text.substring(1).toLowerCase();
+            final IVoicedCommandHandler voicedCommand = VoicedCommandHandler.getInstance().getVoicedCommand(command);
+            if (voicedCommand != null){
+                voicedCommand.useVoicedCommand(activeChar, command);
+                return;
+            }
+        }
 		
 		final CreatureSay cs = new CreatureSay(activeChar.getObjectId(), type, activeChar.getName(), text);
 		for (Player player : activeChar.getKnownTypeInRadius(Player.class, 1250))
