@@ -27,6 +27,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.LoginServerThread;
+import net.sf.l2j.gameserver.autofarm.AutofarmManager;
 import net.sf.l2j.gameserver.communitybbs.BB.Forum;
 import net.sf.l2j.gameserver.communitybbs.Manager.ForumsBBSManager;
 import net.sf.l2j.gameserver.data.ItemTable;
@@ -2652,7 +2653,7 @@ public final class Player extends Playable
 	}
 	
 	@Override
-	protected boolean checkDoCastConditions(L2Skill skill)
+	public boolean checkDoCastConditions(L2Skill skill)
 	{
 		if (!super.checkDoCastConditions(skill))
 			return false;
@@ -3571,6 +3572,8 @@ public final class Player extends Playable
 		
 		// Icons update in order to get retained buffs list
 		updateEffectIcons();
+		
+		AutofarmManager.INSTANCE.onDeath(this);
 		
 		return true;
 	}
@@ -8094,6 +8097,7 @@ public final class Player extends Playable
 	@Override
 	public void deleteMe()
 	{
+		AutofarmManager.INSTANCE.onPlayerLogout(this);
 		cleanup();
 		store();
 		super.deleteMe();
