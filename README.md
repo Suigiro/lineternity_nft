@@ -1,1 +1,1 @@
-# linternity_nft
+# lineternity_nft
