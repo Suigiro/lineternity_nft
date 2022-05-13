@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<dungeon id="1" name="Solo Story Mode" players="1" rewards="1,1,1,1,1" rewardHtm="data/html/mods/dungeon/solo_rewards.htm">
+		<stage order="1" loc="174122,-76173,-5106" teleport="true" minutes="5">
+			<mob npcId="65515" locs="174527,-75636,-5106;174654,-75987,-5106;174647,-76483,-5106;174160,-76758,-5106"/>
+		</stage>
+		<stage order="2" loc="174082,-78151,-5106" teleport="false" minutes="5">
+			<mob npcId="65515" locs="174527,-75636,-5106;174654,-75987,-5106;174647,-76483,-5106;174160,-76758,-5106"/>
+		</stage>
+		<stage order="3" loc="174038,-80727,-5106" teleport="true" minutes="5">
+			<mob npcId="65515" locs="173739,-81254,-5122;173736,-81613,-5122;173729,-82232,-5122;174041,-82539,-5122;174377,-82379,-5122;174451,-81893,-5122;174433,-81342,-5122;174152,-81560,-5122"/>
+		</stage>
+		<stage order="4" loc="174230,-87512,-5116" teleport="true" minutes="15">
+			<mob npcId="65515" locs="174229,-86659,-5106"/>
+		</stage>
+	</dungeon>
+	<dungeon id="2" name="Quatro Hard Mode" players="4" rewards="1,1" rewardHtm="data/html/mods/dungeon/party_rewards.htm">
+		<stage order="1" loc="174122,-76173,-5106" teleport="true" minutes="5">
+			<mob npcId="62100" locs="174527,-75636,-5106;174654,-75987,-5106;174647,-76483,-5106;174160,-76758,-5106"/>
+		</stage>
+		<stage order="2" loc="174082,-78151,-5106" teleport="false" minutes="5">
+			<mob npcId="62100" locs="174527,-75636,-5106;174654,-75987,-5106;174647,-76483,-5106;174160,-76758,-5106"/>
+		</stage>
+		<stage order="3" loc="174038,-80727,-5106" teleport="true" minutes="5">
+			<mob npcId="62101" locs="173739,-81254,-5122;173736,-81613,-5122;173729,-82232,-5122;174041,-82539,-5122;174377,-82379,-5122;174451,-81893,-5122;174433,-81342,-5122;174152,-81560,-5122"/>
+		</stage>
+		<stage order="4" loc="174056,-83856,-5106" teleport="true" minutes="5">
+			<mob npcId="62101" locs="174742,-84194,-5106;174745,-84526,-5106;174726,-85127,-5106;174231,-85361,-5106"/>
+		</stage>
+		<stage order="5" loc="174229,-86659,-5106" teleport="true" minutes="5">
+			<mob npcId="62102" locs="174742,-84194,-5106;174745,-84526,-5106;174726,-85127,-5106;174231,-85361,-5106"/>
+		</stage>
+		<stage order="6" loc="174229,-86659,-5106" teleport="false" minutes="5">
+			<mob npcId="62103" locs="174229,-86659,-5106"/>
+		</stage>
+		<stage order="7" loc="174229,-86659,-5106" teleport="false" minutes="10">
+			<mob npcId="62104" locs="174229,-86659,-5106"/>
+		</stage>
+	</dungeon>
+</list>

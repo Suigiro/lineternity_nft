@@ -10,6 +10,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.logging.LogManager;
 
+import net.sf.l2j.commons.concurrent.ConnectionPool;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.commons.logging.CLogger;
 import net.sf.l2j.commons.mmocore.SelectorConfig;
@@ -20,6 +21,7 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.Lineternity;
 import net.sf.l2j.loginserver.network.LoginClient;
 import net.sf.l2j.loginserver.network.LoginPacketHandler;
+
 
 public class LoginServer
 {
@@ -58,6 +60,9 @@ public class LoginServer
 		
 		// Factories
 		L2DatabaseFactory.getInstance();
+		
+		StringUtil.printSection("Poolers");
+		ConnectionPool.init();
 		
 		StringUtil.printSection("LoginController");
 		LoginController.getInstance();

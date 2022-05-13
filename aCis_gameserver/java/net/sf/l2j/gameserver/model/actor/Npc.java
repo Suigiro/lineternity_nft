@@ -61,6 +61,8 @@ import net.sf.l2j.gameserver.scripting.QuestState;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
 import net.sf.l2j.gameserver.taskmanager.RandomAnimationTaskManager;
 
+import com.dev.dungeon.Instance;
+
 /**
  * An instance type extending {@link Creature}, which represents a Non Playable Character (or NPC) in the world.
  */
@@ -1435,4 +1437,14 @@ public class Npc extends Creature
 		
 		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
+	
+	/**
+	 * @param instance
+	 * @param b
+	 */
+	public static void setInstance(Instance instance, boolean b)
+	{
+		return;
+		
+	}	
 }

@@ -36,6 +36,73 @@ public final class Config
 	public static final String SERVER_FILE = "./config/server.properties";
 	public static final String SIEGE_FILE = "./config/siege.properties";
 	
+	// LINETERNITY NFT
+	// -------------------------------------------------
+	// Dungeon Settings
+	// -------------------------------------------------
+	public static final String DUNGEON_REWARD_FILE = "./config/dev/dungeon.properties";	
+
+
+public static int DUNGEON_COIN_ID;    	
+public static int CONT_DUNGEON_ITEM;
+public static int DUNGEON_SPAWN_X;
+public static int DUNGEON_SPAWN_Y;
+public static int DUNGEON_SPAWN_Z;
+public static int DUNGEON_SPAWN_RND;     	
+
+public static int DUNGEON_ITEM_RENEWAL0;
+public static int DUNGEON_ITEM_RENEWAL1;
+public static int DUNGEON_ITEM_RENEWAL2;
+public static int DUNGEON_ITEM_RENEWAL3;
+public static int DUNGEON_ITEM_RENEWAL4;
+public static int DUNGEON_ITEM_RENEWAL5;
+public static int DUNGEON_ITEM_RENEWAL6;
+public static int DUNGEON_ITEM_RENEWAL7;
+public static int DUNGEON_ITEM_RENEWAL8;
+public static int DUNGEON_ITEM_RENEWAL9;
+public static int DUNGEON_ITEM_RENEWAL10;
+
+public static int DUNGEON_PARTY_ITEM_RENEWAL0;
+public static int DUNGEON_PARTY_ITEM_RENEWAL1;
+public static int DUNGEON_PARTY_ITEM_RENEWAL2;
+public static int DUNGEON_PARTY_ITEM_RENEWAL3;
+public static int DUNGEON_PARTY_ITEM_RENEWAL4;    		
+
+
+
+/**
+ * Loads Dungeon settings.
+ */
+private static final void loadDungeon() 
+{
+	// Dungeon
+	ExProperties SafeDungeon = initProperties(DUNGEON_REWARD_FILE);
+	
+	DUNGEON_COIN_ID = SafeDungeon.getProperty("DungeonCoinId", 57);
+	CONT_DUNGEON_ITEM = SafeDungeon.getProperty("DungeonContItem", 1);
+	DUNGEON_SPAWN_X = SafeDungeon.getProperty("DungeonSpawnX", 82635);
+	DUNGEON_SPAWN_Y = SafeDungeon.getProperty("DungeonSpawnY", 148798);
+	DUNGEON_SPAWN_Z = SafeDungeon.getProperty("DungeonSpawnZ", -3464);
+	DUNGEON_SPAWN_RND = SafeDungeon.getProperty("DungeonSpawnRnd", 25);			
+	
+	DUNGEON_ITEM_RENEWAL0 = SafeDungeon.getProperty("DungeonRenewalHtml0", 15);
+	DUNGEON_ITEM_RENEWAL1 = SafeDungeon.getProperty("DungeonRenewalHtml1", 15);
+	DUNGEON_ITEM_RENEWAL2 = SafeDungeon.getProperty("DungeonRenewalHtml2", 15);
+	DUNGEON_ITEM_RENEWAL3 = SafeDungeon.getProperty("DungeonRenewalHtml3", 15);
+	DUNGEON_ITEM_RENEWAL4 = SafeDungeon.getProperty("DungeonRenewalHtml4", 15);
+	DUNGEON_ITEM_RENEWAL5 = SafeDungeon.getProperty("DungeonRenewalHtml5", 15);
+	DUNGEON_ITEM_RENEWAL6 = SafeDungeon.getProperty("DungeonRenewalHtml6", 15);	
+	DUNGEON_ITEM_RENEWAL7 = SafeDungeon.getProperty("DungeonRenewalHtml7", 15);	
+	DUNGEON_ITEM_RENEWAL8 = SafeDungeon.getProperty("DungeonRenewalHtml8", 15);	
+	DUNGEON_ITEM_RENEWAL9 = SafeDungeon.getProperty("DungeonRenewalHtml9", 15);	
+	DUNGEON_ITEM_RENEWAL10 = SafeDungeon.getProperty("DungeonRenewalHtml10", 15);
+	DUNGEON_PARTY_ITEM_RENEWAL0 = SafeDungeon.getProperty("DungeonPartyRenewalHtml0", 15);
+	DUNGEON_PARTY_ITEM_RENEWAL1 = SafeDungeon.getProperty("DungeonPartyRenewalHtml1", 15);
+	DUNGEON_PARTY_ITEM_RENEWAL2 = SafeDungeon.getProperty("DungeonPartyRenewalHtml2", 15);
+	DUNGEON_PARTY_ITEM_RENEWAL3 = SafeDungeon.getProperty("DungeonPartyRenewalHtml3", 15);
+	DUNGEON_PARTY_ITEM_RENEWAL4 = SafeDungeon.getProperty("DungeonPartyRenewalHtml4", 15);			
+}
+	
 	// --------------------------------------------------
 	// Clans settings
 	// --------------------------------------------------
@@ -1121,7 +1188,7 @@ public final class Config
 		REQUEST_ID = server.getProperty("RequestServerID", 0);
 		ACCEPT_ALTERNATE_ID = server.getProperty("AcceptAlternateID", true);
 		
-		DATABASE_URL = server.getProperty("URL", "jdbc:mysql://localhost/acis?serverTimezone=UTC");
+		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://localhost/acis382");
 		DATABASE_LOGIN = server.getProperty("Login", "root");
 		DATABASE_PASSWORD = server.getProperty("Password", "");
 		DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 10);
@@ -1309,6 +1376,9 @@ public final class Config
 		
 		// server settings
 		loadServer();
+		
+		// event settings
+		loadDungeon();
 	}
 	
 	public static final void loadLoginServer()

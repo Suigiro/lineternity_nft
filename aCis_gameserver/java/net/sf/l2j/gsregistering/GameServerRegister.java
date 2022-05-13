@@ -11,6 +11,7 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.LoginServerThread;
 import net.sf.l2j.loginserver.GameServerManager;
 import net.sf.l2j.loginserver.model.GameServerInfo;
+import net.sf.l2j.commons.concurrent.ConnectionPool;
 
 public class GameServerRegister
 {
@@ -22,7 +23,7 @@ public class GameServerRegister
 	public static void main(String[] args)
 	{
 		Config.loadGameServerRegistration();
-		
+				
 		try (Scanner _scn = new Scanner(System.in))
 		{
 			System.out.println();
