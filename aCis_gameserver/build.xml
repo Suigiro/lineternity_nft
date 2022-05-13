@@ -48,8 +48,9 @@
 		<mkdir dir="${build.dist.game}/config" />
 		<mkdir dir="${build.dist.auth}/config" />
 		<copy todir="${build.dist.game}/config">
-			<fileset dir="config">
+			<fileset dir="config">				
 				<include name="*.properties" />
+				<include name="dev/*.properties" />
 				<exclude name="banned_ips.properties" />
 				<exclude name="loginserver.properties" />
 			</fileset>
@@ -68,7 +69,7 @@
 		<jar destfile="${build}/l2jserver.jar">
 			<fileset dir="${build.classes}"  casesensitive="yes">
 				  <include name="**/*.class"/>
-				  <exclude name="com/**"/>				
+			 <!-- <exclude name="com/**"/>		descomentar quando passar as classes do liniternity para esse projeto		 -->		
 			</fileset>
 			<manifest>
 				<attribute name="Main-Class" value="net.sf.l2j.Server" />

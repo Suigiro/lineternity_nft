@@ -90,6 +90,7 @@ $MYG < ../sql/character_hennas.sql &> /dev/null
 $MYG < ../sql/character_macroses.sql &> /dev/null
 $MYG < ../sql/character_mail.sql &> /dev/null
 $MYG < ../sql/character_memo.sql &> /dev/null
+$MYG < ../sql/character_memo_dungeon.sql &> /dev/null
 $MYG < ../sql/character_quests.sql &> /dev/null
 $MYG < ../sql/character_raid_points.sql &> /dev/null
 $MYG < ../sql/character_recipebook.sql &> /dev/null
@@ -107,6 +108,7 @@ $MYG < ../sql/clan_wars.sql &> /dev/null
 $MYG < ../sql/clanhall.sql &> /dev/null
 $MYG < ../sql/clanhall_functions.sql &> /dev/null
 $MYG < ../sql/cursed_weapons.sql &> /dev/null
+$MYG < ../sql/dungeon.sql &> /dev/null
 $MYG < ../sql/fishing_championship.sql &> /dev/null
 $MYG < ../sql/forums.sql &> /dev/null
 $MYG < ../sql/games.sql &> /dev/null

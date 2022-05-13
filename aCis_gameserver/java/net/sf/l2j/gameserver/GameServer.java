@@ -7,6 +7,7 @@ import java.net.InetAddress;
 import java.util.logging.LogManager;
 
 import net.sf.l2j.commons.concurrent.ThreadPool;
+import net.sf.l2j.commons.concurrent.ConnectionPool;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.commons.logging.CLogger;
 import net.sf.l2j.commons.mmocore.SelectorConfig;
@@ -142,6 +143,10 @@ public class GameServer
 		
 		// Factories
 		L2DatabaseFactory.getInstance();
+		
+		//Poolers
+		StringUtil.printSection("Poolers");
+		ConnectionPool.init();
 		ThreadPool.init();
 		
 		StringUtil.printSection("IdFactory");

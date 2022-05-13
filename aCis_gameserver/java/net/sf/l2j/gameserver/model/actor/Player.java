@@ -18,11 +18,14 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import net.sf.l2j.commons.concurrent.ConnectionPool;
 import net.sf.l2j.commons.concurrent.ThreadPool;
 import net.sf.l2j.commons.math.MathUtil;
 import net.sf.l2j.commons.random.Rnd;
+
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
@@ -242,6 +245,10 @@ import net.sf.l2j.gameserver.taskmanager.ItemsOnGroundTaskManager;
 import net.sf.l2j.gameserver.taskmanager.PvpFlagTaskManager;
 import net.sf.l2j.gameserver.taskmanager.ShadowItemTaskManager;
 import net.sf.l2j.gameserver.taskmanager.WaterTaskManager;
+import com.dev.dungeon.Dungeon;
+import com.dev.dungeon.Instance;
+import com.dev.manager.NewCharTaskManager;
+import com.dev.util.MariaDB;
 
 /**
  * This class represents a player in the world.<br>
@@ -3029,6 +3036,123 @@ public final class Player extends Playable
 				target.onAction(this);
 		}
 	}
+	
+	
+public String getIP()
+{
+	if (getClient().getConnection() == null)
+		return "N/A IP";
+	
+	return getClient().getConnection().getInetAddress().getHostAddress();
+}
+
+
+	public static void doNewChar(Player player, int time)
+	{
+		player.setNewChar(true);
+		NewCharTaskManager.getInstance().add(player);
+		long remainingTime = player.getMemos().getLong("newEndTime", 0);
+		if (remainingTime > 0)
+		{
+			player.getMemos().set("newEndTime", remainingTime + TimeUnit.MINUTES.toMillis(time));
+		}
+		else
+		{
+			player.getMemos().set("newEndTime", System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(time));
+			player.broadcastUserInfo();
+		}
+	}
+	
+	public static void removeNewChar(Player player)
+	{
+		NewCharTaskManager.getInstance().remove(player);
+		player.getMemos().set("newEndTime", 0);
+		player.setNewChar(false);
+		player.broadcastUserInfo();
+		
+	}
+	private boolean _isnewChar;
+	public boolean isNewChar()
+	{
+		return _isnewChar;
+	}
+	
+	public void setNewChar(boolean b)
+	{
+		_isnewChar = b;
+	}
+	private Dungeon dungeon = null;
+	public void setDungeon(Dungeon val)
+	{
+		dungeon = val;
+	}
+	
+	public Dungeon getDungeon()
+	{
+		return dungeon;
+	}
+	
+	private boolean _isInDungeonZone;
+	public boolean isInDungeonZone()
+	{
+		return _isInDungeonZone;
+	}
+	
+	
+	public void deleteTempItem(int itemObjectID)
+	{
+		boolean destroyed = false;
+		if (getInventory().getItemByObjectId(itemObjectID) != null)
+		{
+			sendMessage("Your "+ItemTable.getInstance().getTemplate(getInventory().getItemByObjectId(itemObjectID).getItemId()).getName()+" has expired.");
+			destroyItem("tempItemDestroy", itemObjectID, 1, this, true);
+			getInventory().updateDatabase();
+			sendPacket(new ItemList(this, true));
+			
+			destroyed = true;
+		}
+		
+		if (!destroyed)
+		{
+			Connection con = null;
+			PreparedStatement statement = null;
+			ResultSet rset = null;
+			try
+			{
+				con = ConnectionPool.getConnection();
+				statement = con.prepareStatement("DELETE FROM items WHERE object_id=?");
+				statement.setInt(1, itemObjectID);
+				statement.execute();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+			finally
+			{
+				MariaDB.closeQuietly(con, statement, rset);
+			}
+		}
+	}
+	private boolean _isInClanDungeonZone;
+	public boolean isInClanDungeonZone()
+	{
+		return _isInClanDungeonZone;
+	}
+	
+	public void setClanDungeonZone(boolean isInClanDungeonZone)
+	{
+		_isInClanDungeonZone = isInClanDungeonZone;
+	}
+	/**
+	 * @param instance
+	 * @param b
+	 */
+	public static void setInstance(Instance instance, boolean b)
+	{
+		return;
+		
+	}	
 	
 	/**
 	 * Manage AutoLoot Task.
