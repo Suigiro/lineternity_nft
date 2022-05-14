@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list applyTaxes="true">
+	<npcs>
+		<npc>0</npc>
+	</npcs>
+	<!-- Tallum Blade -->
+	<item>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="80" count="1"/>
+	</item>
+	<!-- Dark Legion's Edge -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="2500" count="1"/>
+	</item>
+	<!-- Sirra's Blade -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8678" count="1"/>
+	</item>
+	<!-- Elemental Sword -->
+	<item>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="150" count="1"/>
+	</item>
+	<!-- Sword of Miracles -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="151" count="1"/>
+	</item>
+	<!-- Themis' Tongue -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8686" count="1"/>
+	</item>
+	<!-- Infernal Master -->
+	<item>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="7884" count="1"/>
+	</item>
+	<!-- Dragon Slayer -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="81" count="1"/>
+	</item>
+	<!-- Sword of Ipos -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8679" count="1"/>
+	</item>
+	<!-- Bloody Orchid -->
+	<item>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="235" count="1"/>
+	</item>
+	<!-- Soul Separator -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="236" count="1"/>
+	</item>
+	<!-- Naga Storm -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8682" count="1"/>
+	</item>
+	<!-- Carnage Bow -->
+	<item>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="288" count="1"/>
+	</item>
+	<!-- Soul Bow -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="289" count="1"/>
+	</item>
+	<!-- Shyeed's Bow -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8684" count="1"/>
+	</item>
+	<!-- Blood Tornado -->
+	<item>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="269" count="1"/>
+	</item>
+	<!-- Dragon Grinder -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="270" count="1"/>
+	</item>
+	<!-- Sobekk's Hurricane -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8685" count="1"/>
+	</item>
+	<!-- Halberd -->
+	<item>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="98" count="1"/>
+	</item>
+	<!-- Tallum Glaive -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="305" count="1"/>
+	</item>
+	<!-- Tiphon's Spear -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8683" count="1"/>
+	</item>
+	<!-- Meteor Shower -->
+	<item>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="2504" count="1"/>
+	</item>
+	<!-- Elysian -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="164" count="1"/>
+	</item>
+	<!-- Barakiel's Axe -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8680" count="1"/>
+	</item>
+	<!-- Spiritual Eye -->
+	<item>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="7894" count="1"/>
+	</item>
+	<!-- Flaming Dragon Skull -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="7895" count="1"/>
+	</item>
+	<!-- Cabrio's Hand -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8687" count="1"/>
+	</item>
+	<!-- Destroyer Hammer -->
+	<item>
+		<ingredient id="9144" count="292"/>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="7899" count="1"/>
+	</item>
+	<!-- Doom Crusher -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="7902" count="1"/>
+	</item>
+	<!-- Behemoth's Tuning Fork -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8681" count="1"/>
+	</item>
+	<!-- Desparion's Staff -->
+	<item>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="212" count="1"/>
+	</item>
+	<!-- Branch of The Mother Tree -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="213" count="1"/>
+	</item>
+	<!-- Daimon Crystal -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8688" count="1"/>
+	</item>
+	<!-- Keshanberk*Keshanberk -->
+	<item>
+		<ingredient id="57" count="18300000"/>
+		<ingredient id="57" count="18300000" isTaxIngredient="true"/>
+		<production id="5233" count="1"/>
+	</item>
+	<!-- Damascus*Damascus -->
+	<item>
+		<ingredient id="57" count="27000000"/>
+		<ingredient id="57" count="27000000" isTaxIngredient="true"/>
+		<production id="5706" count="1"/>
+	</item>
+	<!-- Damascus*Tallum Blade -->
+	<item>
+		<ingredient id="57" count="35300000"/>
+		<ingredient id="57" count="35300000" isTaxIngredient="true"/>
+		<production id="8938" count="1"/>
+	</item>
+</list>

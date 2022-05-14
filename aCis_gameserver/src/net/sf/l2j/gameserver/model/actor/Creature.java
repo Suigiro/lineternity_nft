@@ -527,6 +527,13 @@ public abstract class Creature extends WorldObject
 		
 		final Player player = getActingPlayer();
 		
+		if (player != null && target instanceof Player && !EventListener.canAttack(player, (Player) target))
+		{
+			getAI().setIntention(IntentionType.ACTIVE);
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
 		if (player != null && player.isInObserverMode())
 		{
 			sendPacket(SystemMessage.getSystemMessage(SystemMessageId.OBSERVERS_CANNOT_PARTICIPATE));
@@ -1117,6 +1124,18 @@ public abstract class Creature extends WorldObject
 				sendPacket(ActionFailed.STATIC_PACKET);
 				getAI().setIntention(IntentionType.ACTIVE);
 			}
+			return;
+		}
+		
+		if (skill.isSkillTypeOffensive() && getActingPlayer() != null && target instanceof Player && target != this && !EventListener.canAttack(getActingPlayer(), (Player) target))
+		{
+			if (simultaneously)
+				setIsCastingSimultaneouslyNow(false);
+			else
+				setIsCastingNow(false);
+			
+			sendPacket(ActionFailed.STATIC_PACKET);
+			getAI().setIntention(IntentionType.ACTIVE);
 			return;
 		}
 		

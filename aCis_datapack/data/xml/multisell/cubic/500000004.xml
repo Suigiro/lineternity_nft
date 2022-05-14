@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list applyTaxes="true">
+	<npcs>
+		<npc>0</npc>
+	</npcs>
+	<!-- Forgotten Blade -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="6364" count="1"/>
+	</item>
+	<!-- Heaven's Divider -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="6372" count="1"/>
+	</item>
+	<!-- Angel Slayer -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="6367" count="1"/>
+	</item>
+	<!-- Shining Bow -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="6368" count="1"/>
+	</item>
+	<!-- Draconic Bow -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="7575" count="1"/>
+	</item>
+	<!-- Demon Splinter -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="6371" count="1"/>
+	</item>
+	<!-- Saint Spear -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="6370" count="1"/>
+	</item>
+	<!-- Basalt Battlehammer -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="6365" count="1"/>
+	</item>
+	<!-- Arcana Mace -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="6579" count="1"/>
+	</item>
+	<!-- Dragon Hunter -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="6369" count="1"/>
+	</item>
+	<!-- Imperial Staff -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="6366" count="1"/>
+	</item>
+	<!-- Tallum Blade*Dark Legion's Edge -->
+	<item>
+		<ingredient id="57" count="48800000"/>
+		<ingredient id="57" count="48800000" isTaxIngredient="true"/>
+		<production id="6580" count="1"/>
+	</item>
+</list>

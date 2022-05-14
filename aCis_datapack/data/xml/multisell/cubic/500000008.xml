@@ -1,0 +1,276 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list applyTaxes="true">
+	<npcs>
+		<npc>0</npc>
+	</npcs>
+	<!-- Dark Crystal Breastplate -->
+	<item>
+		<ingredient id="57" count="4630000"/>
+		<ingredient id="57" count="4630000" isTaxIngredient="true"/>
+		<production id="365" count="1"/>
+	</item>
+	<!-- Dark Crystal Leather Armor -->
+	<item>
+		<ingredient id="57" count="3470000"/>
+		<ingredient id="57" count="3470000" isTaxIngredient="true"/>
+		<production id="2385" count="1"/>
+	</item>
+	<!-- Tallum Tunic -->
+	<item>
+		<ingredient id="57" count="3470000"/>
+		<ingredient id="57" count="3470000" isTaxIngredient="true"/>
+		<production id="2400" count="1"/>
+	</item>
+	<!-- Tallum Plate Armor -->
+	<item>
+		<ingredient id="57" count="6770000"/>
+		<ingredient id="57" count="6770000" isTaxIngredient="true"/>
+		<production id="2382" count="1"/>
+	</item>
+	<!-- Armor of Nightmare -->
+	<item>
+		<ingredient id="57" count="10300000"/>
+		<ingredient id="57" count="10300000" isTaxIngredient="true"/>
+		<production id="374" count="1"/>
+	</item>
+	<!-- Majestic Plate Armor -->
+	<item>
+		<ingredient id="57" count="10300000"/>
+		<ingredient id="57" count="10300000" isTaxIngredient="true"/>
+		<production id="2383" count="1"/>
+	</item>
+	<!-- Tallum Leather Armor -->
+	<item>
+		<ingredient id="57" count="5080000"/>
+		<ingredient id="57" count="5080000" isTaxIngredient="true"/>
+		<production id="2393" count="1"/>
+	</item>
+	<!-- Nightmarish Leather Armor -->
+	<item>
+		<ingredient id="57" count="7730000"/>
+		<ingredient id="57" count="7730000" isTaxIngredient="true"/>
+		<production id="2394" count="1"/>
+	</item>
+	<!-- Majestic Leather Armor -->
+	<item>
+		<ingredient id="57" count="7730000"/>
+		<ingredient id="57" count="7730000" isTaxIngredient="true"/>
+		<production id="2395" count="1"/>
+	</item>
+	<!-- Dark Crystal Robe -->
+	<item>
+		<ingredient id="57" count="5080000"/>
+		<ingredient id="57" count="5080000" isTaxIngredient="true"/>
+		<production id="2407" count="1"/>
+	</item>
+	<!-- Nightmare Robe -->
+	<item>
+		<ingredient id="57" count="7730000"/>
+		<ingredient id="57" count="7730000" isTaxIngredient="true"/>
+		<production id="2408" count="1"/>
+	</item>
+	<!-- Majestic Robe -->
+	<item>
+		<ingredient id="57" count="7730000"/>
+		<ingredient id="57" count="7730000" isTaxIngredient="true"/>
+		<production id="2409" count="1"/>
+	</item>
+	<!-- Dark Crystal Gaiters -->
+	<item>
+		<ingredient id="57" count="2890000"/>
+		<ingredient id="57" count="2890000" isTaxIngredient="true"/>
+		<production id="388" count="1"/>
+	</item>
+	<!-- Dark Crystal Leggings -->
+	<item>
+		<ingredient id="57" count="2170000"/>
+		<ingredient id="57" count="2170000" isTaxIngredient="true"/>
+		<production id="2389" count="1"/>
+	</item>
+	<!-- Tallum Stockings -->
+	<item>
+		<ingredient id="57" count="2170000"/>
+		<ingredient id="57" count="2170000" isTaxIngredient="true"/>
+		<production id="2405" count="1"/>
+	</item>
+	<!-- Dark Crystal Helmet -->
+	<item>
+		<ingredient id="57" count="1740000"/>
+		<ingredient id="57" count="1740000" isTaxIngredient="true"/>
+		<production id="512" count="1"/>
+	</item>
+	<!-- Tallum Helm -->
+	<item>
+		<ingredient id="57" count="1740000"/>
+		<ingredient id="57" count="1740000" isTaxIngredient="true"/>
+		<production id="547" count="1"/>
+	</item>
+	<!-- Helm of Nightmare -->
+	<item>
+		<ingredient id="57" count="2640000"/>
+		<ingredient id="57" count="2640000" isTaxIngredient="true"/>
+		<production id="2418" count="1"/>
+	</item>
+	<!-- Majestic Circlet -->
+	<item>
+		<ingredient id="57" count="2640000"/>
+		<ingredient id="57" count="2640000" isTaxIngredient="true"/>
+		<production id="2419" count="1"/>
+	</item>
+	<!-- Dark Crystal Gloves - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5765" count="1"/>
+	</item>
+	<!-- Tallum Gloves - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5768" count="1"/>
+	</item>
+	<!-- Gauntlets of Nightmare - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5771" count="1"/>
+	</item>
+	<!-- Majestic Gauntlets - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5774" count="1"/>
+	</item>
+	<!-- Dark Crystal Gloves - Light Armor -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5766" count="1"/>
+	</item>
+	<!-- Tallum Gloves - Light Armor  -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5769" count="1"/>
+	</item>
+	<!-- Gauntlets of Nightmare - Light Armor -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5772" count="1"/>
+	</item>
+	<!-- Majestic Gauntlets - Light Armor -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5775" count="1"/>
+	</item>
+	<!-- Dark Crystal Gloves - Robe -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5767" count="1"/>
+	</item>
+	<!-- Tallum Gloves - Robe -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5770" count="1"/>
+	</item>
+	<!-- Gauntlets of Nightmare - Robe -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5773" count="1"/>
+	</item>
+	<!-- Majestic Gauntlets - Robe -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5776" count="1"/>
+	</item>
+	<!-- Dark Crystal Boots - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5777" count="1"/>
+	</item>
+	<!-- Tallum Boots - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5780" count="1"/>
+	</item>
+	<!-- Boots of Nightmare - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5783" count="1"/>
+	</item>
+	<!-- Majestic Boots - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5786" count="1"/>
+	</item>
+	<!-- Dark Crystal Boots - Light Armor -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5778" count="1"/>
+	</item>
+	<!-- Tallum Boots - Light Armor -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5781" count="1"/>
+	</item>
+	<!-- Boots of Nightmare - Light Armor -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5784" count="1"/>
+	</item>
+	<!-- Majestic Boots - Light Armor -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5787" count="1"/>
+	</item>
+	<!-- Dark Crystal Boots - Robe -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5779" count="1"/>
+	</item>
+	<!-- Tallum Boots - Robe -->
+	<item>
+		<ingredient id="57" count="1160000"/>
+		<ingredient id="57" count="1160000" isTaxIngredient="true"/>
+		<production id="5782" count="1"/>
+	</item>
+	<!-- Boots of Nightmare - Robe -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5785" count="1"/>
+	</item>
+	<!-- Majestic Boots - Robe -->
+	<item>
+		<ingredient id="57" count="1760000"/>
+		<ingredient id="57" count="1760000" isTaxIngredient="true"/>
+		<production id="5788" count="1"/>
+	</item>
+	<!-- Dark Crystal Shield -->
+	<item>
+		<ingredient id="57" count="1220000"/>
+		<ingredient id="57" count="1220000" isTaxIngredient="true"/>
+		<production id="641" count="1"/>
+	</item>
+	<!-- Shiel of Nightmare -->
+	<item>
+		<ingredient id="57" count="1850000"/>
+		<ingredient id="57" count="1850000" isTaxIngredient="true"/>
+		<production id="2498" count="1"/>
+	</item>
+</list>

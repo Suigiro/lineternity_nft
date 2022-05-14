@@ -11,6 +11,9 @@
 	<aCar name="admin_silence" accessLevel="7"/>
 	<aCar name="admin_tradeoff" accessLevel="7"/>
 	<aCar name="admin_reload" accessLevel="7"/>
+	<aCar name="admin_search" accessLevel="7"/>
+	<aCar name="admin_show_inventory" accessLevel="7"/>
+	<aCar name="admin_show_warehouse" accessLevel="7"/>
 
 	<!-- ANNOUNCEMENTS -->
 	<aCar name="admin_announce" accessLevel="7"/>
@@ -65,6 +68,8 @@
 
 	<!-- DELETE -->
 	<aCar name="admin_delete" accessLevel="7"/>
+	<aCar name="admin_delete_inventory_item" accessLevel="7"/>
+	<aCar name="admin_delete_warehouse_item" accessLevel="7"/>
 
 	<!-- DOOR CONTROL -->
 	<aCar name="admin_open" accessLevel="7"/>
@@ -328,6 +333,7 @@
 	<aCar name="admin_recall" accessLevel="7"/>
 	<aCar name="admin_recall_party" accessLevel="7"/>
 	<aCar name="admin_recall_clan" accessLevel="7"/>
+	<aCar name="admin_recall_all" accessLevel="7"/>
 	<aCar name="admin_move_to" accessLevel="7"/>
 	<aCar name="admin_sendhome" accessLevel="7"/>
 

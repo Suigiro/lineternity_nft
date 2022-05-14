@@ -92,7 +92,7 @@ public class MultisellData implements IXmlReader
 		if (template == null)
 			return;
 		
-		if ((npc != null && !template.isNpcAllowed(npc.getNpcId())) || (npc == null && template.isNpcOnly()))
+		if ((npc != null && !template.isNpcAllowed(npc.getNpcId())) || (npc == null && template.isNpcOnly() && !player.isCubicBypass()))
 			return;
 		
 		final PreparedListContainer list = new PreparedListContainer(template, inventoryOnly, player, npc);

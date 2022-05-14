@@ -777,6 +777,10 @@ public class AdminEditChar implements IAdminCommandHandler
 		html.replace("%account%", player.getAccountName());
 		html.replace("%ip%", (player.getClient().isDetached()) ? "Disconnected" : player.getClient().getConnection().getInetAddress().getHostAddress());
 		html.replace("%ai%", player.getAI().getDesire().getIntention().name());
+		html.replace("%match%", Olympiad.getInstance().getCompetitionDone(player.getObjectId()));
+		html.replace("%wins%", Olympiad.getInstance().getCompetitionWon(player.getObjectId()));
+		html.replace("%default%", Olympiad.getInstance().getCompetitionLost(player.getObjectId()));
+		html.replace("%points%", Olympiad.getInstance().getNoblePoints(player.getObjectId()));
 		activeChar.sendPacket(html);
 	}
 	

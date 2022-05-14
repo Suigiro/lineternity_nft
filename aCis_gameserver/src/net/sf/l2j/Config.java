@@ -102,6 +102,39 @@ private static final void loadDungeon()
 	DUNGEON_PARTY_ITEM_RENEWAL3 = SafeDungeon.getProperty("DungeonPartyRenewalHtml3", 15);
 	DUNGEON_PARTY_ITEM_RENEWAL4 = SafeDungeon.getProperty("DungeonPartyRenewalHtml4", 15);			
 }
+
+
+
+
+	
+	// --------------------------------------------------
+	// Lineternity paths
+	// --------------------------------------------------
+	
+	//public static final String ENCHANTING_FILE = "./config/dev/enchanting.properties";
+	public static final String DEV_FILE = "./config/dev/lineternity.properties";
+	//public static final String SECURITY_FILE = "./config/dev/security.properties";
+
+
+
+
+
+
+
+	
+	// --------------------------------------------------
+	// Lineternity settings
+	// --------------------------------------------------
+	
+	public static String SERVER_NAME;
+	
+	public static String SHOP_AIO;
+	
+	public static String SHOP_PORTABLE;
+	
+	public static String BUFF_PORTABLE;
+
+
 	
 	// --------------------------------------------------
 	// Clans settings
@@ -119,6 +152,7 @@ private static final void loadDungeon()
 	public static int ALT_CLAN_MEMBERS_FOR_WAR;
 	public static int ALT_CLAN_WAR_PENALTY_WHEN_ENDED;
 	public static boolean ALT_MEMBERS_CAN_WITHDRAW_FROM_CLANWH;
+	public static int ITEM_ID_BUY_CLAN_HALL;
 	
 	/** Manor */
 	public static int ALT_MANOR_REFRESH_TIME;
@@ -212,6 +246,9 @@ private static final void loadDungeon()
 	public static int ALT_OLY_DIVIDER_CLASSED;
 	public static int ALT_OLY_DIVIDER_NON_CLASSED;
 	public static boolean ALT_OLY_ANNOUNCE_GAMES;
+	public static boolean ALT_OLY_ANT_BOOT;
+	public static OlympiadPeriod ALT_OLY_PERIOD;
+	public static int ALT_OLY_PERIOD_MULTIPLIER;
 	
 	/** SevenSigns Festival */
 	public static boolean ALT_GAME_CASTLE_DAWN;
@@ -351,6 +388,7 @@ private static final void loadDungeon()
 	public static boolean SHOW_NPC_LVL;
 	public static boolean SHOW_NPC_CREST;
 	public static boolean SHOW_SUMMON_CREST;
+	public static boolean ALTERNATE_CLASS_MASTER;
 	
 	/** Wyvern Manager */
 	public static boolean WYVERN_ALLOW_UPGRADER;
@@ -490,6 +528,7 @@ private static final void loadDungeon()
 	public static boolean GM_HERO_AURA;
 	public static boolean GM_STARTUP_INVULNERABLE;
 	public static boolean GM_STARTUP_INVISIBLE;
+	public static boolean GM_STARTUP_SPEED;
 	public static boolean GM_STARTUP_SILENCE;
 	public static boolean GM_STARTUP_AUTO_LIST;
 	
@@ -513,6 +552,8 @@ private static final void loadDungeon()
 	public static boolean ES_SP_BOOK_NEEDED;
 	public static boolean DIVINE_SP_BOOK_NEEDED;
 	public static boolean SUBCLASS_WITHOUT_QUESTS;
+	public static int ALLOWED_SUBCLASS;
+	public static boolean ALT_GAME_SUBCLASS_EVERYWHERE;
 	
 	/** Buffs */
 	public static boolean STORE_SKILL_COOLTIME;
@@ -527,6 +568,8 @@ private static final void loadDungeon()
 	public static int MAX_ATTACKERS_NUMBER;
 	public static int MAX_DEFENDERS_NUMBER;
 	public static int ATTACKERS_RESPAWN_DELAY;
+	public static IntIntHolder[] REWARD_WINNER_SIEGE_CLAN;
+	public static IntIntHolder[] LEADER_REWARD_WINNER_SIEGE_CLAN;
 	
 	// --------------------------------------------------
 	// Server
@@ -721,6 +764,161 @@ private static final void loadDungeon()
 		return result;
 	}
 	
+	/** Lineternity Loads */
+	
+	private static final void loadLineternity()
+	{
+		
+		ExProperties lineternity = initProperties("./config/dev/lineternity.properties");
+		
+	    SERVER_NAME = lineternity.getProperty("ServerName", "Lineternity");
+	    WELCOME_MESSAGE_ENABLED = lineternity.getProperty("ScreenWelcomeMessageEnable", false);
+	    WELCOME_MESSAGE_TEXT = lineternity.getProperty("ScreenWelcomeMessageText", "Bem vindo a Lineternity");
+	    WELCOME_MESSAGE_TIME = lineternity.getProperty("ScreenWelcomeMessageTime", 10) * 1000;
+	    SHOP_AIO = lineternity.getProperty("SHOPAio", "data/html/dev/cubic/main.htm");
+	    SHOP_PORTABLE = lineternity.getProperty("SHOPPortable", "data/html/dev/cubic/itemstore/main.htm");
+	    BUFF_PORTABLE = lineternity.getProperty("BUFFPortable", "data/html/dev/cubic/magicalsupport/main.htm ");
+	    ENABLE_MODIFY_SKILL_DURATION = lineternity.getProperty("EnableModifySkillDuration", false);
+	    if (ENABLE_MODIFY_SKILL_DURATION) {
+	      String[] propertySplit = lineternity.getProperty("SkillDurationList", "").split(";");
+	      SKILL_DURATION_LIST = new HashMap<>(propertySplit.length);
+	      for (String skill : propertySplit) {
+	        String[] skillSplit = skill.split(",");
+	        if (skillSplit.length != 2) {
+	          LOGGER.error("[SkillDurationList]: invalid config property -> SkillDurationList \"" + skill + "\"");
+	        } else {
+	          try {
+	            SKILL_DURATION_LIST.put(Integer.valueOf(Integer.parseInt(skillSplit[0])), Integer.valueOf(Integer.parseInt(skillSplit[1])));
+	          } catch (NumberFormatException nfe) {
+	            if (!skill.isEmpty())
+	              LOGGER.error("[SkillDurationList]: invalid config property -> SkillList \"" + skillSplit[0] + "\"" + skillSplit[1]); 
+	          } 
+	        } 
+	      } 
+	    } 
+		SPAWN_CHAR = lineternity.getProperty("CustomSpawn", false);
+		String[] newCharcoords = lineternity.getProperty("NewCoordinates", "0,0,0").split(",");
+		if (newCharcoords.length < 3)
+		{
+			SPAWN_CHAR = false;
+		}
+		else
+		{
+			SPAWN_CHAR_COORDINATES[0] = Integer.parseInt(newCharcoords[0]);
+			SPAWN_CHAR_COORDINATES[1] = Integer.parseInt(newCharcoords[1]);
+			SPAWN_CHAR_COORDINATES[2] = Integer.parseInt(newCharcoords[2]);
+		}
+		STARTING_LEVEL = lineternity.getProperty("StartingLvl", 1);
+		CUSTOM_STARTER_ITEMS_ENABLED = lineternity.getProperty("CustomStarterItemsEnabled", false);
+		if (CUSTOM_STARTER_ITEMS_ENABLED)
+		{
+			String[] propertySplit = lineternity.getProperty("StartingCustomItemsMage", "57,0").split(";");
+			STARTING_CUSTOM_ITEMS_M.clear();
+			for (String reward : propertySplit)
+			{
+				String[] rewardSplit = reward.split(",");
+				if (rewardSplit.length != 2)
+				{
+					LOGGER.error("StartingCustomItemsMage[Config.load()]: invalid config property -> StartingCustomItemsMage \"" + reward + "\"");
+				}
+				else
+				{
+					try
+					{
+						STARTING_CUSTOM_ITEMS_M.add(new int[]
+						{
+							Integer.parseInt(rewardSplit[0]),
+							Integer.parseInt(rewardSplit[1])
+						});
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!reward.isEmpty())
+							LOGGER.error("StartingCustomItemsMage[Config.load()]: invalid config property -> StartingCustomItemsMage \"" + reward + "\"");
+					}
+				}
+			}
+			propertySplit = lineternity.getProperty("StartingCustomItemsFighter", "57,0").split(";");
+			STARTING_CUSTOM_ITEMS_F.clear();
+			for (String reward : propertySplit)
+			{
+				String[] rewardSplit = reward.split(",");
+				if (rewardSplit.length != 2)
+				{
+					LOGGER.error("StartingCustomItemsFighter[Config.load()]: invalid config property -> StartingCustomItemsFighter \"" + reward + "\"");
+				}
+				else
+				{
+					try
+					{
+						STARTING_CUSTOM_ITEMS_F.add(new int[]
+						{
+							Integer.parseInt(rewardSplit[0]),
+							Integer.parseInt(rewardSplit[1])
+						});
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!reward.isEmpty())
+							LOGGER.error("StartingCustomItemsFighter[Config.load()]: invalid config property -> StartingCustomItemsFighter \"" + reward + "\"");
+					}
+				}
+			}
+		}
+
+
+		SHOUT_RESTRICTION_TYPE = RestrictionType.valueOf(lineternity.getProperty("ShoutRestrictionType", "NONE"));
+		TRADE_RESTRICTION_TYPE = RestrictionType.valueOf(lineternity.getProperty("TradeRestrictionType", "NONE"));
+		SHOUT_RESTRICTION_VALUE = lineternity.getProperty("ShoutRestrictionValue", 0);
+		TRADE_RESTRICTION_VALUE = lineternity.getProperty("TradeRestrictionValue", 0);
+		ANNOUNCE_PVP_KILL = lineternity.getProperty("AnnouncePvPKill", false);
+		ANNOUNCE_PK_KILL = lineternity.getProperty("AnnouncePkKill", false);
+		ENABLE_RAID_BOSS_DEFEATED_MSG = lineternity.getProperty("EnableRaidBossDefeatedMsg", false);
+		RAID_BOSS_DEFEATED_BY_CLAN_MEMBER_MSG = lineternity.getProperty("RaidBossDefeatedByClanMemberMsg", "Raid Boss %raidboss% has been defeated by %player% of clan %clan%.");
+		RAID_BOSS_DEFEATED_BY_PLAYER_MSG = lineternity.getProperty("RaidBossDefeatedByPlayerMsg", "Raid Boss %raidboss% has been defeated by %player%.");
+		STOTE_LEVEL_MIN = lineternity.getProperty("MinLevelToUseStore", 0);
+		OFFLINE_TRADE_ENABLE = lineternity.getProperty("OfflineTradeEnable", false);
+		OFFLINE_CRAFT_ENABLE = lineternity.getProperty("OfflineCraftEnable", false);
+		OFFLINE_MODE_IN_PEACE_ZONE = lineternity.getProperty("OfflineModeInPeaceZone", false);
+		OFFLINE_MODE_NO_DAMAGE = lineternity.getProperty("OfflineModeNoDamage", false);
+		OFFLINE_SET_NAME_COLOR = lineternity.getProperty("OfflineSetNameColor", false);
+		OFFLINE_NAME_COLOR = Integer.decode("0x" + lineternity.getProperty("OfflineNameColor", 808080)).intValue();
+		RESTORE_OFFLINERS = lineternity.getProperty("RestoreOffliners", false);
+		OFFLINE_MAX_DAYS = lineternity.getProperty("OfflineMaxDays", 10);
+		OFFLINE_DISCONNECT_FINISHED = lineternity.getProperty("OfflineDisconnectFinished", true);
+		ENABLE_MODIFY_SKILL_DURATION = lineternity.getProperty("EnableModifySkillDuration", false);
+		if (ENABLE_MODIFY_SKILL_DURATION)
+		{
+			String[] propertySplit = lineternity.getProperty("SkillDurationList", "").split(";");
+			SKILL_DURATION_LIST = new HashMap<>(propertySplit.length);
+			for (String skill : propertySplit)
+			{
+				String[] skillSplit = skill.split(",");
+				if (skillSplit.length != 2)
+				{
+					LOGGER.error("[SkillDurationList]: invalid config property -> SkillDurationList \"" + skill + "\"");
+				}
+				else
+				{
+					try
+					{
+						SKILL_DURATION_LIST.put(Integer.valueOf(Integer.parseInt(skillSplit[0])), Integer.valueOf(Integer.parseInt(skillSplit[1])));
+					}
+					catch (NumberFormatException nfe)
+					{
+						if (!skill.isEmpty())
+							LOGGER.error("[SkillDurationList]: invalid config property -> SkillList \"" + skillSplit[0] + "\"" + skillSplit[1]);
+					}
+				}
+			}
+		}
+		JAIL_IS_PVP = lineternity.getProperty("JailIsPvpZone", false);
+		TST_STORE = lineternity.getProperty("teststore", false);
+		
+	}
+		
+	/* ----------------------- */
+	
 	/**
 	 * Loads clan and clan hall settings.
 	 */
@@ -738,6 +936,7 @@ private static final void loadDungeon()
 		ALT_ACCEPT_CLAN_DAYS_WHEN_DISMISSED = clans.getProperty("DaysBeforeAcceptNewClanWhenDismissed", 1);
 		ALT_CREATE_ALLY_DAYS_WHEN_DISSOLVED = clans.getProperty("DaysBeforeCreateNewAllyWhenDissolved", 10);
 		ALT_MEMBERS_CAN_WITHDRAW_FROM_CLANWH = clans.getProperty("AltMembersCanWithdrawFromClanWH", false);
+		ITEM_ID_BUY_CLAN_HALL = clans.getProperty("ItemIDBuyClanHall", 57);
 		
 		ALT_MANOR_REFRESH_TIME = clans.getProperty("AltManorRefreshTime", 20);
 		ALT_MANOR_REFRESH_MIN = clans.getProperty("AltManorRefreshMin", 0);
@@ -832,6 +1031,9 @@ private static final void loadDungeon()
 		ALT_OLY_DIVIDER_CLASSED = events.getProperty("AltOlyDividerClassed", 3);
 		ALT_OLY_DIVIDER_NON_CLASSED = events.getProperty("AltOlyDividerNonClassed", 5);
 		ALT_OLY_ANNOUNCE_GAMES = events.getProperty("AltOlyAnnounceGames", true);
+
+		ALT_OLY_PERIOD = OlympiadPeriod.valueOf(events.getProperty("AltOlyPeriod", "MONTH"));
+		ALT_OLY_PERIOD_MULTIPLIER = events.getProperty("AltOlyPeriodMultiplier", 1);
 		
 		ALT_GAME_CASTLE_DAWN = events.getProperty("AltCastleForDawn", true);
 		ALT_GAME_CASTLE_DUSK = events.getProperty("AltCastleForDusk", true);
@@ -986,6 +1188,7 @@ private static final void loadDungeon()
 		SHOW_NPC_LVL = npcs.getProperty("ShowNpcLevel", false);
 		SHOW_NPC_CREST = npcs.getProperty("ShowNpcCrest", false);
 		SHOW_SUMMON_CREST = npcs.getProperty("ShowSummonCrest", false);
+		ALTERNATE_CLASS_MASTER = npcs.getProperty("AlternateClassMaster", false);
 		
 		WYVERN_ALLOW_UPGRADER = npcs.getProperty("AllowWyvernUpgrader", true);
 		WYVERN_REQUIRED_LEVEL = npcs.getProperty("RequiredStriderLevel", 55);
@@ -1129,6 +1332,7 @@ private static final void loadDungeon()
 		DEFAULT_ACCESS_LEVEL = players.getProperty("DefaultAccessLevel", 0);
 		GM_HERO_AURA = players.getProperty("GMHeroAura", false);
 		GM_STARTUP_INVULNERABLE = players.getProperty("GMStartupInvulnerable", true);
+		GM_STARTUP_SPEED = players.getProperty("GMStartupSpeed", true);
 		GM_STARTUP_INVISIBLE = players.getProperty("GMStartupInvisible", true);
 		GM_STARTUP_SILENCE = players.getProperty("GMStartupSilence", true);
 		GM_STARTUP_AUTO_LIST = players.getProperty("GMStartupAutoList", true);
@@ -1150,9 +1354,16 @@ private static final void loadDungeon()
 		ES_SP_BOOK_NEEDED = players.getProperty("EnchantSkillSpBookNeeded", true);
 		DIVINE_SP_BOOK_NEEDED = players.getProperty("DivineInspirationSpBookNeeded", true);
 		SUBCLASS_WITHOUT_QUESTS = players.getProperty("SubClassWithoutQuests", false);
+		ALLOWED_SUBCLASS = players.getProperty("AllowedSubclass", 3);
+		ALT_GAME_SUBCLASS_EVERYWHERE = players.getProperty("AltSubclassEverywhere", false);
 		
 		MAX_BUFFS_AMOUNT = players.getProperty("MaxBuffsAmount", 20);
 		STORE_SKILL_COOLTIME = players.getProperty("StoreSkillCooltime", true);
+
+		
+		ANNOUNCE_ONLINE_PLAYERS_DELAY = players.getProperty("AnnounceOnlinePlayersDelay", 60);
+		ANNOUNCE_PLAYERS_ONLINE = players.getProperty("AnnounceOnlinePlayersMsg", "Lineternity: %online% player is online.");
+
 	}
 	
 	/**
@@ -1167,6 +1378,8 @@ private static final void loadDungeon()
 		MAX_ATTACKERS_NUMBER = sieges.getProperty("AttackerMaxClans", 10);
 		MAX_DEFENDERS_NUMBER = sieges.getProperty("DefenderMaxClans", 10);
 		ATTACKERS_RESPAWN_DELAY = sieges.getProperty("AttackerRespawn", 10000);
+		REWARD_WINNER_SIEGE_CLAN = sieges.parseIntIntList("MembersRewardsID", "57-100");
+		LEADER_REWARD_WINNER_SIEGE_CLAN = sieges.parseIntIntList("LeaderRewardsID", "57-400");
 	}
 	
 	/**
@@ -1333,7 +1546,7 @@ private static final void loadDungeon()
 		
 		SHOW_LICENCE = server.getProperty("ShowLicence", true);
 		
-		DATABASE_URL = server.getProperty("URL", "jdbc:mysql://localhost/acis?serverTimezone=UTC");
+		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://localhost/acis382");
 		DATABASE_LOGIN = server.getProperty("Login", "root");
 		DATABASE_PASSWORD = server.getProperty("Password", "");
 		DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 10);
@@ -1352,6 +1565,9 @@ private static final void loadDungeon()
 	public static final void loadGameServer()
 	{
 		LOGGER.info("Loading gameserver configuration files.");
+		
+		// lineternity setting
+		loadLineternity();
 		
 		// clans settings
 		loadClans();

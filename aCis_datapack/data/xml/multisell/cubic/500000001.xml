@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list applyTaxes="true">
+	<npcs>
+		<npc>0</npc>
+	</npcs>
+	<!-- Sword of Delusion -->
+	<item>
+		<ingredient id="57" count="4300000"/>
+		<ingredient id="57" count="4300000" isTaxIngredient="true"/>
+		<production id="76" count="1"/>
+	</item>
+	<!-- Samurai Longsword -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="135" count="1"/>
+	</item>
+	<!-- Homunkulus's Sword -->
+	<item>
+		<ingredient id="57" count="4300000"/>
+		<ingredient id="57" count="4300000" isTaxIngredient="true"/>
+		<production id="84" count="1"/>
+	</item>
+	<!-- Ecliptic Sword -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="7888" count="1"/>
+	</item>
+	<!-- Pa'agrian Sword -->
+	<item>
+		<ingredient id="57" count="4300000"/>
+		<ingredient id="57" count="4300000" isTaxIngredient="true"/>
+		<production id="7882" count="1"/>
+	</item>
+	<!-- Berserker Blade -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="5286" count="1"/>
+	</item>
+	<!-- Dark Screamer -->
+	<item>
+		<ingredient id="57" count="4300000"/>
+		<ingredient id="57" count="4300000" isTaxIngredient="true"/>
+		<production id="233" count="1"/>
+	</item>
+	<!-- Crystal Dagger -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="228" count="1"/>
+	</item>
+	<!-- Akat Long Bow -->
+	<item>
+		<ingredient id="57" count="4300000"/>
+		<ingredient id="57" count="4300000" isTaxIngredient="true"/>
+		<production id="283" count="1"/>
+	</item>
+	<!-- Eminence Bow -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="286" count="1"/>
+	</item>
+	<!-- Fisted Blade -->
+	<item>
+		<ingredient id="57" count="4300000"/>
+		<ingredient id="57" count="4300000" isTaxIngredient="true"/>
+		<production id="265" count="1"/>
+	</item>
+	<!-- Great Pata -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="266" count="1"/>
+	</item>
+	<!-- Poleaxe -->
+	<item>
+		<ingredient id="57" count="4300000"/>
+		<ingredient id="57" count="4300000" isTaxIngredient="true"/>
+		<production id="95" count="1"/>
+	</item>
+	<!-- Orcish Poleaxe -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="299" count="1"/>
+	</item>
+	<!-- War Axe -->
+	<item>
+		<ingredient id="57" count="4300000"/>
+		<ingredient id="57" count="4300000" isTaxIngredient="true"/>
+		<production id="162" count="1"/>
+	</item>
+	<!-- Yaksa Mace -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="2503" count="1"/>
+	</item>
+	<!-- Mace of The Underworld -->
+	<item>
+		<ingredient id="57" count="4300000"/>
+		<ingredient id="57" count="4300000" isTaxIngredient="true"/>
+		<production id="202" count="1"/>
+	</item>
+	<!-- Ecliptic Axe -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="7891" count="1"/>
+	</item>
+	<!-- Karik Horn -->
+	<item>
+		<ingredient id="57" count="4300000"/>
+		<ingredient id="57" count="4300000" isTaxIngredient="true"/>
+		<production id="7898" count="1"/>
+	</item>
+	<!-- Dwarven Hammer -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="7897" count="1"/>
+	</item>
+	<!-- Inferno Staff -->
+	<item>
+		<ingredient id="57" count="4300000"/>
+		<ingredient id="57" count="4300000" isTaxIngredient="true"/>
+		<production id="198" count="1"/>
+	</item>
+	<!-- Demon's Staff -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="206" count="1"/>
+	</item>
+	<!-- Stormbringer*Stormbringer -->
+	<item>
+		<ingredient id="57" count="4780000"/>
+		<ingredient id="57" count="4780000" isTaxIngredient="true"/>
+		<production id="2561" count="1"/>
+	</item>
+	<!-- Katana*Katana -->
+	<item>
+		<ingredient id="57" count="6130000"/>
+		<ingredient id="57" count="6130000" isTaxIngredient="true"/>
+		<production id="2582" count="1"/>
+	</item>
+</list>
