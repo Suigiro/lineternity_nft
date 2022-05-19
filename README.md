@@ -1,4 +1,4 @@
-#Lineternity NFT
+# Lineternity NFT
 
 ## NPC IDs
 * Auction Manager = 50003
@@ -35,7 +35,7 @@
 * Mostrar warehouse do jogador = //show_warehouse + target do jogador
 * Matar qualquer um = //kill + target do jogador
 
-##Comandos UTEIS - Jogadores
+## Comandos UTEIS - Jogadores
 * Auto Farm = .farm (pode-se usar .farmon e .farmoff tambem, mas só o .farm ja é o suficiente)
 * Mostrar GMs Online = /gmlist
 
