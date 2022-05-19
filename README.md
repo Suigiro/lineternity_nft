@@ -37,7 +37,7 @@
 
 ## Comandos UTEIS - Jogadores
 * Auto Farm = .farm (pode-se usar .farmon e .farmoff tambem, mas só o .farm ja é o suficiente)
-! [https://i.imgur.com/DanYtk4.png] modelo do autofarm
+![modelo da barra para o autofarm](https://i.imgur.com/DanYtk4.png)
 * Mostrar GMs Online = /gmlist
 
 ## Dicas - ADMIN
