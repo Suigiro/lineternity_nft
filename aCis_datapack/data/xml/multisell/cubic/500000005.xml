@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list applyTaxes="true">
+	<npcs>
+		<npc>0</npc>
+	</npcs>
+	<!--  Brigandine Heavy Armor  -->
+<item>
+<ingredient id="57" count="527000"/>
+<production id="352" count="1"/>
+<production id="2378" count="1"/>
+<production id="2411" count="1"/>
+<production id="2425" count="1"/>
+<production id="2449" count="1"/>
+<production id="2493" count="1"/>
+</item>
+
+<!--  Reinforced Leather Light  -->
+<item>
+<ingredient id="57" count="527000"/>
+<production id="394" count="1"/>
+<production id="416" count="1"/>
+<production id="2422" count="1"/>
+<production id="2446" count="1"/>
+<production id="2411" count="1"/>
+</item>
+
+<!--  Elven Mithril Robe  -->
+<item>
+<ingredient id="57" count="527000"/>
+<production id="2396" count="1"/>
+<production id="2401" count="1"/>
+<production id="2426" count="1"/>
+<production id="2450" count="1"/>
+<production id="2411" count="1"/>
+</item>
+</list>

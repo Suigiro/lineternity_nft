@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<item id="10639" type="EtcItem" name="SHOP AIO NFT">
+		<set name="material" val="STEEL" />
+		<set name="is_tradable" val="true" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_depositable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="Cubic" />
+	</item>
+	<item id="10640" type="EtcItem" name="NameChange">
+		<set name="material" val="STEEL" />
+		<set name="is_tradable" val="true" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_depositable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="NameChange" />
+	</item>
+	<item id="10641" type="EtcItem" name="WipePK">
+		<set name="material" val="STEEL" />
+		<set name="is_tradable" val="true" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_depositable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="Service" />
+		<set name="service_id" val="1" />
+	</item>
+	<item id="10642" type="EtcItem" name="CleanKarma">
+		<set name="material" val="STEEL" />
+		<set name="is_tradable" val="true" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_depositable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="Service" />
+		<set name="service_id" val="2" />
+	</item>
+	<item id="10643" type="EtcItem" name="FullRec">
+		<set name="material" val="STEEL" />
+		<set name="is_tradable" val="true" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_depositable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="Service" />
+		<set name="service_id" val="3" />
+	</item>
+	<item id="10644" type="EtcItem" name="VIP 30">
+		<set name="material" val="STEEL" />
+		<set name="is_tradable" val="true" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_depositable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="Service" />
+		<set name="service_id" val="5" />
+		<set name="premium_duration" val="30" />
+	</item>
+	<item id="10645" type="EtcItem" name="ClanFull">
+		<set name="material" val="STEEL" />
+		<set name="is_tradable" val="true" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_depositable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="Service" />
+		<set name="service_id" val="8" />
+	</item>
+	<item id="10646" type="EtcItem" name="SHOP NFT">
+		<set name="material" val="STEEL" />
+		<set name="is_tradable" val="true" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_depositable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ShopPortable" />
+	</item>
+	<item id="10647" type="EtcItem" name="Ziggo's BUFF NFT">
+		<set name="material" val="STEEL" />
+		<set name="is_tradable" val="true" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_depositable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="BuffPortable" />
+	</item>
+	<item id="10648" type="EtcItem" name="Teleporter NFT">
+		<set name="material" val="STEEL" />
+		<set name="is_tradable" val="true" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_depositable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="BuffPortable" />
+	</item>
+</list>

@@ -76,6 +76,7 @@ $MYL < ../sql/accounts.sql &> /dev/null
 $MYL < ../sql/gameservers.sql &> /dev/null
 
 $MYG < ../sql/auction_bid.sql &> /dev/null
+$MYG < ../sql/auction_table.sql &> /dev/null
 $MYG < ../sql/augmentations.sql &> /dev/null
 $MYG < ../sql/bookmarks.sql &> /dev/null
 $MYG < ../sql/buffer_schemes.sql &> /dev/null
@@ -118,6 +119,7 @@ $MYG < ../sql/heroes_diary.sql &> /dev/null
 $MYG < ../sql/heroes.sql &> /dev/null
 $MYG < ../sql/items.sql &> /dev/null
 $MYG < ../sql/items_on_ground.sql &> /dev/null
+$MYG < ../sql/icons.sql &> /dev/null
 $MYG < ../sql/mdt_bets.sql &> /dev/null
 $MYG < ../sql/mdt_history.sql &> /dev/null
 $MYG < ../sql/mods_wedding.sql &> /dev/null

@@ -39,6 +39,13 @@ public class TownZone extends SpawnZoneType
 	{
 		if (Config.ZONE_TOWN == 1 && character instanceof Player && ((Player) character).getSiegeState() != 0)
 			return;
+
+		// Dismount player, if mounted.
+		if (!Config.ALLOW_WYVERN_RESTRITION_CITY && character instanceof Player && ((Player) character).isMounted())
+		{	
+			((Player) character).dismount();
+			character.sendMessage("You cannot use a mount while in the City.");
+		}
 		
 		if (_isPeaceZone && Config.ZONE_TOWN != 2)
 			character.setInsideZone(ZoneId.PEACE, true);

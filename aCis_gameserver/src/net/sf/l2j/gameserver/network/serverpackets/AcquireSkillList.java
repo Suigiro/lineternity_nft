@@ -19,6 +19,7 @@ public final class AcquireSkillList extends L2GameServerPacket
 	{
 		_skillType = type;
 		_skills = new ArrayList<>(skills);
+		
 	}
 	
 	@Override

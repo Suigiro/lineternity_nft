@@ -14,6 +14,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import net.sf.l2j.commons.util.StatsSet;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.enums.actors.ClassRace;
 import net.sf.l2j.gameserver.enums.items.ArmorType;
 import net.sf.l2j.gameserver.enums.items.WeaponType;
@@ -213,9 +214,26 @@ abstract class DocumentBase
 			count = Integer.decode(getValue(attrs.getNamedItem("count").getNodeValue(), template));
 		
 		if (attrs.getNamedItem("time") != null)
-			time = Integer.decode(getValue(attrs.getNamedItem("time").getNodeValue(), template));
+		{
+			time = Integer.decode(getValue(attrs.getNamedItem("time").getNodeValue(), template)).intValue();
+			if (Config.ENABLE_MODIFY_SKILL_DURATION && Config.SKILL_DURATION_LIST.containsKey(Integer.valueOf(((L2Skill) template).getId())))
+				if (((L2Skill) template).getLevel() < 100)
+				{
+					time = Config.SKILL_DURATION_LIST.get(Integer.valueOf(((L2Skill) template).getId())).intValue();
+				}
+				else if (((L2Skill) template).getLevel() >= 100 && ((L2Skill) template).getLevel() < 140)
+				{
+					time += Config.SKILL_DURATION_LIST.get(Integer.valueOf(((L2Skill) template).getId())).intValue();
+				}
+				else if (((L2Skill) template).getLevel() > 140)
+				{
+					time = Config.SKILL_DURATION_LIST.get(Integer.valueOf(((L2Skill) template).getId())).intValue();
+				}
+		}
 		else if (((L2Skill) template).getBuffDuration() > 0)
+		{
 			time = ((L2Skill) template).getBuffDuration() / 1000 / count;
+		}
 		
 		boolean self = false;
 		if (attrs.getNamedItem("self") != null)

@@ -160,6 +160,7 @@ public class OlympiadManagerNpc extends Folk
 					break;
 				
 				case 7: // Rewards
+					player.setIsCubicBypass(true);
 					MultisellData.getInstance().separateAndSend("102", player, this, false);
 					break;
 				

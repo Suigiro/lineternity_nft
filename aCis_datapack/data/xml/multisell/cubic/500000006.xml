@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list applyTaxes="true">
+	<npcs>
+		<npc>0</npc>
+	</npcs>
+	<!-- Chain Mail Shirt -->
+	<item>
+		<ingredient id="57" count="505000"/>
+		<ingredient id="57" count="505000" isTaxIngredient="true"/>
+		<production id="354" count="1"/>
+	</item>
+	<!-- Mithril Shirt -->
+	<item>
+		<ingredient id="57" count="379000"/>
+		<ingredient id="57" count="379000" isTaxIngredient="true"/>
+		<production id="397" count="1"/>
+	</item>
+	<!-- Plated Leather -->
+	<item>
+		<ingredient id="57" count="446000"/>
+		<ingredient id="57" count="446000" isTaxIngredient="true"/>
+		<production id="398" count="1"/>
+	</item>
+	<!-- Theca Leather Armor -->
+	<item>
+		<ingredient id="57" count="825000"/>
+		<ingredient id="57" count="825000" isTaxIngredient="true"/>
+		<production id="400" count="1"/>
+	</item>
+	<!-- Karmian Tunic -->
+	<item>
+		<ingredient id="57" count="379000"/>
+		<ingredient id="57" count="379000" isTaxIngredient="true"/>
+		<production id="439" count="1"/>
+	</item>
+	<!-- Demon's Tunic -->
+	<item>
+		<ingredient id="57" count="736000"/>
+		<ingredient id="57" count="736000" isTaxIngredient="true"/>
+		<production id="441" count="1"/>
+	</item>
+	<!-- Divine Tunic -->
+	<item>
+		<ingredient id="57" count="1070000"/>
+		<ingredient id="57" count="1070000" isTaxIngredient="true"/>
+		<production id="442" count="1"/>
+	</item>
+	<!-- Composite Armor -->
+	<item>
+		<ingredient id="57" count="1440000"/>
+		<ingredient id="57" count="1440000" isTaxIngredient="true"/>
+		<production id="60" count="1"/>
+	</item>
+	<!-- Full Plate Armor -->
+	<item>
+		<ingredient id="57" count="2090000"/>
+		<ingredient id="57" count="2090000" isTaxIngredient="true"/>
+		<production id="356" count="1"/>
+	</item>
+	<!-- Drake Leather Armor -->
+	<item>
+		<ingredient id="57" count="1570000"/>
+		<ingredient id="57" count="1570000" isTaxIngredient="true"/>
+		<production id="401" count="1"/>
+	</item>
+	<!-- Chain Gaiters -->
+	<item>
+		<ingredient id="57" count="316000"/>
+		<ingredient id="57" count="316000" isTaxIngredient="true"/>
+		<production id="381" count="1"/>
+	</item>
+	<!-- Tempered Mithril Gaiters-->
+	<item>
+		<ingredient id="57" count="237000"/>
+		<ingredient id="57" count="237000" isTaxIngredient="true"/>
+		<production id="2387" count="1"/>
+	</item>
+	<!-- Plated Leather Gaiters -->
+	<item>
+		<ingredient id="57" count="279000"/>
+		<ingredient id="57" count="279000" isTaxIngredient="true"/>
+		<production id="418" count="1"/>
+	</item>
+	<!-- Theca Leather Gaiters -->
+	<item>
+		<ingredient id="57" count="516000"/>
+		<ingredient id="57" count="516000" isTaxIngredient="true"/>
+		<production id="420" count="1"/>
+	</item>
+	<!-- Karmian Stockings -->
+	<item>
+		<ingredient id="57" count="237000"/>
+		<ingredient id="57" count="237000" isTaxIngredient="true"/>
+		<production id="471" count="1"/>
+	</item>
+	<!-- Demon's Stockings -->
+	<item>
+		<ingredient id="57" count="460000"/>
+		<ingredient id="57" count="460000" isTaxIngredient="true"/>
+		<production id="472" count="1"/>
+	</item>
+	<!-- Divine Stockings -->
+	<item>
+		<ingredient id="57" count="671000"/>
+		<ingredient id="57" count="6710000" isTaxIngredient="true"/>
+		<production id="473" count="1"/>
+	</item>
+	<!-- Chain Hood -->
+	<item>
+		<ingredient id="57" count="189000"/>
+		<ingredient id="57" count="189000" isTaxIngredient="true"/>
+		<production id="2413" count="1"/>
+	</item>
+	<!-- Composite Helmet -->
+	<item>
+		<ingredient id="57" count="368000"/>
+		<ingredient id="57" count="368000" isTaxIngredient="true"/>
+		<production id="517" count="1"/>
+	</item>
+	<!-- Full Plate Helmet -->
+	<item>
+		<ingredient id="57" count="536000"/>
+		<ingredient id="57" count="536000" isTaxIngredient="true"/>
+		<production id="2414" count="1"/>
+	</item>
+	<!-- Chain Gloves -->
+	<item>
+		<ingredient id="57" count="126000"/>
+		<ingredient id="57" count="126000" isTaxIngredient="true"/>
+		<production id="2453" count="1"/>
+	</item>
+	<!-- Full Plate Gauntlets -->
+	<item>
+		<ingredient id="57" count="358000"/>
+		<ingredient id="57" count="358000" isTaxIngredient="true"/>
+		<production id="2462" count="1"/>
+	</item>
+	<!-- Reinforced Mithril Gloves -->
+	<item>
+		<ingredient id="57" count="126000"/>
+		<ingredient id="57" count="126000" isTaxIngredient="true"/>
+		<production id="2452" count="1"/>
+	</item>
+	<!-- Plated Leather Gloves -->
+	<item>
+		<ingredient id="57" count="149000"/>
+		<ingredient id="57" count="149000" isTaxIngredient="true"/>
+		<production id="2455" count="1"/>
+	</item>
+	<!-- Theca Leather Gloves -->
+	<item>
+		<ingredient id="57" count="275000"/>
+		<ingredient id="57" count="275000" isTaxIngredient="true"/>
+		<production id="2460" count="1"/>
+	</item>
+	<!-- Drake Leather Gloves -->
+	<item>
+		<ingredient id="57" count="358000"/>
+		<ingredient id="57" count="358000" isTaxIngredient="true"/>
+		<production id="2461" count="1"/>
+	</item>
+	<!-- Karmian Gloves -->
+	<item>
+		<ingredient id="57" count="126000"/>
+		<ingredient id="57" count="126000" isTaxIngredient="true"/>
+		<production id="2454" count="1"/>
+	</item>
+	<!-- Demon's Gloves -->
+	<item>
+		<ingredient id="57" count="245000"/>
+		<ingredient id="57" count="245000" isTaxIngredient="true"/>
+		<production id="2459" count="1"/>
+	</item>
+	<!-- Divine Gloves -->
+	<item>
+		<ingredient id="57" count="358000"/>
+		<ingredient id="57" count="358000" isTaxIngredient="true"/>
+		<production id="2463" count="1"/>
+	</item>
+	<!-- Chain Boots -->
+	<item>
+		<ingredient id="57" count="126000"/>
+		<ingredient id="57" count="126000" isTaxIngredient="true"/>
+		<production id="2429" count="1"/>
+	</item>
+	<!-- Composite Boots -->
+	<item>
+		<ingredient id="57" count="245000"/>
+		<ingredient id="57" count="245000" isTaxIngredient="true"/>
+		<production id="64" count="1"/>
+	</item>
+	<!-- Full Plate Boots -->
+	<item>
+		<ingredient id="57" count="358000"/>
+		<ingredient id="57" count="358000" isTaxIngredient="true"/>
+		<production id="2438" count="1"/>
+	</item>
+	<!-- Mithril Boots -->
+	<item>
+		<ingredient id="57" count="126000"/>
+		<ingredient id="57" count="126000" isTaxIngredient="true"/>
+		<production id="62" count="1"/>
+	</item>
+	<!-- Plated Leather Boots -->
+	<item>
+		<ingredient id="57" count="126000"/>
+		<ingredient id="57" count="126000" isTaxIngredient="true"/>
+		<production id="2431" count="1"/>
+	</item>
+	<!-- Theca Leather Boots -->
+	<item>
+		<ingredient id="57" count="275000"/>
+		<ingredient id="57" count="275000" isTaxIngredient="true"/>
+		<production id="2436" count="1"/>
+	</item>
+	<!-- Drake Leather Boots -->
+	<item>
+		<ingredient id="57" count="358000"/>
+		<ingredient id="57" count="358000" isTaxIngredient="true"/>
+		<production id="2437" count="1"/>
+	</item>
+	<!-- Karmian Boots -->
+	<item>
+		<ingredient id="57" count="126000"/>
+		<ingredient id="57" count="126000" isTaxIngredient="true"/>
+		<production id="2430" count="1"/>
+	</item>
+	<!-- Demon's Boots -->
+	<item>
+		<ingredient id="57" count="245000"/>
+		<ingredient id="57" count="245000" isTaxIngredient="true"/>
+		<production id="2435" count="1"/>
+	</item>
+	<!-- Divine Boots -->
+	<item>
+		<ingredient id="57" count="358000"/>
+		<ingredient id="57" count="358000" isTaxIngredient="true"/>
+		<production id="603" count="1"/>
+	</item>
+	<!-- Chain Shield -->
+	<item>
+		<ingredient id="57" count="133000"/>
+		<ingredient id="57" count="133000" isTaxIngredient="true"/>
+		<production id="2495" count="1"/>
+	</item>
+	<!-- Composite Shield -->
+	<item>
+		<ingredient id="57" count="258000"/>
+		<ingredient id="57" count="258000" isTaxIngredient="true"/>
+		<production id="107" count="1"/>
+	</item>
+	<!-- Full Plate Shield -->
+	<item>
+		<ingredient id="57" count="375000"/>
+		<ingredient id="57" count="375000" isTaxIngredient="true"/>
+		<production id="2497" count="1"/>
+	</item>
+</list>

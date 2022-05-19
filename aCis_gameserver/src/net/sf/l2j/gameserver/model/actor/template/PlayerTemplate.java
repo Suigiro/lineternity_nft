@@ -3,6 +3,7 @@ package net.sf.l2j.gameserver.model.actor.template;
 import java.util.List;
 
 import net.sf.l2j.commons.random.Rnd;
+import net.sf.l2j.commons.util.ArraysUtil;
 import net.sf.l2j.commons.util.StatsSet;
 
 import net.sf.l2j.gameserver.data.ItemTable;
@@ -44,6 +45,10 @@ public class PlayerTemplate extends CreatureTemplate
 	private final List<GeneralSkillNode> _skills;
 	
 	private final Weapon _fists;
+
+	private final boolean _isbuffs;
+	
+	private final int[] _buffs;
 	
 	public PlayerTemplate(StatsSet set)
 	{
@@ -68,6 +73,10 @@ public class PlayerTemplate extends CreatureTemplate
 		
 		_items = set.getList("items");
 		_skills = set.getList("skills");
+
+		_isbuffs = set.getBool("isbuffs", false);
+		
+		_buffs = set.getIntegerArray("buffs", ArraysUtil.EMPTY_INT_ARRAY);
 		
 		_fists = (Weapon) ItemTable.getInstance().getTemplate(set.getInteger("fists"));
 	}
@@ -142,7 +151,15 @@ public class PlayerTemplate extends CreatureTemplate
 	{
 		return _cpTable[level - 1];
 	}
-	
+	public final int[] getBuffIds()
+	{
+		return _buffs;
+	}
+ 	
+	public final boolean isBuffIds()
+ 	{
+		return _isbuffs;
+ 	}
 	/**
 	 * @return the {@link List} of {@link ItemTemplateHolder}s holding the starter equipment informations for this {@link PlayerTemplate}.
 	 */

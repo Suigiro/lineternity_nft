@@ -32,9 +32,14 @@ public class AdminShop implements IAdminCommandHandler
 				
 				final NpcBuyList list = BuyListManager.getInstance().getBuyList(val);
 				if (list == null)
+				{
+					activeChar.setIsCubicBypass(true);
 					activeChar.sendMessage("Invalid buylist id.");
+				}
 				else
+				{
 					activeChar.sendPacket(new BuyList(list, activeChar.getAdena(), 0));
+				}
 			}
 			catch (Exception e)
 			{

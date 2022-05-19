@@ -37,6 +37,22 @@ public final class StringUtil
 		return false;
 	}
 	
+	public static String substringBetween(String str, String open, String close)
+	{
+		final int INDEX_NOT_FOUND = -1;
+		if (str == null || open == null || close == null)
+			return null;
+		
+		int start = str.indexOf(open);
+		if (start != INDEX_NOT_FOUND)
+		{
+			int end = str.indexOf(close, start + open.length());
+			if (end != INDEX_NOT_FOUND)
+				return str.substring(start + open.length(), end);
+		}
+		return null;
+	}
+	
 	/**
 	 * Appends objects to an existing StringBuilder.
 	 * @param sb : the StringBuilder to edit.
@@ -175,5 +191,10 @@ public final class StringUtil
 			fileName = fileName.substring(0, pos);
 		
 		return fileName;
+	}
+	
+	public static boolean isValidPlayerName(String text)
+	{
+		return isValidString(text, "^[A-Za-z0-9]{3,16}$");
 	}
 }

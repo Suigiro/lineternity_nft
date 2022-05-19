@@ -1,0 +1,384 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list applyTaxes="true">
+	<npcs>
+		<npc>0</npc>
+	</npcs>
+	<!-- Beast Soulshot -->
+	<item>
+		<ingredient id="57" count="20"/>
+		<ingredient id="57" count="20" isTaxIngredient="true"/>
+		<production id="6645" count="1"/>
+	</item>
+	<!-- Soulshot: D-grade -->
+	<item>
+		<ingredient id="57" count="10"/>
+		<ingredient id="57" count="10" isTaxIngredient="true"/>
+		<production id="1463" count="1"/>
+	</item>
+	<!-- Soulshot: C-grade -->
+	<item>
+		<ingredient id="57" count="15"/>
+		<ingredient id="57" count="15" isTaxIngredient="true"/>
+		<production id="1464" count="1"/>
+	</item>
+	<!-- Soulshot: B-grade -->
+	<item>
+		<ingredient id="57" count="50"/>
+		<ingredient id="57" count="50" isTaxIngredient="true"/>
+		<production id="1465" count="1"/>
+	</item>
+	<!-- Soulshot: A-grade -->
+	<item>
+		<ingredient id="57" count="80"/>
+		<ingredient id="57" count="80" isTaxIngredient="true"/>
+		<production id="1466" count="1"/>
+	</item>
+	<!-- Soulshot: S-grade -->
+	<item>
+		<ingredient id="57" count="100"/>
+		<ingredient id="57" count="100" isTaxIngredient="true"/>
+		<production id="1467" count="1"/>
+	</item>
+	<!-- Beast Spiritshot -->
+	<item>
+		<ingredient id="57" count="40"/>
+		<ingredient id="57" count="40" isTaxIngredient="true"/>
+		<production id="6646" count="1"/>
+	</item>
+	<!-- Spiritshot: D-grade -->
+	<item>
+		<ingredient id="57" count="18"/>
+		<ingredient id="57" count="18" isTaxIngredient="true"/>
+		<production id="2510" count="1"/>
+	</item>
+	<!-- Spiritshot: C-grade -->
+	<item>
+		<ingredient id="57" count="35"/>
+		<ingredient id="57" count="35" isTaxIngredient="true"/>
+		<production id="2511" count="1"/>
+	</item>
+	<!-- Spiritshot: B-grade -->
+	<item>
+		<ingredient id="57" count="100"/>
+		<ingredient id="57" count="100" isTaxIngredient="true"/>
+		<production id="2512" count="1"/>
+	</item>
+	<!-- Spiritshot: A-grade -->
+	<item>
+		<ingredient id="57" count="120"/>
+		<ingredient id="57" count="120" isTaxIngredient="true"/>
+		<production id="2513" count="1"/>
+	</item>
+	<!-- Spiritshot: S-grade -->
+	<item>
+		<ingredient id="57" count="150"/>
+		<ingredient id="57" count="150" isTaxIngredient="true"/>
+		<production id="2514" count="1"/>
+	</item>
+	<!-- Blessed Beast Spiritshot -->
+	<item>
+		<ingredient id="57" count="100"/>
+		<ingredient id="57" count="100" isTaxIngredient="true"/>
+		<production id="6647" count="1"/>
+	</item>
+	<!-- Blessed Spiritshot: D-Grade -->
+	<item>
+		<ingredient id="57" count="45"/>
+		<ingredient id="57" count="45" isTaxIngredient="true"/>
+		<production id="3948" count="1"/>
+	</item>
+	<!-- Blessed Spiritshot: C-Grade -->
+	<item>
+		<ingredient id="57" count="90"/>
+		<ingredient id="57" count="90" isTaxIngredient="true"/>
+		<production id="3949" count="1"/>
+	</item>
+	<!-- Blessed Spiritshot: B-Grade -->
+	<item>
+		<ingredient id="57" count="245"/>
+		<ingredient id="57" count="245" isTaxIngredient="true"/>
+		<production id="3950" count="1"/>
+	</item>
+	<!-- Blessed Spiritshot: A-Grade -->
+	<item>
+		<ingredient id="57" count="290"/>
+		<ingredient id="57" count="290" isTaxIngredient="true"/>
+		<production id="3951" count="1"/>
+	</item>
+	<!-- Blessed Spiritshot: S Grade -->
+	<item>
+		<ingredient id="57" count="350"/>
+		<ingredient id="57" count="350" isTaxIngredient="true"/>
+		<production id="3952" count="1"/>
+	</item>
+	<!-- Bone Arrow -->
+	<item>
+		<ingredient id="57" count="3"/>
+		<ingredient id="57" count="3" isTaxIngredient="true"/>
+		<production id="1341" count="1"/>
+	</item>
+	<!-- Fine Steel Arrow -->
+	<item>
+		<ingredient id="57" count="5"/>
+		<ingredient id="57" count="5" isTaxIngredient="true"/>
+		<production id="1342" count="1"/>
+	</item>
+	<!-- Silver Arrow -->
+	<item>
+		<ingredient id="57" count="7"/>
+		<ingredient id="57" count="7" isTaxIngredient="true"/>
+		<production id="1343" count="1"/>
+	</item>
+	<!-- Mithril Arrow -->
+	<item>
+		<ingredient id="57" count="8"/>
+		<ingredient id="57" count="8" isTaxIngredient="true"/>
+		<production id="1344" count="1"/>
+	</item>
+	<!-- Shining Arrow -->
+	<item>
+		<ingredient id="57" count="10"/>
+		<ingredient id="57" count="10" isTaxIngredient="true"/>
+		<production id="1345" count="1"/>
+	</item>
+	<!-- Energy Stone -->
+	<item>
+		<ingredient id="57" count="100"/>
+		<ingredient id="57" count="100" isTaxIngredient="true"/>
+		<production id="5589" count="1"/>
+	</item>
+	<!-- Spirit Ore -->
+	<item>
+		<ingredient id="57" count="400"/>
+		<ingredient id="57" count="400" isTaxIngredient="true"/>
+		<production id="3031" count="1"/>
+	</item>
+	<!-- Soul Ore -->
+	<item>
+		<ingredient id="57" count="250"/>
+		<ingredient id="57" count="250" isTaxIngredient="true"/>
+		<production id="1785" count="1"/>
+	</item>
+	<!-- Cursed Bone -->
+	<item>
+		<ingredient id="57" count="300"/>
+		<ingredient id="57" count="300" isTaxIngredient="true"/>
+		<production id="2508" count="1"/>
+	</item>
+	<!-- Summoning Crystal -->
+	<item>
+		<ingredient id="57" count="35000"/>
+		<ingredient id="57" count="35000" isTaxIngredient="true"/>
+		<production id="8615" count="1"/>
+	</item>
+	<!-- Phoenix Blood -->
+	<item>
+		<ingredient id="57" count="20000"/>
+		<ingredient id="57" count="20000" isTaxIngredient="true"/>
+		<production id="8873" count="1"/>
+	</item>
+	<!-- Einhasad's Holy Water -->
+	<item>
+		<ingredient id="57" count="20000"/>
+		<ingredient id="57" count="20000" isTaxIngredient="true"/>
+		<production id="8874" count="1"/>
+	</item>
+	<!-- Battle Symbol -->
+	<item>
+		<ingredient id="57" count="20000"/>
+		<ingredient id="57" count="20000" isTaxIngredient="true"/>
+		<production id="8875" count="1"/>
+	</item>
+	<!-- Magic Symbol -->
+	<item>
+		<ingredient id="57" count="20000"/>
+		<ingredient id="57" count="20000" isTaxIngredient="true"/>
+		<production id="8876" count="1"/>
+	</item>
+	<!-- Healing Potion -->
+	<item>
+		<ingredient id="57" count="330"/>
+		<ingredient id="57" count="330" isTaxIngredient="true"/>
+		<production id="1061" count="1"/>
+	</item>
+	<!-- Greater Healing Potion -->
+	<item>
+		<ingredient id="57" count="1080"/>
+		<ingredient id="57" count="1080" isTaxIngredient="true"/>
+		<production id="1539" count="1"/>
+	</item>
+	<!-- Mana Potion -->
+	<item>
+		<ingredient id="57" count="80"/>
+		<ingredient id="57" count="80" isTaxIngredient="true"/>
+		<production id="726" count="1"/>
+	</item>
+	<!-- Greater Mana Potion -->
+	<item>
+		<ingredient id="57" count="2000"/>
+		<ingredient id="57" count="2000" isTaxIngredient="true"/>
+		<production id="728" count="1"/>
+	</item>
+	<!-- Haste Potion -->
+	<item>
+		<ingredient id="57" count="1200"/>
+		<ingredient id="57" count="1200" isTaxIngredient="true"/>
+		<production id="734" count="1"/>
+	</item>
+	<!-- Greater Haste Potion -->
+	<item>
+		<ingredient id="57" count="3600"/>
+		<ingredient id="57" count="3600" isTaxIngredient="true"/>
+		<production id="1374" count="1"/>
+	</item>
+	<!-- Potion of Alacrity -->
+	<item>
+		<ingredient id="57" count="2400"/>
+		<ingredient id="57" count="2400" isTaxIngredient="true"/>
+		<production id="735" count="1"/>
+	</item>
+	<!-- Greater Swift Attack Potion -->
+	<item>
+		<ingredient id="57" count="7200"/>
+		<ingredient id="57" count="7200" isTaxIngredient="true"/>
+		<production id="1375" count="1"/>
+	</item>
+	<!-- Magic Haste Potion -->
+	<item>
+		<ingredient id="57" count="2400"/>
+		<ingredient id="57" count="2400" isTaxIngredient="true"/>
+		<production id="6035" count="1"/>
+	</item>
+	<!-- Greater Magic Haste Potion -->
+	<item>
+		<ingredient id="57" count="7200"/>
+		<ingredient id="57" count="7200" isTaxIngredient="true"/>
+		<production id="6036" count="1"/>
+	</item>
+	<!-- Antidote -->
+	<item>
+		<ingredient id="57" count="75"/>
+		<ingredient id="57" count="75" isTaxIngredient="true"/>
+		<production id="1831" count="1"/>
+	</item>
+	<!-- Greater Antidote -->
+	<item>
+		<ingredient id="57" count="180"/>
+		<ingredient id="57" count="180" isTaxIngredient="true"/>
+		<production id="1832" count="1"/>
+	</item>
+	<!-- Facelifting Potion - A -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5235" count="1"/>
+	</item>
+	<!-- Facelifting Potion - B -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5236" count="1"/>
+	</item>
+	<!-- Facelifting Potion - C -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5237" count="1"/>
+	</item>
+	<!-- Dye Potion - A -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5238" count="1"/>
+	</item>
+	<!-- Dye Potion - B -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5239" count="1"/>
+	</item>
+	<!-- Dye Potion - C -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5240" count="1"/>
+	</item>
+	<!-- Dye Potion - D -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5241" count="1"/>
+	</item>
+	<!-- Hair Style Change Potion - A -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5242" count="1"/>
+	</item>
+	<!-- Hair Style Change Potion - B -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5243" count="1"/>
+	</item>
+	<!-- Hair Style Change Potion - C -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5244" count="1"/>
+	</item>
+	<!-- Hair Style Change Potion - D -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5245" count="1"/>
+	</item>
+	<!-- Hair Style Change Potion - E -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5246" count="1"/>
+	</item>
+	<!-- Hair Style Change Potion - F -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5247" count="1"/>
+	</item>
+	<!-- Hair Style Change Potion - G -->
+	<item>
+		<ingredient id="57" count="24000"/>
+		<ingredient id="57" count="24000" isTaxIngredient="true"/>
+		<production id="5248" count="1"/>
+	</item>
+	<!-- Crystal: D-Grade -->
+	<item>
+		<ingredient id="57" count="650"/>
+		<ingredient id="57" count="650" isTaxIngredient="true"/>
+		<production id="1458" count="1"/>
+	</item>
+	<!-- Crystal: C-Grade -->
+	<item>
+		<ingredient id="57" count="3000"/>
+		<ingredient id="57" count="3000" isTaxIngredient="true"/>
+		<production id="1459" count="1"/>
+	</item>
+	<!-- Crystal: B-Grade -->
+	<item>
+		<ingredient id="57" count="9000"/>
+		<ingredient id="57" count="9000" isTaxIngredient="true"/>
+		<production id="1460" count="1"/>
+	</item>
+	<!-- Crystal: A-Grade -->
+	<item>
+		<ingredient id="57" count="15000"/>
+		<ingredient id="57" count="15000" isTaxIngredient="true"/>
+		<production id="1461" count="1"/>
+	</item>
+	<!-- Crystal: S-Grade -->
+	<item>
+		<ingredient id="57" count="25000"/>
+		<ingredient id="57" count="25000" isTaxIngredient="true"/>
+		<production id="1462" count="1"/>
+	</item>
+</list>

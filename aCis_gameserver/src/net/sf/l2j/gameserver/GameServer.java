@@ -1,5 +1,7 @@
 package net.sf.l2j.gameserver;
 
+import com.dev.Main;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -45,6 +47,7 @@ import net.sf.l2j.gameserver.data.manager.RaidBossManager;
 import net.sf.l2j.gameserver.data.manager.RaidPointManager;
 import net.sf.l2j.gameserver.data.manager.SevenSignsManager;
 import net.sf.l2j.gameserver.data.manager.ZoneManager;
+import net.sf.l2j.gameserver.data.sql.AuctionTable;
 import net.sf.l2j.gameserver.data.sql.AutoSpawnTable;
 import net.sf.l2j.gameserver.data.sql.BookmarkTable;
 import net.sf.l2j.gameserver.data.sql.ClanTable;
@@ -245,6 +248,7 @@ public class GameServer
 		GrandBossManager.getInstance();
 		DayNightManager.getInstance().notifyChangeMode();
 		DimensionalRiftManager.getInstance();
+		AuctionTable.getInstance();
 		
 		StringUtil.printSection("Olympiads & Heroes");
 		OlympiadGameManager.getInstance();
@@ -304,6 +308,9 @@ public class GameServer
 		
 		LOGGER.info("Gameserver has started, used memory: {} / {} Mo.", SysUtil.getUsedMemory(), SysUtil.getMaxMemory());
 		LOGGER.info("Maximum allowed players: {}.", Config.MAXIMUM_ONLINE_USERS);
+		
+		StringUtil.printSection("Lineternity - Addons");
+		Main.init();
 		
 		StringUtil.printSection("Login");
 		LoginServerThread.getInstance().start();

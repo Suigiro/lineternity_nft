@@ -99,8 +99,11 @@ public class Folk extends Npc
 			else
 				player.sendPacket(SystemMessageId.NO_MORE_SKILLS_TO_LEARN);
 		}
-		else
+		else{
+			player.setIsCubicBypass(false);
 			player.sendPacket(new ExEnchantSkillList(skills));
+
+		}
 		
 		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}

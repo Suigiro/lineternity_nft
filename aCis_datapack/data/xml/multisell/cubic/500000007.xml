@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list applyTaxes="true">
+	<npcs>
+		<npc>0</npc>
+	</npcs>
+	<!-- Zubei's Breastplate -->
+	<item>
+		<ingredient id="57" count="2080000"/>
+		<ingredient id="57" count="2080000" isTaxIngredient="true"/>
+		<production id="357" count="1"/>
+	</item>
+	<!-- Avadon Breastplate -->
+	<item>
+		<ingredient id="57" count="2080000"/>
+		<ingredient id="57" count="2080000" isTaxIngredient="true"/>
+		<production id="2376" count="1"/>
+	</item>
+	<!-- Blue Wolf Breastplate -->
+	<item>
+		<ingredient id="57" count="3220000"/>
+		<ingredient id="57" count="3220000" isTaxIngredient="true"/>
+		<production id="358" count="1"/>
+	</item>
+	<!-- Zubei's Leather Shirt -->
+	<item>
+		<ingredient id="57" count="1560000"/>
+		<ingredient id="57" count="1560000" isTaxIngredient="true"/>
+		<production id="2384" count="1"/>
+	</item>
+	<!-- Tunic of Zubei -->
+	<item>
+		<ingredient id="57" count="1560000"/>
+		<ingredient id="57" count="1560000" isTaxIngredient="true"/>
+		<production id="2397" count="1"/>
+	</item>
+	<!-- Tunic of Doom -->
+	<item>
+		<ingredient id="57" count="2410000"/>
+		<ingredient id="57" count="2410000" isTaxIngredient="true"/>
+		<production id="2399" count="1"/>
+	</item>
+	<!-- Blue Wolf Tunic -->
+	<item>
+		<ingredient id="57" count="2410000"/>
+		<ingredient id="57" count="2410000" isTaxIngredient="true"/>
+		<production id="2398" count="1"/>
+	</item>
+	<!-- Doom Plate Armor -->
+	<item>
+		<ingredient id="57" count="4710000"/>
+		<ingredient id="57" count="4710000" isTaxIngredient="true"/>
+		<production id="2381" count="1"/>
+	</item>
+	<!-- Avadon Leather Armor -->
+	<item>
+		<ingredient id="57" count="2280000"/>
+		<ingredient id="57" count="2280000" isTaxIngredient="true"/>
+		<production id="2390" count="1"/>
+	</item>
+	<!-- Leather Armor of Doom -->
+	<item>
+		<ingredient id="57" count="3530000"/>
+		<ingredient id="57" count="3530000" isTaxIngredient="true"/>
+		<production id="2392" count="1"/>
+	</item>
+	<!-- Blue Wolf Leather Armor -->
+	<item>
+		<ingredient id="57" count="3530000"/>
+		<ingredient id="57" count="3530000" isTaxIngredient="true"/>
+		<production id="2391" count="1"/>
+	</item>
+	<!-- Avadon Robe -->
+	<item>
+		<ingredient id="57" count="2280000"/>
+		<ingredient id="57" count="2280000" isTaxIngredient="true"/>
+		<production id="2406" count="1"/>
+	</item>
+	<!-- Zubei's Gaiters -->
+	<item>
+		<ingredient id="57" count="1300000"/>
+		<ingredient id="57" count="1300000" isTaxIngredient="true"/>
+		<production id="383" count="1"/>
+	</item>
+	<!-- Avadon Gaiters-->
+	<item>
+		<ingredient id="57" count="1300000"/>
+		<ingredient id="57" count="1300000" isTaxIngredient="true"/>
+		<production id="2379" count="1"/>
+	</item>
+	<!-- Blue Wolf Gaiters -->
+	<item>
+		<ingredient id="57" count="2010000"/>
+		<ingredient id="57" count="2010000" isTaxIngredient="true"/>
+		<production id="2380" count="1"/>
+	</item>
+	<!-- Zubei's Leather Gaiters -->
+	<item>
+		<ingredient id="57" count="973000"/>
+		<ingredient id="57" count="973000" isTaxIngredient="true"/>
+		<production id="2388" count="1"/>
+	</item>
+	<!-- Stockings of Zubei -->
+	<item>
+		<ingredient id="57" count="973000"/>
+		<ingredient id="57" count="973000" isTaxIngredient="true"/>
+		<production id="2402" count="1"/>
+	</item>
+	<!-- Stockings of Doom -->
+	<item>
+		<ingredient id="57" count="1510000"/>
+		<ingredient id="57" count="1510000" isTaxIngredient="true"/>
+		<production id="2404" count="1"/>
+	</item>
+	<!-- Blue Wolf Stockings -->
+	<item>
+		<ingredient id="57" count="1510000"/>
+		<ingredient id="57" count="1510000" isTaxIngredient="true"/>
+		<production id="2403" count="1"/>
+	</item>
+	<!-- Zubei's Helmet -->
+	<item>
+		<ingredient id="57" count="778000"/>
+		<ingredient id="57" count="778000" isTaxIngredient="true"/>
+		<production id="503" count="1"/>
+	</item>
+	<!-- Avadon Circlet -->
+	<item>
+		<ingredient id="57" count="778000"/>
+		<ingredient id="57" count="778000" isTaxIngredient="true"/>
+		<production id="2415" count="1"/>
+	</item>
+	<!-- Doom Helmet -->
+	<item>
+		<ingredient id="57" count="1210000"/>
+		<ingredient id="57" count="1210000" isTaxIngredient="true"/>
+		<production id="2417" count="1"/>
+	</item>
+	<!-- Blue Wolf Helmet -->
+	<item>
+		<ingredient id="57" count="1210000"/>
+		<ingredient id="57" count="1210000" isTaxIngredient="true"/>
+		<production id="2416" count="1"/>
+	</item>
+	<!-- Zubei's Gloves - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5710" count="1"/>
+	</item>
+	<!-- Avadon Gloves - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5714" count="1"/>
+	</item>
+	<!-- Doom Gloves - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5722" count="1"/>
+	</item>
+	<!-- Blue Wolf Gloves - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5718" count="1"/>
+	</item>
+	<!-- Zubei's Gauntlets - Light Armor -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5711" count="1"/>
+	</item>
+	<!-- Avadon Gloves - Light Armor -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5715" count="1"/>
+	</item>
+	<!-- Doom Gloves - Light Armor -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5723" count="1"/>
+	</item>
+	<!-- Blue Wolf Gloves - Light Armor -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5719" count="1"/>
+	</item>
+	<!-- Zubei's Gauntlets - Robe -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5712" count="1"/>
+	</item>
+	<!-- Avadon Gloves - Robe -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5716" count="1"/>
+	</item>
+	<!-- Doom Gloves - Robe -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5724" count="1"/>
+	</item>
+	<!-- Blue Wolf Gloves - Robe -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5720" count="1"/>
+	</item>
+	<!-- Zubei's Boots - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5726" count="1"/>
+	</item>
+	<!-- Avadon Boots - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5730" count="1"/>
+	</item>
+	<!-- Blue Wolf Boots - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5734" count="1"/>
+	</item>
+	<!-- Doom Boots - Heavy Armor -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5738" count="1"/>
+	</item>
+	<!-- Zubei's Boots - Light Armor -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5727" count="1"/>
+	</item>
+	<!-- Avadon Boots - Light Armor -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5731" count="1"/>
+	</item>
+	<!-- Doom Boots - Light Armor -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5739" count="1"/>
+	</item>
+	<!-- Blue Wolf Boots - Light Armor -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5735" count="1"/>
+	</item>
+	<!-- Zubei's Boots - Robe -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5728" count="1"/>
+	</item>
+	<!-- Avadon Boots - Robe -->
+	<item>
+		<ingredient id="57" count="519000"/>
+		<ingredient id="57" count="519000" isTaxIngredient="true"/>
+		<production id="5732" count="1"/>
+	</item>
+	<!-- Doom Boots - Robe -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5740" count="1"/>
+	</item>
+	<!-- Blue Wolf Boots - Robe -->
+	<item>
+		<ingredient id="57" count="804000"/>
+		<ingredient id="57" count="804000" isTaxIngredient="true"/>
+		<production id="5736" count="1"/>
+	</item>
+	<!-- Zubei Shield -->
+	<item>
+		<ingredient id="57" count="545000"/>
+		<ingredient id="57" count="545000" isTaxIngredient="true"/>
+		<production id="633" count="1"/>
+	</item>
+	<!-- Avadon Shield -->
+	<item>
+		<ingredient id="57" count="545000"/>
+		<ingredient id="57" count="545000" isTaxIngredient="true"/>
+		<production id="673" count="1"/>
+	</item>
+	<!-- Doom Shield -->
+	<item>
+		<ingredient id="57" count="845000"/>
+		<ingredient id="57" count="845000" isTaxIngredient="true"/>
+		<production id="110" count="1"/>
+	</item>
+</list>

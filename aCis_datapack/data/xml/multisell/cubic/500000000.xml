@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list applyTaxes="true">
+	<npcs>
+		<npc>0</npc>
+	</npcs>
+	<!-- Sword of Revolution -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="129" count="1"/>
+	</item>
+	<!-- Elven Long Sword -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1800000" isTaxIngredient="true"/>
+		<production id="2499" count="1"/>
+	</item>
+	<!-- Sword of Occult -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="716000" isTaxIngredient="true"/>
+		<production id="144" count="1"/>
+	</item>
+	<!-- Sword of Magic Fog -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="7886" count="1"/>
+	</item>
+	<!-- Titan Sword -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="7881" count="1"/>
+	</item>
+	<!-- Claymore -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1800000" isTaxIngredient="true"/>
+		<production id="70" count="1"/>
+	</item>
+	<!-- Maingauche -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="224" count="1"/>
+	</item>
+	<!-- Mithril Dagger -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1800000" isTaxIngredient="true"/>
+		<production id="225" count="1"/>
+	</item>
+	<!-- Strengthened Long Bow -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="279" count="1"/>
+	</item>
+	<!-- Light Crossbow -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1800000" isTaxIngredient="true"/>
+		<production id="280" count="1"/>
+	</item>
+	<!-- Bich'Hwa -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="261" count="1"/>
+	</item>
+	<!-- Scallop Jamadhr -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1800000" isTaxIngredient="true"/>
+		<production id="262" count="1"/>
+	</item>
+	<!-- Winged Spear -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="93" count="1"/>
+	</item>
+	<!-- Glaive -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1800000" isTaxIngredient="true"/>
+		<production id="297" count="1"/>
+	</item>
+	<!-- Tarbar -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="158" count="1"/>
+	</item>
+	<!-- Bonebreaker -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1800000" isTaxIngredient="true"/>
+		<production id="159" count="1"/>
+	</item>
+	<!-- Priest Mace -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="7890" count="1"/>
+	</item>
+	<!-- Staff of Life -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1800000" isTaxIngredient="true"/>
+		<production id="189" count="1"/>
+	</item>
+	<!-- Titan Hammer -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="7896" count="1"/>
+	</item>
+	<!-- Atuba Hammer -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1800000" isTaxIngredient="true"/>
+		<production id="187" count="1"/>
+	</item>
+	<!-- Goat Head Staff -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="90" count="1"/>
+	</item>
+	<!-- Atuba Mace -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1800000" isTaxIngredient="true"/>
+		<production id="190" count="1"/>
+	</item>
+	<!-- Artisan's Sword*Artisan's Sword -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1400000" isTaxIngredient="true"/>
+		<production id="2540" count="1"/>
+	</item>
+	<!-- Bastard Sword*Elven Sword -->
+	<item>
+		<ingredient id="57" count="527000"/>
+		<ingredient id="57" count="1660000" isTaxIngredient="true"/>
+		<production id="2530" count="1"/>
+	</item>
+</list>

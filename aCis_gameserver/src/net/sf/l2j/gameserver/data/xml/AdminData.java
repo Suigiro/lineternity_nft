@@ -33,7 +33,7 @@ public final class AdminData implements IXmlReader
 {
 	private final TreeMap<Integer, AccessLevel> _accessLevels = new TreeMap<>();
 	private final Map<String, Integer> _adminCommandAccessRights = new HashMap<>();
-	private final Map<Player, Boolean> _gmList = new ConcurrentHashMap<>();
+	private final static Map<Player, Boolean> _gmList = new ConcurrentHashMap<>();
 	
 	protected AdminData()
 	{

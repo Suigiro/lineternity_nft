@@ -142,7 +142,10 @@ public class GoldenRamMercenary extends Folk
 		else if (command.startsWith("gmultisell"))
 		{
 			if (qs != null && qs.getInt("cond") == 3)
+			{
+				player.setIsCubicBypass(false);
 				MultisellData.getInstance().separateAndSend(command.substring(10).trim(), player, this, false);
+			}
 		}
 		else
 			super.onBypassFeedback(player, command);

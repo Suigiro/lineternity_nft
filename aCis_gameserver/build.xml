@@ -48,9 +48,10 @@
 		<mkdir dir="${build.dist.game}/config" />
 		<mkdir dir="${build.dist.auth}/config" />
 		<copy todir="${build.dist.game}/config">
-			<fileset dir="config">				
+			<fileset dir="config">
 				<include name="*.properties" />
 				<include name="dev/*.properties" />
+				<include name="*.txt" />
 				<exclude name="banned_ips.properties" />
 				<exclude name="loginserver.properties" />
 			</fileset>
@@ -69,7 +70,7 @@
 		<jar destfile="${build}/l2jserver.jar">
 			<fileset dir="${build.classes}"  casesensitive="yes">
 				  <include name="**/*.class"/>
-			 <!-- <exclude name="com/**"/>		descomentar quando passar as classes do liniternity para esse projeto		 -->		
+				  <exclude name="com/**"/>				
 			</fileset>
 			<manifest>
 				<attribute name="Main-Class" value="net.sf.l2j.Server" />
@@ -88,6 +89,30 @@
 				<include name="l2jserver.jar" />
 			</fileset>
 		</copy>
+		
+		<jar destfile="${build}/lineternity.jar">
+					<fileset dir="${build.classes}"  casesensitive="yes">
+						  <include name="**/*.class"/>
+						  <exclude name="net/**"/>				
+					</fileset>
+					<manifest>
+						<attribute name="Main-Class" value="com.dev.Main" />
+						<attribute name="Class-Path" value="${manifest.libs}" />
+					</manifest>
+				</jar>
+
+				<copy todir="${build.dist.auth}/libs">
+					<fileset dir="${build}">
+						<include name="lineternity.jar" />
+					</fileset>
+				</copy>
+
+				<copy todir="${build.dist.game}/libs">
+					<fileset dir="${build}">
+						<include name="lineternity.jar" />
+					</fileset>
+				</copy>
+		
 	</target>
 	
 
