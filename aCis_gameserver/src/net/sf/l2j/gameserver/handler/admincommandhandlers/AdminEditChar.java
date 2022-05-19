@@ -30,6 +30,7 @@ import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.model.actor.Summon;
 import net.sf.l2j.gameserver.model.actor.instance.Pet;
 import net.sf.l2j.gameserver.model.group.Party;
+import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.model.pledge.Clan;
 import net.sf.l2j.gameserver.network.GameClient;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -725,6 +726,19 @@ public class AdminEditChar implements IAdminCommandHandler
 		}
 		else
 			activeChar.setTarget(player);
+
+		final GameClient client = activeChar.getClient();
+		if (client == null)
+		{
+			activeChar.sendMessage("Client is null.");
+			return;
+		}
+		
+		if (client.isDetached())
+		{
+			activeChar.sendMessage("Client is detached.");
+			return;
+		}
 		
 		gatherCharacterInfo(activeChar, player, "charinfo.htm");
 	}

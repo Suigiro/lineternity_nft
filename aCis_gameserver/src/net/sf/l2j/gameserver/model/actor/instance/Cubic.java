@@ -230,7 +230,7 @@ public class Cubic
 				if (_target == PlayerA || _target == PlayerB)
 					if (_target == ownerTarget)
 						return;
-					
+				
 				if (partyEnemy != null)
 				{
 					if (partyEnemy.containsPlayer(ownerTarget))
@@ -610,7 +610,7 @@ public class Cubic
 		if (_owner.isInDuel())
 			if (!DuelManager.getInstance().getDuel(_owner.getDuelId()).isPartyDuel())
 				party = null;
-			
+		
 		if (party != null && !_owner.isInOlympiadMode())
 		{
 			// Get all Party Members in a spheric area near the Creature

@@ -1,5 +1,8 @@
 package net.sf.l2j.gameserver.handler;
 
+import com.dev.handler.admincommandhandlers.AdminInventory;
+import com.dev.handler.admincommandhandlers.AdminWarehouse;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +12,7 @@ import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminBan;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminBookmark;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminBuffs;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminCamera;
+import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminClan;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminClanHall;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminCreateItem;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminCursedWeapons;
@@ -39,6 +43,7 @@ import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminPledge;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminPolymorph;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminRes;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminRideWyvern;
+import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminSearch;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminShop;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminSiege;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminSkill;
@@ -59,6 +64,7 @@ public class AdminCommandHandler
 		registerHandler(new AdminBookmark());
 		registerHandler(new AdminBuffs());
 		registerHandler(new AdminCamera());
+		registerHandler(new AdminClan());
 		registerHandler(new AdminClanHall());
 		registerHandler(new AdminCreateItem());
 		registerHandler(new AdminCursedWeapons());
@@ -89,6 +95,7 @@ public class AdminCommandHandler
 		registerHandler(new AdminPolymorph());
 		registerHandler(new AdminRes());
 		registerHandler(new AdminRideWyvern());
+		registerHandler(new AdminSearch());
 		registerHandler(new AdminShop());
 		registerHandler(new AdminSiege());
 		registerHandler(new AdminSkill());
@@ -96,6 +103,11 @@ public class AdminCommandHandler
 		registerHandler(new AdminTarget());
 		registerHandler(new AdminTeleport());
 		registerHandler(new AdminZone());
+		
+		/** Linternity registers */
+		registerHandler(new AdminInventory());
+		registerHandler(new AdminWarehouse());
+		/* --------------------- */
 	}
 	
 	private void registerHandler(IAdminCommandHandler handler)

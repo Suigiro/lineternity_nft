@@ -192,4 +192,9 @@ public final class StringUtil
 		
 		return fileName;
 	}
+	
+	public static boolean isValidPlayerName(String text)
+	{
+		return isValidString(text, "^[A-Za-z0-9]{3,16}$");
+	}
 }

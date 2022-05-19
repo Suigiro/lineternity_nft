@@ -59,6 +59,7 @@ public final class MercenaryManagerNpc extends Folk
 				return;
 			
 			player.tempInventoryDisable();
+			player.setIsCubicBypass(true);
 			player.sendPacket(new BuyList(buyList, player.getAdena(), 0));
 			
 			final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());

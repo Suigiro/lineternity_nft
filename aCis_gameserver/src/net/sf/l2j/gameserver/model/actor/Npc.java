@@ -957,10 +957,12 @@ public class Npc extends Creature
 		}
 		else if (command.startsWith("multisell"))
 		{
+			player.setIsCubicBypass(false);
 			MultisellData.getInstance().separateAndSend(command.substring(9).trim(), player, this, false);
 		}
 		else if (command.startsWith("exc_multisell"))
 		{
+			player.setIsCubicBypass(false);
 			MultisellData.getInstance().separateAndSend(command.substring(13).trim(), player, this, true);
 		}
 		else if (command.startsWith("Augment"))

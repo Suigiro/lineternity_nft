@@ -23,6 +23,7 @@ public class Escape implements IUserCommandHandler
 			return false;
 		}
 		
+		
 		activeChar.stopMove(null);
 		
 		// Official timer 5 minutes, for GM 1 second

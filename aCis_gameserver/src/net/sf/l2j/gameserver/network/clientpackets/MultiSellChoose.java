@@ -70,7 +70,7 @@ public class MultiSellChoose extends L2GameClientPacket
 		}
 		
 		final Folk folk = player.getCurrentFolk();
-		if ((folk != null && !list.isNpcAllowed(folk.getNpcId())) || (folk == null && list.isNpcOnly()))
+		if ((folk != null && !list.isNpcAllowed(folk.getNpcId())) || (folk == null && list.isNpcOnly() && !player.isCubicBypass()))
 		{
 			player.setMultiSell(null);
 			return;

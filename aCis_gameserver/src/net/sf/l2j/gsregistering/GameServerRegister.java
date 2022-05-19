@@ -23,7 +23,7 @@ public class GameServerRegister
 	public static void main(String[] args)
 	{
 		Config.loadGameServerRegistration();
-				
+		
 		try (Scanner _scn = new Scanner(System.in))
 		{
 			System.out.println();

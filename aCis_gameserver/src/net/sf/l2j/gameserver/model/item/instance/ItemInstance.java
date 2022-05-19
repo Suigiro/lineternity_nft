@@ -375,6 +375,17 @@ public final class ItemInstance extends WorldObject implements Runnable, Compara
 		return getItem().isOlyRestrictedItem();
 	}
 	
+	/** lineternity getters e setters */
+	
+	public int getServiceId()
+	{
+		return getItem().getServiceId();
+	}
+	
+	/* ------------------------------ */
+
+
+	
 	/**
 	 * Returns the type of item
 	 * @return Enum

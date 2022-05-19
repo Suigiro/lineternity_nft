@@ -75,7 +75,7 @@ public class Merchant extends Folk
 					return;
 				}
 			}
-			
+			player.setIsCubicBypass(false);
 			player.sendPacket(new SellList(player.getAdena(), items));
 		}
 		else if (actualCommand.equalsIgnoreCase("Wear") && Config.ALLOW_WEAR)
@@ -89,7 +89,7 @@ public class Merchant extends Folk
 		{
 			if (st.countTokens() < 1)
 				return;
-			
+			player.setIsCubicBypass(false);
 			MultisellData.getInstance().separateAndSend(st.nextToken(), player, this, false);
 		}
 		else if (actualCommand.equalsIgnoreCase("Multisell_Shadow"))
@@ -112,7 +112,7 @@ public class Merchant extends Folk
 		{
 			if (st.countTokens() < 1)
 				return;
-			
+			player.setIsCubicBypass(false);
 			MultisellData.getInstance().separateAndSend(st.nextToken(), player, this, true);
 		}
 		else if (actualCommand.equalsIgnoreCase("Newbie_Exc_Multisell"))
@@ -121,7 +121,10 @@ public class Merchant extends Folk
 				return;
 			
 			if (player.isNewbie())
+			{
+				player.setIsCubicBypass(false);
 				MultisellData.getInstance().separateAndSend(st.nextToken(), player, this, true);
+			}
 			else
 				showChatWindow(player, "data/html/exchangelvlimit.htm");
 		}
@@ -156,6 +159,7 @@ public class Merchant extends Folk
 			return;
 		
 		player.tempInventoryDisable();
+		player.setIsCubicBypass(false);
 		player.sendPacket(new BuyList(buyList, player.getAdena(), (getCastle() != null) ? getCastle().getTaxRate() : 0));
 	}
 }

@@ -83,6 +83,7 @@ public abstract class Item
 	
 	private final int _itemId;
 	private final String _name;
+	private final String _icon;
 	protected int _type1; // needed for item list (inventory)
 	protected int _type2; // different lists for armor, weapon, etc
 	private final int _weight;
@@ -103,6 +104,12 @@ public abstract class Item
 	private final boolean _heroItem;
 	private final boolean _isOlyRestricted;
 	
+	/** lineternity instances */
+	
+	private final int _serviceId;
+	
+	/* ---------------------- */
+	
 	private final ActionType _defaultAction;
 	
 	protected List<FuncTemplate> _funcTemplates;
@@ -122,6 +129,7 @@ public abstract class Item
 	{
 		_itemId = set.getInteger("item_id");
 		_name = set.getString("name");
+		_icon = set.getString("icon", "icon.noimage");
 		_weight = set.getInteger("weight", 0);
 		_materialType = set.getEnum("material", MaterialType.class, MaterialType.STEEL);
 		_duration = set.getInteger("duration", -1);
@@ -139,6 +147,12 @@ public abstract class Item
 		
 		_heroItem = (_itemId >= 6611 && _itemId <= 6621) || _itemId == 6842;
 		_isOlyRestricted = set.getBool("is_oly_restricted", false);
+		
+		/** lineternity init instances */
+		
+		this._serviceId = set.getInteger("service_id", 0);
+		
+		/* --------------------------- */
 		
 		_defaultAction = set.getEnum("default_action", ActionType.class, ActionType.none);
 		
@@ -311,6 +325,14 @@ public abstract class Item
 	public final String getName()
 	{
 		return _name;
+	}
+	
+	/**
+	 * @return String the icon of the item
+	 */
+	public String getIcon()
+	{
+		return _icon;
 	}
 	
 	/**
@@ -550,6 +572,15 @@ public abstract class Item
 	{
 		return (getItemType() == EtcItemType.ELIXIR);
 	}
+	
+	/** lineternity getters e setters */
+		
+	public int getServiceId()
+	{
+		return this._serviceId;
+	}
+	
+	/* ------------------------------ */
 	
 	public ActionType getDefaultAction()
 	{
