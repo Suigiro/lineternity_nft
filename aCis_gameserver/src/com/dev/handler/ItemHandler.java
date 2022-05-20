@@ -9,6 +9,7 @@ import com.dev.handler.itemhandlers.Cubic;
 import com.dev.handler.itemhandlers.NameChange;
 import com.dev.handler.itemhandlers.Service;
 import com.dev.handler.itemhandlers.ShopPortable;
+import com.dev.handler.itemhandlers.TeleportPortable;
 
 import net.sf.l2j.gameserver.model.item.kind.EtcItem;
 
@@ -21,6 +22,7 @@ public class ItemHandler {
 		registerItemHandler(new Cubic());
 		registerItemHandler(new ShopPortable());
 		registerItemHandler(new BuffPortable());
+		registerItemHandler(new TeleportPortable());
 		registerItemHandler(new NameChange());
 		registerItemHandler(new Service());
 		_log.info("ItemHandler: Loaded " + _datatable.size() + " handler(s).");
