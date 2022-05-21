@@ -5,7 +5,7 @@
 	</npcs>
 	<!-- Tateossian Necklace -->
 	<item>
-		<ingredient id="9603" count="10"/>
+		<ingredient id="57" count="10000"/>
 		<production id="920" count="1"/>
 		<production id="858" count="2"/>
 		<production id="889" count="2"/>
