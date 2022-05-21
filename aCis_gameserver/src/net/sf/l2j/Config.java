@@ -120,6 +120,8 @@ public final class Config {
 
 	public static String BUFF_PORTABLE;
 
+	public static String TELEPORT_PORTABLE;
+
 	public static boolean ENABLE_RAID_BOSS_DEFEATED_MSG;
 
 	public static boolean ENABLE_MODIFY_SKILL_DURATION;
@@ -772,8 +774,10 @@ public final class Config {
 
 		SERVER_NAME = lineternity.getProperty("ServerName", "Lineternity");
 		SHOP_AIO = lineternity.getProperty("SHOPAio", "data/html/dev/cubic/main.htm");
-		SHOP_PORTABLE = lineternity.getProperty("SHOPPortable", "data/html/dev/cubic/itemstore/main.htm");
-		BUFF_PORTABLE = lineternity.getProperty("BUFFPortable", "data/html/dev/cubic/magicalsupport/main.htm ");
+		SHOP_PORTABLE = lineternity.getProperty("SHOPPortable", "data/html/dev/cubic/shopportable/main.htm");
+		BUFF_PORTABLE = lineternity.getProperty("BUFFPortable", "data/html/dev/cubic/buffportable/main.htm");
+		TELEPORT_PORTABLE = lineternity.getProperty("TELEPORTPortable",
+				"data/html/dev/cubic/teleportportable/main.htm");
 		ENABLE_MODIFY_SKILL_DURATION = lineternity.getProperty("EnableModifySkillDuration", false);
 		if (ENABLE_MODIFY_SKILL_DURATION) {
 			String[] propertySplit = lineternity.getProperty("SkillDurationList", "").split(";");

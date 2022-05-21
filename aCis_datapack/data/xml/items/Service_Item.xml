@@ -94,6 +94,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_depositable" val="true" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="BuffPortable" />
+		<set name="handler" val="TeleportPortable" />
 	</item>
 </list>
