@@ -17,6 +17,7 @@ import net.sf.l2j.commons.logging.CLogger;
 import net.sf.l2j.commons.math.MathUtil;
 import net.sf.l2j.gameserver.enums.OlympiadPeriod;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
+import net.sf.l2j.gameserver.model.location.Location;
 
 /**
  * This class contains global server configuration.<br>
@@ -65,6 +66,12 @@ public final class Config {
 	public static int DUNGEON_PARTY_ITEM_RENEWAL2;
 	public static int DUNGEON_PARTY_ITEM_RENEWAL3;
 	public static int DUNGEON_PARTY_ITEM_RENEWAL4;
+
+	// -------------------------------------------------
+	// Events Settings
+	// -------------------------------------------------
+
+	public static final String LINETERNITY_EVENTS = "./config/dev/events.properties";
 
 	/**
 	 * Loads Dungeon settings.
@@ -132,7 +139,10 @@ public final class Config {
 
 	public static String RAID_BOSS_DEFEATED_BY_PLAYER_MSG;
 
-	public static boolean AUTO_LEARN_DIVINE_INSPIRATION;
+	public static boolean BANKING_SYSTEM_ENABLED;
+	public static int BANKING_SYSTEM_GOLDBARS;
+	public static int BANKING_SYSTEM_ADENA;
+	public static IntIntHolder[] BANKING_SYSTEM_GOLDCOIN;
 
 	// --------------------------------------------------
 	// Clans settings
@@ -213,7 +223,77 @@ public final class Config {
 	public static int CH_FRONT2_FEE;
 
 	// --------------------------------------------------
-	// Events settings
+	// Lineternity Events settings
+	// --------------------------------------------------
+
+	/** Event Engine settings */
+	public static boolean ENABLE_EVENT_ENGINE;
+	public static int TIME_BETWEEN_EVENTS;
+	public static int NPC_REGISTER;
+	public static Location NPC_REGISTER_LOC;
+	public static int EVENT_REGISTRATION_TIME;
+	public static String[] DOOR_LIST;
+	public static byte MIN_LEVEL;
+	public static byte MAX_LEVEL;
+
+	/** TvT event settings */
+	public static boolean ALLOW_TVT_EVENT;
+	public static int TVT_MIN_PLAYERS;
+	public static IntIntHolder[] TVT_WINNER_REWARDS;
+	public static IntIntHolder[] TVT_DRAW_REWARDS;
+	public static int TVT_RUNNING_TIME;
+	public static String TVT_TEAM_1_NAME;
+	public static int TVT_TEAM_1_COLOR;
+	public static Location TVT_TEAM_1_LOCATION;
+	public static String TVT_TEAM_2_NAME;
+	public static int TVT_TEAM_2_COLOR;
+	public static Location TVT_TEAM_2_LOCATION;
+
+	/** Deathmatch event settings */
+	public static boolean ALLOW_DM_EVENT;
+	public static int DM_MIN_PLAYERS;
+	public static IntIntHolder[] DM_ON_KILL_REWARDS;
+	public static IntIntHolder[] DM_WINNER_REWARDS;
+	public static int DM_RUNNING_TIME;
+	public static List<Location> DM_RESPAWN_SPOTS = new ArrayList<>();
+
+	/** CTF event settings */
+	public static boolean ALLOW_CTF_EVENT;
+	public static int CTF_MIN_PLAYERS;
+	public static IntIntHolder[] CTF_ON_SCORE_REWARDS;
+	public static IntIntHolder[] CTF_WINNER_REWARDS;
+	public static IntIntHolder[] CTF_DRAW_REWARDS;
+	public static int CTF_RUNNING_TIME;
+	public static String CTF_TEAM_1_NAME;
+	public static int CTF_TEAM_1_COLOR;
+	public static Location CTF_TEAM_1_LOCATION;
+	public static Location CTF_TEAM_1_FLAG_LOCATION;
+	public static String CTF_TEAM_2_NAME;
+	public static int CTF_TEAM_2_COLOR;
+	public static Location CTF_TEAM_2_LOCATION;
+	public static Location CTF_TEAM_2_FLAG_LOCATION;
+
+	/** SimonSay event settings */
+	public static boolean ALLOW_SIMON_EVENT;
+	public static int SIMON_MIN_PLAYERS;
+	public static IntIntHolder[] SIMON_WINNER_REWARDS;
+	public static int SIMON_ROUND_TIME;
+	public static List<Location> SIMON_PLAYER_RESPAWN_SPOTS;
+	public static Location SIMON_NPC_RESPAWN_SPOTS;
+	public static List<String> SIMON_WORDS;
+
+	/** Pc bang points */
+	public static int PCB_INTERVAL;
+	public static int PCB_MIN_LEVEL;
+	public static int PCB_POINT_MIN;
+	public static int PCB_POINT_MAX;
+	public static int PCB_CHANCE_DUAL_POINT;
+	public static int PCB_AFK_TIMER;
+	public static int PCB_Max_POINTS_ALLOWED;
+	public static boolean PCB_ENABLED;
+
+	// --------------------------------------------------
+	// Default Events settings
 	// --------------------------------------------------
 
 	/** Olympiad */
@@ -828,6 +908,10 @@ public final class Config {
 			}
 		}
 
+		BANKING_SYSTEM_ENABLED = lineternity.getProperty("BankingEnabled", false);
+		BANKING_SYSTEM_GOLDCOIN = lineternity.parseIntIntList("BankingGoldCoin", "3470-1");
+		BANKING_SYSTEM_ADENA = lineternity.getProperty("BankingAdenaCount", 500000000);
+
 	}
 
 	/* ----------------------- */
@@ -915,8 +999,124 @@ public final class Config {
 	 * weddings, lottery, fishing championship.
 	 */
 	private static final void loadEvents() {
+
+		// LINETERNITY NFT
+		// -------------------------------------------------
+		// Events Load
+		// -------------------------------------------------
+
+		final ExProperties lineternityEvents = initProperties(LINETERNITY_EVENTS);
+		ENABLE_EVENT_ENGINE = lineternityEvents.getProperty("Enableevents", false);
+		TIME_BETWEEN_EVENTS = lineternityEvents.getProperty("TimeBetweenEvents", 60);
+		EVENT_REGISTRATION_TIME = lineternityEvents.getProperty("EventRegistrationTime", 10);
+		DOOR_LIST = lineternityEvents.getProperty("ListDoors", "24190002;24190003").split(";");
+		NPC_REGISTER = lineternityEvents.getProperty("NpcRegisterId", 50018);
+		NPC_REGISTER_LOC = lineternityEvents.parseLocation("NpcRegisterLoc", "151808,46864,-3408");
+		MIN_LEVEL = (byte) lineternityEvents.getProperty("MinLevel", 40);
+		MAX_LEVEL = (byte) lineternityEvents.getProperty("MaxLevel", 80);
+
+		// -------------------------------------------------
+		// PC Bang Point
+		// -------------------------------------------------
+
+		PCB_INTERVAL = lineternityEvents.getProperty("PcBangPointTime", 0);
+		PCB_MIN_LEVEL = lineternityEvents.getProperty("PcBangPointMinLevel", 20);
+		PCB_POINT_MIN = lineternityEvents.getProperty("PcBangPointMinCount", 1);
+		PCB_POINT_MAX = lineternityEvents.getProperty("PcBangPointMaxCount", 5);
+		PCB_CHANCE_DUAL_POINT = lineternityEvents.getProperty("PcBangPointDualChance", 100);
+		PCB_AFK_TIMER = lineternityEvents.getProperty("PcBangTimerAFK", 1);
+		PCB_Max_POINTS_ALLOWED = lineternityEvents.getProperty("PcBangMaxPointsAllowed", 200000);
+		PCB_ENABLED = lineternityEvents.getProperty("PcBangEnabled", true);
+
+		// -------------------------------------------------
+		// TvT
+		// -------------------------------------------------
+
+		ALLOW_TVT_EVENT = lineternityEvents.getProperty("AllowTvTEvent", false);
+		TVT_MIN_PLAYERS = lineternityEvents.getProperty("TvTMinPlayers", 2);
+
+		TVT_WINNER_REWARDS = lineternityEvents.parseIntIntList("TvTWinnerRewards", "57,1");
+		TVT_DRAW_REWARDS = lineternityEvents.parseIntIntList("TvTDrawRewards", "57,1");
+
+		TVT_RUNNING_TIME = lineternityEvents.getProperty("TvTRunningTime", 10);
+		TVT_TEAM_1_NAME = lineternityEvents.getProperty("TvTTeam1Name", "Orange");
+		TVT_TEAM_1_COLOR = Integer.decode("0x" + lineternityEvents.getProperty("TvTTeam1Color", "4499FF"));
+		TVT_TEAM_1_LOCATION = lineternityEvents.parseLocation("TvTTeam1Location", "0,0,0");
+		TVT_TEAM_2_NAME = lineternityEvents.getProperty("TvTTeam2Name", "Green");
+		TVT_TEAM_2_COLOR = Integer.decode("0x" + lineternityEvents.getProperty("TvTTeam2Color", "00FF00"));
+		TVT_TEAM_2_LOCATION = lineternityEvents.parseLocation("TvTTeam2Location", "0,0,0");
+
+		// -------------------------------------------------
+		// DM
+		// -------------------------------------------------
+
+		ALLOW_DM_EVENT = lineternityEvents.getProperty("AllowDMEvent", false);
+		DM_MIN_PLAYERS = lineternityEvents.getProperty("DMMinPlayers", 2);
+
+		DM_ON_KILL_REWARDS = lineternityEvents.parseIntIntList("DMOnKillRewards", "57,1");
+		DM_WINNER_REWARDS = lineternityEvents.parseIntIntList("DMWinnerRewards", "57,1");
+
+		DM_RUNNING_TIME = lineternityEvents.getProperty("DMRunningTime", 10);
+		String dm_resp_spots = lineternityEvents.getProperty("DMRespawnSpots", "0,0,0;0,0,0");
+		String[] dm_resp_spots_split = dm_resp_spots.split(";");
+		for (String s : dm_resp_spots_split) {
+			String[] ss = s.split(",");
+			DM_RESPAWN_SPOTS
+					.add(new Location(Integer.parseInt(ss[0]), Integer.parseInt(ss[1]), Integer.parseInt(ss[2])));
+		}
+
+		// -------------------------------------------------
+		// CTF
+		// -------------------------------------------------
+		ALLOW_CTF_EVENT = lineternityEvents.getProperty("AllowCTFEvent", false);
+		CTF_MIN_PLAYERS = lineternityEvents.getProperty("CTFMinPlayers", 2);
+
+		CTF_ON_SCORE_REWARDS = lineternityEvents.parseIntIntList("CTFOnScoreRewards", "57,1");
+		CTF_WINNER_REWARDS = lineternityEvents.parseIntIntList("CTFWinnerRewards", "57,1");
+		CTF_DRAW_REWARDS = lineternityEvents.parseIntIntList("CTFDrawRewards", "57,1");
+
+		CTF_RUNNING_TIME = lineternityEvents.getProperty("CTFRunningTime", 10);
+		CTF_TEAM_1_NAME = lineternityEvents.getProperty("CTFTeam1Name", "Orange");
+		CTF_TEAM_1_COLOR = Integer.decode("0x" + lineternityEvents.getProperty("CTFTeam1Color", "4499FF"));
+		CTF_TEAM_1_LOCATION = lineternityEvents.parseLocation("CTFTeam1Location", "0,0,0");
+		CTF_TEAM_1_FLAG_LOCATION = lineternityEvents.parseLocation("CTFTeam1FlagLocation", "0,0,0");
+		CTF_TEAM_2_NAME = lineternityEvents.getProperty("CTFTeam2Name", "Green");
+		CTF_TEAM_2_COLOR = Integer.decode("0x" + lineternityEvents.getProperty("CTFTeam2Color", "00FF00"));
+		CTF_TEAM_2_LOCATION = lineternityEvents.parseLocation("CTFTeam2Location", "0,0,0");
+		CTF_TEAM_2_FLAG_LOCATION = lineternityEvents.parseLocation("CTFTeam2FlagLocation", "0,0,0");
+
+		// -------------------------------------------------
+		// SimonSay
+		// -------------------------------------------------
+		ALLOW_SIMON_EVENT = lineternityEvents.getProperty("AllowSimonSaysEvent", false);
+		SIMON_MIN_PLAYERS = lineternityEvents.getProperty("SimonMinPlayers", 2);
+
+		SIMON_WINNER_REWARDS = lineternityEvents.parseIntIntList("SimonWinnerRewards", "57-1");
+		SIMON_ROUND_TIME = lineternityEvents.getProperty("SimonRoundTime", 30);
+
+		SIMON_PLAYER_RESPAWN_SPOTS = new ArrayList<>();
+		String[] simon_player_respawn_splots_split = lineternityEvents
+				.getProperty("SimonPlayerRespawnSpots", "0,0,0;0,0,0").split(";");
+		for (String s : simon_player_respawn_splots_split) {
+			String[] ss = s.split(",");
+			SIMON_PLAYER_RESPAWN_SPOTS
+					.add(new Location(Integer.parseInt(ss[0]), Integer.parseInt(ss[1]), Integer.parseInt(ss[2])));
+		}
+
+		String[] simon_npc_respawn_splots_split = lineternityEvents.getProperty("SimonNpcRespawnSpots", "0,0,0")
+				.split(",");
+		SIMON_NPC_RESPAWN_SPOTS = new Location(Integer.parseInt(simon_npc_respawn_splots_split[0]),
+				Integer.parseInt(simon_npc_respawn_splots_split[1]),
+				Integer.parseInt(simon_npc_respawn_splots_split[2]));
+
+		SIMON_WORDS = new ArrayList<>();
+		for (String word : lineternityEvents.getProperty("SimonWordsToSay", "word1;word2").split(";"))
+			SIMON_WORDS.add(word);
+
+		// --------------------------------------------------
+
 		final ExProperties events = initProperties(EVENTS_FILE);
-		ALT_OLY_START_TIME = events.getProperty("AltOlyStartTime", 18);
+		ALT_OLY_START_TIME = lineternityEvents.getProperty("AltOlyStartTime", 18);
 		ALT_OLY_MIN = events.getProperty("AltOlyMin", 0);
 		ALT_OLY_CPERIOD = events.getProperty("AltOlyCPeriod", 21600000);
 		ALT_OLY_BATTLE = events.getProperty("AltOlyBattle", 180000);

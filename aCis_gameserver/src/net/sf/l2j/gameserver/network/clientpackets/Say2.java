@@ -10,10 +10,9 @@ import net.sf.l2j.gameserver.handler.IChatHandler;
 import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 
-public final class Say2 extends L2GameClientPacket
-{
+public final class Say2 extends L2GameClientPacket {
 	private static final Logger CHAT_LOG = Logger.getLogger("chat");
-	
+
 	public static final int ALL = 0;
 	public static final int SHOUT = 1; // !
 	public static final int TELL = 2;
@@ -33,155 +32,145 @@ public final class Say2 extends L2GameClientPacket
 	public static final int PARTYROOM_ALL = 16; // (Red)
 	public static final int HERO_VOICE = 17;
 	public static final int CRITICAL_ANNOUNCE = 18;
-	
-	private static final String[] CHAT_NAMES =
-	{
-		"ALL",
-		"SHOUT",
-		"TELL",
-		"PARTY",
-		"CLAN",
-		"GM",
-		"PETITION_PLAYER",
-		"PETITION_GM",
-		"TRADE",
-		"ALLIANCE",
-		"ANNOUNCEMENT", // 10
-		"BOAT",
-		"WILLCRASHCLIENT:)",
-		"FAKEALL?",
-		"PARTYMATCH_ROOM",
-		"PARTYROOM_COMMANDER",
-		"PARTYROOM_ALL",
-		"HERO_VOICE",
-		"CRITICAL_ANNOUNCEMENT"
+
+	private static final String[] CHAT_NAMES = {
+			"ALL",
+			"SHOUT",
+			"TELL",
+			"PARTY",
+			"CLAN",
+			"GM",
+			"PETITION_PLAYER",
+			"PETITION_GM",
+			"TRADE",
+			"ALLIANCE",
+			"ANNOUNCEMENT", // 10
+			"BOAT",
+			"WILLCRASHCLIENT:)",
+			"FAKEALL?",
+			"PARTYMATCH_ROOM",
+			"PARTYROOM_COMMANDER",
+			"PARTYROOM_ALL",
+			"HERO_VOICE",
+			"CRITICAL_ANNOUNCEMENT"
 	};
-	
-	private static final String[] WALKER_COMMAND_LIST =
-	{
-		"USESKILL",
-		"USEITEM",
-		"BUYITEM",
-		"SELLITEM",
-		"SAVEITEM",
-		"LOADITEM",
-		"MSG",
-		"DELAY",
-		"LABEL",
-		"JMP",
-		"CALL",
-		"RETURN",
-		"MOVETO",
-		"NPCSEL",
-		"NPCDLG",
-		"DLGSEL",
-		"CHARSTATUS",
-		"POSOUTRANGE",
-		"POSINRANGE",
-		"GOHOME",
-		"SAY",
-		"EXIT",
-		"PAUSE",
-		"STRINDLG",
-		"STRNOTINDLG",
-		"CHANGEWAITTYPE",
-		"FORCEATTACK",
-		"ISMEMBER",
-		"REQUESTJOINPARTY",
-		"REQUESTOUTPARTY",
-		"QUITPARTY",
-		"MEMBERSTATUS",
-		"CHARBUFFS",
-		"ITEMCOUNT",
-		"FOLLOWTELEPORT"
+
+	private static final String[] WALKER_COMMAND_LIST = {
+			"USESKILL",
+			"USEITEM",
+			"BUYITEM",
+			"SELLITEM",
+			"SAVEITEM",
+			"LOADITEM",
+			"MSG",
+			"DELAY",
+			"LABEL",
+			"JMP",
+			"CALL",
+			"RETURN",
+			"MOVETO",
+			"NPCSEL",
+			"NPCDLG",
+			"DLGSEL",
+			"CHARSTATUS",
+			"POSOUTRANGE",
+			"POSINRANGE",
+			"GOHOME",
+			"SAY",
+			"EXIT",
+			"PAUSE",
+			"STRINDLG",
+			"STRNOTINDLG",
+			"CHANGEWAITTYPE",
+			"FORCEATTACK",
+			"ISMEMBER",
+			"REQUESTJOINPARTY",
+			"REQUESTOUTPARTY",
+			"QUITPARTY",
+			"MEMBERSTATUS",
+			"CHARBUFFS",
+			"ITEMCOUNT",
+			"FOLLOWTELEPORT"
 	};
-	
+
 	private String _text;
 	private int _type;
 	private String _target;
-	
+
 	@Override
-	protected void readImpl()
-	{
+	protected void readImpl() {
 		_text = readS();
 		_type = readD();
 		_target = (_type == TELL) ? readS() : null;
 	}
-	
+
 	@Override
-	protected void runImpl()
-	{
+	protected void runImpl() {
 		final Player player = getClient().getPlayer();
 		if (player == null)
 			return;
-		
+
+		player.updateLastAction();
+
 		if (_type < 0 || _type >= CHAT_NAMES.length)
 			return;
-		
+
 		if (_text.isEmpty() || _text.length() > 100)
 			return;
-		
+
 		if (Config.L2WALKER_PROTECTION && _type == TELL && checkBot(_text))
 			return;
-		
+
 		if (!player.isGM() && (_type == ANNOUNCEMENT || _type == CRITICAL_ANNOUNCE))
 			return;
-		
-		if (player.isChatBanned() || (player.isInJail() && !player.isGM()))
-		{
+
+		if (player.isChatBanned() || (player.isInJail() && !player.isGM())) {
 			player.sendPacket(SystemMessageId.CHATTING_PROHIBITED);
 			return;
 		}
-		
+
 		if (_type == PETITION_PLAYER && player.isGM())
 			_type = PETITION_GM;
-		
-		if (Config.LOG_CHAT)
-		{
+
+		if (Config.LOG_CHAT) {
 			LogRecord record = new LogRecord(Level.INFO, _text);
 			record.setLoggerName("chat");
-			
+
 			if (_type == TELL)
-				record.setParameters(new Object[]
-				{
-					CHAT_NAMES[_type],
-					"[" + player.getName() + " to " + _target + "]"
+				record.setParameters(new Object[] {
+						CHAT_NAMES[_type],
+						"[" + player.getName() + " to " + _target + "]"
 				});
 			else
-				record.setParameters(new Object[]
-				{
-					CHAT_NAMES[_type],
-					"[" + player.getName() + "]"
+				record.setParameters(new Object[] {
+						CHAT_NAMES[_type],
+						"[" + player.getName() + "]"
 				});
-			
+
 			CHAT_LOG.log(record);
 		}
-		
+
 		_text = _text.replaceAll("\\\\n", "");
-		
+
 		final IChatHandler handler = ChatHandler.getInstance().getHandler(_type);
-		if (handler == null)
-		{
+		if (handler == null) {
 			LOGGER.warn("{} tried to use unregistred chathandler type: {}.", player.getName(), _type);
 			return;
 		}
-		
+
 		handler.handleChat(_type, player, _target, _text);
 	}
-	
-	private static boolean checkBot(String text)
-	{
-		for (String botCommand : WALKER_COMMAND_LIST)
-		{
+
+	private static boolean checkBot(String text) {
+		for (String botCommand : WALKER_COMMAND_LIST) {
 			if (text.startsWith(botCommand))
 				return true;
 		}
 		return false;
 	}
-	
+
 	@Override
-	protected boolean triggersOnActionRequest()
-	{
+	protected boolean triggersOnActionRequest() {
 		return false;
 	}
 }

@@ -11,7 +11,6 @@ import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
 import net.sf.l2j.gameserver.network.serverpackets.ExShowScreenMessage;
 import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
-import net.sf.l2j.gameserver.network.serverpackets.SocialAction;
 //import net.sf.l2j.gameserver.taskmanager.PremiumTaskManager;
 
 public class Service implements IItemHandler {
@@ -121,21 +120,21 @@ public class Service implements IItemHandler {
 //			}
 //
 //			break;
-		case 7:
-			if (player.isNoble()) {
-				player.sendMessage("Your already have noblesse privileges.");
-				return;
-			}
-			player.destroyItem("Consume", item.getObjectId(), 1, null, true);
-			player.sendPacket(new CreatureSay(0, 17, "Service",
-					"Congratulations, you are now a noble, you are granted with noblesse status and noblesse skills."));
-			player.sendPacket(
-					new ExShowScreenMessage("You are now a noble, you are granted with noblesse status", 10000));
-			player.setNoble(true, true);
-			player.broadcastPacket(new SocialAction(player, 16));
-			player.getInventory().addItem("Tiara", 7694, 1, player, null);
-			player.broadcastUserInfo();
-			break;
+//		case 7:
+//			if (player.isNoble()) {
+//				player.sendMessage("Your already have noblesse privileges.");
+//				return;
+//			}
+//			player.destroyItem("Consume", item.getObjectId(), 1, null, true);
+//			player.sendPacket(new CreatureSay(0, 17, "Service",
+//					"Congratulations, you are now a noble, you are granted with noblesse status and noblesse skills."));
+//			player.sendPacket(
+//					new ExShowScreenMessage("You are now a noble, you are granted with noblesse status", 10000));
+//			player.setNoble(true, true);
+//			player.broadcastPacket(new SocialAction(player, 16));
+//			player.getInventory().addItem("Tiara", 7694, 1, player, null);
+//			player.broadcastUserInfo();
+//			break;
 		case 8:
 			if (!player.isClanLeader()) {
 				player.sendMessage("Only leader of a clan can use it.");

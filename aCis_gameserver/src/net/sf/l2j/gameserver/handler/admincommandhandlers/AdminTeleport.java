@@ -6,11 +6,12 @@ import java.util.StringTokenizer;
 import net.sf.l2j.commons.math.MathUtil;
 import net.sf.l2j.gameserver.data.xml.MapRegionData.TeleportType;
 import net.sf.l2j.gameserver.enums.IntentionType;
+import net.sf.l2j.gameserver.enums.ZoneId;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.World;
 import net.sf.l2j.gameserver.model.WorldObject;
 import net.sf.l2j.gameserver.model.actor.Player;
-//import net.sf.l2j.gameserver.model.entity.engine.EventManager;
+import net.sf.l2j.gameserver.model.entity.engine.EventManager;
 import net.sf.l2j.gameserver.model.group.Party;
 import net.sf.l2j.gameserver.model.pledge.Clan;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -68,18 +69,21 @@ public class AdminTeleport implements IAdminCommandHandler {
 			} catch (StringIndexOutOfBoundsException e) {
 			}
 		} else if (command.startsWith("admin_recall_all")) {
+
 			for (Player player : World.getInstance().getPlayers()) {
-//				if ((EventManager.getInstance().getActiveEvent() != null
-//						&& EventManager.getInstance().getActiveEvent().isInEvent(player))
-//						|| !activeChar.checkSummonTargetStatus(player)
-//						|| (player.isInsideZone(ZoneId.BOSS) && !player.isGM()))
-//					continue;
+				final ConfirmDlg confirm = new ConfirmDlg(
+						SystemMessageId.S1_WISHES_TO_SUMMON_YOU_FROM_S2_DO_YOU_ACCEPT.getId());
+				confirm.addString(activeChar.getName());
+				confirm.addCharName(player);
+				confirm.addZoneName(activeChar.getPosition());
+				confirm.addTime(30000);
+				confirm.addRequesterId(player.getObjectId());
+
+				if (!activeChar.checkSummonTargetStatus(player) || (player.isInsideZone(ZoneId.BOSS) && !player.isGM()))
+					continue;
 
 				if (!MathUtil.checkIfInRange(0, activeChar, player, false))
-					player.sendPacket(
-							new ConfirmDlg(SystemMessageId.S1_WISHES_TO_SUMMON_YOU_FROM_S2_DO_YOU_ACCEPT_RECALL.getId())
-									.addString(activeChar.getName()).addZoneName(activeChar.getPosition())
-									.addTime(15000).addRequesterId(activeChar.getObjectId()));
+					player.sendPacket(confirm);
 			}
 		} else if (command.startsWith("admin_recall_party")) {
 			try {
@@ -184,13 +188,13 @@ public class AdminTeleport implements IAdminCommandHandler {
 		}
 	}
 
-	private static void teleportCharacter(Player player, int x, int y, int z) {
+	public static void teleportCharacter(Player player, int x, int y, int z) {
 		player.getAI().setIntention(IntentionType.IDLE);
 		player.teleportTo(x, y, z, 0);
 		player.sendMessage("A GM is teleporting you.");
 	}
 
-	private static void teleportToCharacter(Player activeChar, Player target) {
+	public static void teleportToCharacter(Player activeChar, Player target) {
 		if (target.getObjectId() == activeChar.getObjectId())
 			activeChar.sendPacket(SystemMessageId.CANNOT_USE_ON_YOURSELF);
 		else {

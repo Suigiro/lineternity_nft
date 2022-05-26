@@ -61,9 +61,9 @@ public class AuctionManager extends Folk {
 				owner.addItem("auction", item.getCostId(), item.getCostCount(), null, true);
 				owner.sendMessage("You have sold an item in the Auction Shop.");
 			}
-//			else 
-//				owner.addItemToOffline(item.getOwnerId(), item.getCostId(), item.getCostCount());
-
+			else 
+				owner.addItemToOffline(item.getOwnerId(), item.getCostId(), item.getCostCount());
+			
 			ItemInstance i = player.addItem("auction", item.getItemId(), item.getCount(), this, true);
 			i.setEnchantLevel(item.getEnchant());
 			player.sendPacket(new InventoryUpdate());
@@ -272,7 +272,7 @@ public class AuctionManager extends Folk {
 		String html = "";
 		html += "<html><title>Auction Shop</title><body><center><br1>";
 		html += "Select item:";
-		html += "<br><table width=310 bgcolor=000000 border=1>";
+		html += "<br><table width=300 bgcolor=000000 border=1>";
 
 		for (ItemInstance item : items.get(page)) {
 			html += "<tr>";
@@ -284,7 +284,7 @@ public class AuctionManager extends Folk {
 			html += "</td>";
 			html += "<td><button value=\"Select\" action=\"bypass -h npc_" + getObjectId() + "_additem "
 					+ item.getObjectId()
-					+ "\" width=70 height=21 back=\"L2UI.DefaultButton_click\" fore=\"L2UI.DefaultButton\">";
+					+ "\" width=60 height=31 back=\"L2UI.SquareGray\" fore=\"L2UI.SquareGray\">";
 			html += "</td>";
 			html += "</tr>";
 		}

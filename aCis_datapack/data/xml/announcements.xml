@@ -8,5 +8,5 @@
 @param Integer limit - limit of announces (used only if auto=true, 0 = unlimited)
 -->
 <list>
-	<announcement message="Sejam bem vindos!" critical="true" auto="true" delay="300" initial_delay="1" limit="0"/>
+	<announcement message="Lineternity NFT deseja-lhes uma ótima jogatina!" critical="true" auto="true" delay="7200" initial_delay="1" limit="0"/>
 </list>

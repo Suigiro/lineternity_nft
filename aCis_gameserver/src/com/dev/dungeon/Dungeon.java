@@ -111,7 +111,6 @@ public class Dungeon {
 		// First Add Fixed Reward
 		for (Player player : players) {
 
-//			PlayerMemo.setVar(player, "dungeon_atleast1time", "true", -1);
 			player.getMemos().set("dungeon_atleast1time", -1);
 			for (Entry<Integer, Integer> itemId : template.getRewards().entrySet()) {
 				System.out.println("Id Player: " + player.getObjectId());
