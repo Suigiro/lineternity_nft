@@ -40,6 +40,8 @@ public final class UseItem extends L2GameClientPacket {
 		if (activeChar == null)
 			return;
 
+		activeChar.updateLastAction();
+
 		if (activeChar.isInStoreMode()) {
 			activeChar.sendPacket(SystemMessageId.ITEMS_UNAVAILABLE_FOR_STORE_MANUFACTURE);
 			return;
@@ -142,20 +144,20 @@ public final class UseItem extends L2GameClientPacket {
 			}
 
 			switch (item.getItem().getBodyPart()) {
-			case Item.SLOT_LR_HAND:
-			case Item.SLOT_L_HAND:
-			case Item.SLOT_R_HAND: {
-				if (activeChar.isMounted()) {
-					activeChar.sendPacket(SystemMessageId.CANNOT_EQUIP_ITEM_DUE_TO_BAD_CONDITION);
-					return;
+				case Item.SLOT_LR_HAND:
+				case Item.SLOT_L_HAND:
+				case Item.SLOT_R_HAND: {
+					if (activeChar.isMounted()) {
+						activeChar.sendPacket(SystemMessageId.CANNOT_EQUIP_ITEM_DUE_TO_BAD_CONDITION);
+						return;
+					}
+
+					// Don't allow weapon/shield equipment if a cursed weapon is equipped
+					if (activeChar.isCursedWeaponEquipped())
+						return;
+
+					break;
 				}
-
-				// Don't allow weapon/shield equipment if a cursed weapon is equipped
-				if (activeChar.isCursedWeaponEquipped())
-					return;
-
-				break;
-			}
 			}
 
 			if (activeChar.isCursedWeaponEquipped() && item.getItemId() == 6408) // Don't allow to put formal wear

@@ -14,6 +14,9 @@
 	<aCar name="admin_search" accessLevel="7"/>
 	<aCar name="admin_show_inventory" accessLevel="7"/>
 	<aCar name="admin_show_warehouse" accessLevel="7"/>
+	<aCar name="admin_pcbang_add" accessLevel="7"/>
+	<aCar name="admin_pcbang_remove" accessLevel="7"/>
+	<aCar name="admin_pcbang_show" accessLevel="7"/>
 
 	<!-- ANNOUNCEMENTS -->
 	<aCar name="admin_announce" accessLevel="7"/>
@@ -51,6 +54,7 @@
 	
 	<!-- CLANHALL -->
 	<aCar name="admin_ch" accessLevel="7"/>
+	<aCar name="admin_clanfull" accessLevel="7"/>
 
 	<!-- CREATE ITEM -->
 	<aCar name="admin_itemcreate" accessLevel="7"/>

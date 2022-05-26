@@ -62,6 +62,7 @@ import net.sf.l2j.gameserver.enums.GaugeColor;
 import net.sf.l2j.gameserver.enums.IntentionType;
 import net.sf.l2j.gameserver.enums.LootRule;
 import net.sf.l2j.gameserver.enums.MessageType;
+import net.sf.l2j.gameserver.enums.PcCafeType;
 import net.sf.l2j.gameserver.enums.PolyType;
 import net.sf.l2j.gameserver.enums.PunishmentType;
 import net.sf.l2j.gameserver.enums.ScriptEventType;
@@ -88,6 +89,7 @@ import net.sf.l2j.gameserver.geoengine.GeoEngine;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.handler.ItemHandler;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminEditChar;
+import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.AccessLevel;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2Skill;
@@ -178,6 +180,7 @@ import net.sf.l2j.gameserver.network.serverpackets.EtcStatusUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.ExAutoSoulShot;
 import net.sf.l2j.gameserver.network.serverpackets.ExDuelUpdateUserInfo;
 import net.sf.l2j.gameserver.network.serverpackets.ExOlympiadMode;
+import net.sf.l2j.gameserver.network.serverpackets.ExPCCafePointInfo;
 import net.sf.l2j.gameserver.network.serverpackets.ExSetCompassZoneCode;
 import net.sf.l2j.gameserver.network.serverpackets.ExStorageMaxCount;
 import net.sf.l2j.gameserver.network.serverpackets.FriendList;
@@ -306,6 +309,7 @@ public final class Player extends Playable {
 	private long _onlineBeginTime;
 	private long _lastAccess;
 	private long _uptime;
+	private long _lastAction;
 
 	protected int _baseClass;
 	protected int _activeClass;
@@ -2915,18 +2919,18 @@ public final class Player extends Playable {
 			sendPacket(new MoveToPawn(this, temp, Npc.INTERACTION_DISTANCE));
 
 			switch (temp.getStoreType()) {
-			case SELL:
-			case PACKAGE_SELL:
-				sendPacket(new PrivateStoreListSell(this, temp));
-				break;
+				case SELL:
+				case PACKAGE_SELL:
+					sendPacket(new PrivateStoreListSell(this, temp));
+					break;
 
-			case BUY:
-				sendPacket(new PrivateStoreListBuy(this, temp));
-				break;
+				case BUY:
+					sendPacket(new PrivateStoreListBuy(this, temp));
+					break;
 
-			case MANUFACTURE:
-				sendPacket(new RecipeShopSellList(this, temp));
-				break;
+				case MANUFACTURE:
+					sendPacket(new RecipeShopSellList(this, temp));
+					break;
 			}
 		} else {
 			// _interactTarget=null should never happen but one never knows ^^;
@@ -4709,6 +4713,14 @@ public final class Player extends Playable {
 		return System.currentTimeMillis() - _uptime;
 	}
 
+	public boolean isAFK() {
+		return _lastAction < System.currentTimeMillis();
+	}
+
+	public void updateLastAction() {
+		_lastAction = System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(Config.PCB_AFK_TIMER);
+	}
+
 	/**
 	 * Return True if the Player is invulnerable.
 	 */
@@ -5329,9 +5341,9 @@ public final class Player extends Playable {
 							continue;
 
 						switch (effect.getEffectType()) {
-						case HEAL_OVER_TIME:
-						case COMBAT_POINT_HEAL_OVER_TIME:
-							continue;
+							case HEAL_OVER_TIME:
+							case COMBAT_POINT_HEAL_OVER_TIME:
+								continue;
 						}
 
 						final L2Skill skill = effect.getSkill();
@@ -5866,19 +5878,19 @@ public final class Player extends Playable {
 		WorldObject target = null;
 
 		switch (skill.getTargetType()) {
-		case TARGET_AURA:
-		case TARGET_FRONT_AURA:
-		case TARGET_BEHIND_AURA:
-		case TARGET_GROUND:
-		case TARGET_SELF:
-		case TARGET_CORPSE_ALLY:
-		case TARGET_AURA_UNDEAD:
-			target = this;
-			break;
+			case TARGET_AURA:
+			case TARGET_FRONT_AURA:
+			case TARGET_BEHIND_AURA:
+			case TARGET_GROUND:
+			case TARGET_SELF:
+			case TARGET_CORPSE_ALLY:
+			case TARGET_AURA_UNDEAD:
+				target = this;
+				break;
 
-		default: // Get the first target of the list
-			target = skill.getFirstOfTargetList(this);
-			break;
+			default: // Get the first target of the list
+				target = skill.getFirstOfTargetList(this);
+				break;
 		}
 
 		// Notify the AI with CAST and target
@@ -5959,27 +5971,27 @@ public final class Player extends Playable {
 		}
 
 		switch (sklTargetType) {
-		// Target the player if skill type is AURA, PARTY, CLAN or SELF
-		case TARGET_AURA:
-		case TARGET_FRONT_AURA:
-		case TARGET_BEHIND_AURA:
-		case TARGET_AURA_UNDEAD:
-		case TARGET_PARTY:
-		case TARGET_ALLY:
-		case TARGET_CLAN:
-		case TARGET_GROUND:
-		case TARGET_SELF:
-		case TARGET_CORPSE_ALLY:
-		case TARGET_AREA_SUMMON:
-			target = this;
-			break;
-		case TARGET_PET:
-		case TARGET_SUMMON:
-			target = _summon;
-			break;
-		default:
-			target = getTarget();
-			break;
+			// Target the player if skill type is AURA, PARTY, CLAN or SELF
+			case TARGET_AURA:
+			case TARGET_FRONT_AURA:
+			case TARGET_BEHIND_AURA:
+			case TARGET_AURA_UNDEAD:
+			case TARGET_PARTY:
+			case TARGET_ALLY:
+			case TARGET_CLAN:
+			case TARGET_GROUND:
+			case TARGET_SELF:
+			case TARGET_CORPSE_ALLY:
+			case TARGET_AREA_SUMMON:
+				target = this;
+				break;
+			case TARGET_PET:
+			case TARGET_SUMMON:
+				target = _summon;
+				break;
+			default:
+				target = getTarget();
+				break;
 		}
 
 		// Check the validity of the target
@@ -6072,21 +6084,21 @@ public final class Player extends Playable {
 			// Check if a Forced ATTACK is in progress on non-attackable target
 			if (!target.isAutoAttackable(this) && !forceUse) {
 				switch (sklTargetType) {
-				case TARGET_AURA:
-				case TARGET_FRONT_AURA:
-				case TARGET_BEHIND_AURA:
-				case TARGET_AURA_UNDEAD:
-				case TARGET_CLAN:
-				case TARGET_ALLY:
-				case TARGET_PARTY:
-				case TARGET_SELF:
-				case TARGET_GROUND:
-				case TARGET_CORPSE_ALLY:
-				case TARGET_AREA_SUMMON:
-					break;
-				default: // Send ActionFailed to the Player
-					sendPacket(ActionFailed.STATIC_PACKET);
-					return false;
+					case TARGET_AURA:
+					case TARGET_FRONT_AURA:
+					case TARGET_BEHIND_AURA:
+					case TARGET_AURA_UNDEAD:
+					case TARGET_CLAN:
+					case TARGET_ALLY:
+					case TARGET_PARTY:
+					case TARGET_SELF:
+					case TARGET_GROUND:
+					case TARGET_CORPSE_ALLY:
+					case TARGET_AREA_SUMMON:
+						break;
+					default: // Send ActionFailed to the Player
+						sendPacket(ActionFailed.STATIC_PACKET);
+						return false;
 				}
 			}
 
@@ -6120,33 +6132,33 @@ public final class Player extends Playable {
 			// check if the target is a monster and if force attack is set.. if not then we
 			// don't want to cast.
 			switch (sklTargetType) {
-			case TARGET_PET:
-			case TARGET_SUMMON:
-			case TARGET_AURA:
-			case TARGET_FRONT_AURA:
-			case TARGET_BEHIND_AURA:
-			case TARGET_AURA_UNDEAD:
-			case TARGET_CLAN:
-			case TARGET_SELF:
-			case TARGET_CORPSE_ALLY:
-			case TARGET_PARTY:
-			case TARGET_ALLY:
-			case TARGET_CORPSE_MOB:
-			case TARGET_AREA_CORPSE_MOB:
-			case TARGET_GROUND:
-				break;
-			default: {
-				switch (sklType) {
-				case BEAST_FEED:
-				case DELUXE_KEY_UNLOCK:
-				case UNLOCK:
+				case TARGET_PET:
+				case TARGET_SUMMON:
+				case TARGET_AURA:
+				case TARGET_FRONT_AURA:
+				case TARGET_BEHIND_AURA:
+				case TARGET_AURA_UNDEAD:
+				case TARGET_CLAN:
+				case TARGET_SELF:
+				case TARGET_CORPSE_ALLY:
+				case TARGET_PARTY:
+				case TARGET_ALLY:
+				case TARGET_CORPSE_MOB:
+				case TARGET_AREA_CORPSE_MOB:
+				case TARGET_GROUND:
 					break;
-				default:
-					sendPacket(ActionFailed.STATIC_PACKET);
-					return false;
+				default: {
+					switch (sklType) {
+						case BEAST_FEED:
+						case DELUXE_KEY_UNLOCK:
+						case UNLOCK:
+							break;
+						default:
+							sendPacket(ActionFailed.STATIC_PACKET);
+							return false;
+					}
+					break;
 				}
-				break;
-			}
 			}
 		}
 
@@ -6200,27 +6212,27 @@ public final class Player extends Playable {
 
 		// Check if this is a Pvp skill and target isn't a non-flagged/non-karma player
 		switch (sklTargetType) {
-		case TARGET_PARTY:
-		case TARGET_ALLY: // For such skills, checkPvpSkill() is called from L2Skill.getTargetList()
-		case TARGET_CLAN: // For such skills, checkPvpSkill() is called from L2Skill.getTargetList()
-		case TARGET_AURA:
-		case TARGET_FRONT_AURA:
-		case TARGET_BEHIND_AURA:
-		case TARGET_AURA_UNDEAD:
-		case TARGET_GROUND:
-		case TARGET_SELF:
-		case TARGET_CORPSE_ALLY:
-		case TARGET_AREA_SUMMON:
-			break;
-		default:
-			if (!checkPvpSkill(target, skill) && !getAccessLevel().allowPeaceAttack()) {
-				// Send a System Message to the Player
-				sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
+			case TARGET_PARTY:
+			case TARGET_ALLY: // For such skills, checkPvpSkill() is called from L2Skill.getTargetList()
+			case TARGET_CLAN: // For such skills, checkPvpSkill() is called from L2Skill.getTargetList()
+			case TARGET_AURA:
+			case TARGET_FRONT_AURA:
+			case TARGET_BEHIND_AURA:
+			case TARGET_AURA_UNDEAD:
+			case TARGET_GROUND:
+			case TARGET_SELF:
+			case TARGET_CORPSE_ALLY:
+			case TARGET_AREA_SUMMON:
+				break;
+			default:
+				if (!checkPvpSkill(target, skill) && !getAccessLevel().allowPeaceAttack()) {
+					// Send a System Message to the Player
+					sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
 
-				// Send ActionFailed to the Player
-				sendPacket(ActionFailed.STATIC_PACKET);
-				return false;
-			}
+					// Send ActionFailed to the Player
+					sendPacket(ActionFailed.STATIC_PACKET);
+					return false;
+				}
 		}
 
 		if ((sklTargetType == SkillTargetType.TARGET_HOLY
@@ -6437,14 +6449,14 @@ public final class Player extends Playable {
 	 */
 	public boolean setMount(int npcId, int npcLevel, int mountType) {
 		switch (mountType) {
-		case 0: // Dismounted
-			if (isFlying())
-				removeSkill(FrequentSkill.WYVERN_BREATH.getSkill().getId(), false);
-			break;
+			case 0: // Dismounted
+				if (isFlying())
+					removeSkill(FrequentSkill.WYVERN_BREATH.getSkill().getId(), false);
+				break;
 
-		case 2: // Flying Wyvern
-			addSkill(FrequentSkill.WYVERN_BREATH.getSkill(), false);
-			break;
+			case 2: // Flying Wyvern
+				addSkill(FrequentSkill.WYVERN_BREATH.getSkill(), false);
+				break;
 		}
 
 		_mountNpcId = npcId;
@@ -7792,10 +7804,10 @@ public final class Player extends Playable {
 				}
 
 				switch (effect.getEffectType()) {
-				case SIGNET_GROUND:
-				case SIGNET_EFFECT:
-					effect.exit();
-					break;
+					case SIGNET_GROUND:
+					case SIGNET_EFFECT:
+						effect.exit();
+						break;
 				}
 			}
 
@@ -8629,18 +8641,18 @@ public final class Player extends Playable {
 			player.sendPacket(new GetOnVehicle(getObjectId(), getBoat().getObjectId(), getBoatPosition()));
 
 		switch (getStoreType()) {
-		case SELL:
-		case PACKAGE_SELL:
-			player.sendPacket(new PrivateStoreMsgSell(this));
-			break;
+			case SELL:
+			case PACKAGE_SELL:
+				player.sendPacket(new PrivateStoreMsgSell(this));
+				break;
 
-		case BUY:
-			player.sendPacket(new PrivateStoreMsgBuy(this));
-			break;
+			case BUY:
+				player.sendPacket(new PrivateStoreMsgBuy(this));
+				break;
 
-		case MANUFACTURE:
-			player.sendPacket(new RecipeShopMsg(this));
-			break;
+			case MANUFACTURE:
+				player.sendPacket(new RecipeShopMsg(this));
+				break;
 		}
 	}
 
@@ -8673,6 +8685,7 @@ public final class Player extends Playable {
 		_summonTargetRequest = null;
 		_summonSkillRequest = null;
 	}
+
 
 	public void activateGate(int answer, int type) {
 		if (_requestedGate == null)
@@ -8773,6 +8786,53 @@ public final class Player extends Playable {
 	public boolean isWearingFormalWear() {
 		final ItemInstance formal = getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
 		return formal != null && formal.getItem().getBodyPart() == Item.SLOT_ALLDRESS;
+	}
+
+	public int getPcCafePoints() {
+		return getMemos().getInteger("cafe_points", 0);
+	}
+
+	public void increasePcCafePoints(int count, boolean doubleAmount) {
+		count = doubleAmount ? count * 2 : count;
+		final int newAmount = Math.min(getMemos().getInteger("cafe_points", 1) + count, Config.PCB_Max_POINTS_ALLOWED);
+		getMemos().set("cafe_points", newAmount);
+		sendPacket(SystemMessage
+				.getSystemMessage(
+						doubleAmount ? SystemMessageId.ACQUIRED_S1_PCPOINT_DOUBLE : SystemMessageId.ACQUIRED_S1_PCPOINT)
+				.addNumber(count));
+		sendPacket(new ExPCCafePointInfo(newAmount, count, doubleAmount ? PcCafeType.DOUBLE_ADD : PcCafeType.ADD));
+	}
+
+	public void decreasePcCafePoints(int count) {
+		final int newAmount = Math.max(getMemos().getInteger("cafe_points", 0) - count, 0);
+		getMemos().set("cafe_points", newAmount);
+		sendPacket(SystemMessage.getSystemMessage(SystemMessageId.USING_S1_PCPOINT).addNumber(count));
+		sendPacket(new ExPCCafePointInfo(newAmount, -count, PcCafeType.CONSUME));
+	}
+
+	public static void addItemToOffline(int owner_id, int item_id, int count) {
+		final Item item = ItemTable.getInstance().getTemplate(item_id);
+		int objectId = IdFactory.getInstance().getNextId();
+
+		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+				PreparedStatement statement = con.prepareStatement(ADD_ITEM)) {
+			if (count > 1 && !item.isStackable())
+				return;
+
+			statement.setInt(1, owner_id);
+			statement.setInt(2, item.getItemId());
+			statement.setInt(3, count);
+			statement.setString(4, "INVENTORY");
+			statement.setInt(5, 0);
+			statement.setInt(6, 0);
+			statement.setInt(7, objectId);
+			statement.setInt(8, 0);
+			statement.setInt(9, 0);
+			statement.setInt(10, -1);
+			statement.setLong(11, 0);
+			statement.executeUpdate();
+		} catch (Exception e) {
+		}
 	}
 
 	public boolean isCubicBypass() {

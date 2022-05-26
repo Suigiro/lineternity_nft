@@ -1,10 +1,11 @@
 package net.sf.l2j.gameserver.handler;
 
-import com.dev.handler.admincommandhandlers.AdminInventory;
-import com.dev.handler.admincommandhandlers.AdminWarehouse;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import com.dev.handler.admincommandhandlers.AdminCafePoints;
+import com.dev.handler.admincommandhandlers.AdminInventory;
+import com.dev.handler.admincommandhandlers.AdminWarehouse;
 
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminAdmin;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminAnnouncements;
@@ -52,12 +53,10 @@ import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminTarget;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminTeleport;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminZone;
 
-public class AdminCommandHandler
-{
+public class AdminCommandHandler {
 	private final Map<Integer, IAdminCommandHandler> _entries = new HashMap<>();
-	
-	protected AdminCommandHandler()
-	{
+
+	protected AdminCommandHandler() {
 		registerHandler(new AdminAdmin());
 		registerHandler(new AdminAnnouncements());
 		registerHandler(new AdminBan());
@@ -103,41 +102,37 @@ public class AdminCommandHandler
 		registerHandler(new AdminTarget());
 		registerHandler(new AdminTeleport());
 		registerHandler(new AdminZone());
-		
+
 		/** Linternity registers */
 		registerHandler(new AdminInventory());
 		registerHandler(new AdminWarehouse());
+		registerHandler(new AdminCafePoints());
 		/* --------------------- */
 	}
-	
-	private void registerHandler(IAdminCommandHandler handler)
-	{
+
+	private void registerHandler(IAdminCommandHandler handler) {
 		for (String id : handler.getAdminCommandList())
 			_entries.put(id.hashCode(), handler);
 	}
-	
-	public IAdminCommandHandler getHandler(String adminCommand)
-	{
+
+	public IAdminCommandHandler getHandler(String adminCommand) {
 		String command = adminCommand;
-		
+
 		if (adminCommand.indexOf(" ") != -1)
 			command = adminCommand.substring(0, adminCommand.indexOf(" "));
-		
+
 		return _entries.get(command.hashCode());
 	}
-	
-	public int size()
-	{
+
+	public int size() {
 		return _entries.size();
 	}
-	
-	public static AdminCommandHandler getInstance()
-	{
+
+	public static AdminCommandHandler getInstance() {
 		return SingletonHolder.INSTANCE;
 	}
-	
-	private static class SingletonHolder
-	{
+
+	private static class SingletonHolder {
 		protected static final AdminCommandHandler INSTANCE = new AdminCommandHandler();
 	}
 }

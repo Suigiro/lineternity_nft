@@ -4,15 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-//import com.dev.handler.cubiccommandhandlers.CubicBanking;
+import com.dev.handler.cubiccommandhandlers.CubicAugmentation;
+import com.dev.handler.cubiccommandhandlers.CubicBanking;
 import com.dev.handler.cubiccommandhandlers.CubicChat;
 import com.dev.handler.cubiccommandhandlers.CubicGeneral;
 import com.dev.handler.cubiccommandhandlers.CubicItemStore;
 import com.dev.handler.cubiccommandhandlers.CubicMagicalSupport;
 import com.dev.handler.cubiccommandhandlers.CubicSymbolMaker;
 import com.dev.handler.cubiccommandhandlers.CubicTeleporter;
-//import com.dev.handler.cubiccommandhandlers.CubicTrainer;
-import com.dev.handler.cubiccommandhandlers.CubicVersion;
+
+import net.sf.l2j.Config;
 
 public class CubicCommandHandler {
 	private static final Logger _log = Logger.getLogger(CubicCommandHandler.class.getName());
@@ -26,12 +27,9 @@ public class CubicCommandHandler {
 		registerCubicCommandHandler(new CubicMagicalSupport());
 		registerCubicCommandHandler(new CubicSymbolMaker());
 		registerCubicCommandHandler(new CubicTeleporter());
-//		registerCubicCommandHandler(new CubicTrainer());
-		registerCubicCommandHandler(new CubicVersion());
-//		if (Config.BANKING_SYSTEM_ENABLED)
-//			registerCubicCommandHandler(new CubicBanking());
-		// if (Config.MENU_SYSTEM_ENABLED)
-		// registerCubicCommandHandler(new CubicMenu());
+		registerCubicCommandHandler(new CubicAugmentation());
+		if (Config.BANKING_SYSTEM_ENABLED)
+			registerCubicCommandHandler(new CubicBanking());
 		_log.info("CubicCommandHandler: Loaded " + _datatable.size() + " handler(s).");
 	}
 

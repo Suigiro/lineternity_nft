@@ -29,9 +29,14 @@ public final class DlgAnswer extends L2GameClientPacket {
 		if (_messageId == SystemMessageId.RESSURECTION_REQUEST_BY_S1.getId()
 				|| _messageId == SystemMessageId.DO_YOU_WANT_TO_BE_RESTORED.getId())
 			activeChar.reviveAnswer(_answer);
-		else if (_messageId == SystemMessageId.S1_WISHES_TO_SUMMON_YOU_FROM_S2_DO_YOU_ACCEPT.getId())
-			activeChar.teleportAnswer(_answer, _requesterId);
-		else if (_messageId == 1983 && Config.ALLOW_WEDDING)
+		else if (_messageId == SystemMessageId.S1_WISHES_TO_SUMMON_YOU_FROM_S2_DO_YOU_ACCEPT.getId()) {
+			System.out.println("Resposta: " + _answer);
+			if (_answer == 1) {
+				for (Player player : World.getInstance().getPlayers())
+					activeChar.teleportTo(player.getX(), player.getY(), player.getZ(), 0);
+			} else
+				activeChar.teleportAnswer(_answer, _requesterId);
+		} else if (_messageId == 1983 && Config.ALLOW_WEDDING)
 			activeChar.engageAnswer(_answer);
 		else if (_messageId == SystemMessageId.WOULD_YOU_LIKE_TO_OPEN_THE_GATE.getId())
 			activeChar.activateGate(_answer, 1);

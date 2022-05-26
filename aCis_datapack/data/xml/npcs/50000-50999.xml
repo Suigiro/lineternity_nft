@@ -255,7 +255,7 @@
 			<skill id="4416" level="14"/>
 		</skills>
 	</npc>
-	<npc id="50014" idTemplate="30192" name="Kyara" title="Suport Manager">
+	<npc id="50014" idTemplate="30192" name="Kyara" title="Support Manager">
 		<set name="usingServerSideName" val="true" />
 		<set name="usingServerSideTitle" val="true" />
 		<set name="level" val="70"/>
@@ -328,6 +328,43 @@
 		<skills>
 			<skill id="4045" level="1"/>
 			<skill id="4416" level="14"/>
+		</skills>
+	</npc>
+	<npc id="50016" idTemplate="35322" name="Monumental Statue" title="">
+		<set name="usingServerSideName" val="true" />
+		<set name="usingServerSideTitle" val="true" />
+		<set name="level" val="20"/>
+		<set name="radius" val="34"/>
+		<set name="height" val="65"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="EventManagerNpc"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="10"/>
+		<set name="hp" val="342.5127"/>
+		<set name="mp" val="192"/>
+		<set name="hpRegen" val="2.5"/>
+		<set name="mpRegen" val="1.2"/>
+		<set name="pAtk" val="44.32863"/>
+		<set name="pDef" val="86.87049"/>
+		<set name="mAtk" val="30.2707"/>
+		<set name="mDef" val="63.56806"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="50"/>
+		<set name="runSpd" val="120"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" canMove="false" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="19"/>
 		</skills>
 	</npc>
 </list>
