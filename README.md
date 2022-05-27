@@ -45,6 +45,7 @@
 * Mostrar GMs Online = /gmlist
 * Converter Adena para GoldBar = /gold
 * Converter GoldBar para Adena = /adena
+* Skins = .dressme ( modelo temporario que precisara ser refatorado pensando na versão de venda)
 
 ## Dicas - ADMIN
 * Segure shift e clique no seu status (onde mostra HP+CP) e vc podera editar a si mesmo ou ao jogador alvo
