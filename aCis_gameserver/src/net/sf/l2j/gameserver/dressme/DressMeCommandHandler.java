@@ -1,7 +1,5 @@
 package net.sf.l2j.gameserver.dressme;
 
-import java.util.StringTokenizer;
-
 import com.dev.dressme.DressMe;
 import com.dev.dressme.DressMeData;
 
@@ -41,10 +39,9 @@ public class DressMeCommandHandler implements IVoicedCommandHandler {
 			final DressMe dress = DressMeData.getInstance().getItemId(0);
 			activeChar.setDress(dress);
 			activeChar.broadcastUserInfo();
+
 		} else if (command.equals("disable_skin")) {
-			// remover // abaixo para por utilidade VIP/Premium
-			// if(activeChar.isPremium())
-			// {
+
 			if (activeChar.getDress() != null) {
 				activeChar.setDress(null);
 				activeChar.broadcastUserInfo();
@@ -52,28 +49,20 @@ public class DressMeCommandHandler implements IVoicedCommandHandler {
 				activeChar.sendSkillList();
 				activeChar.sendPacket(new EtcStatusUpdate(activeChar));
 			}
-			// }
+
 		} else {
 			if (!activeChar.isInsideZone(ZoneId.TOWN)) {
 				activeChar.sendMessage("This command can only be used within a City.");
 
 			}
-			// remover // abaixo para por utilidade VIP/Premium
-			// if (!activeChar.isPremium())
-			// {
 			if (activeChar.getDress() != null) {
 				activeChar.sendMessage("Wait, you are experiencing a skin.");
-
 			}
-			// }
 
-			// remover // abaixo para por utilidade VIP/Premium
-			// if (activeChar.isPremium())
-			// {
-			// {
-			StringTokenizer st = new StringTokenizer(command);
-			st.nextToken();
-			int skinId = Integer.parseInt(st.nextToken());
+			int skinId = 0;
+
+			if (command.contains(" "))
+				skinId = Integer.parseInt(command.split(" ")[1]);
 
 			final DressMe dress = DressMeData.getInstance().getItemId(skinId);
 
@@ -90,25 +79,6 @@ public class DressMeCommandHandler implements IVoicedCommandHandler {
 
 			}
 
-			// }
-
-			// }
-			// remover /* e */ abaixo para por utilidade VIP/Premium
-			/*
-			 * 
-			 * StringTokenizer st = new StringTokenizer(command); st.nextToken(); int skinId
-			 * = Integer.parseInt(st.nextToken());
-			 * 
-			 * final DressMe dress = DressMeData.getInstance().getItemId(skinId); final
-			 * DressMe dress2 = DressMeData.getInstance().getItemId(0);
-			 * 
-			 * if (dress != null) { activeChar.setDress(dress);
-			 * activeChar.broadcastUserInfo(); ThreadPool.schedule(() -> {
-			 * activeChar.setDress(dress2); activeChar.broadcastUserInfo(); },5000L);
-			 * 
-			 * activeChar.sendPacket(new ExShowScreenMessage("Experiencing a Premium Skin!",
-			 * 5000)); } else { activeChar.sendMessage("Invalid skin."); return false; }
-			 */
 		}
 
 	}
