@@ -1,5 +1,8 @@
 package net.sf.l2j.gameserver.network.serverpackets;
 
+import com.dev.dressme.DressMe;
+import com.dev.dressme.DressMeWeapom;
+
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.data.manager.CursedWeaponManager;
 import net.sf.l2j.gameserver.enums.PolyType;
@@ -9,26 +12,23 @@ import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.model.actor.Summon;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 
-public class UserInfo extends L2GameServerPacket
-{
+public class UserInfo extends L2GameServerPacket {
 	private final Player _player;
 	private int _relation;
-	
-	public UserInfo(Player player)
-	{
+
+	public UserInfo(Player player) {
 		_player = player;
-		
+
 		_relation = _player.isClanLeader() ? 0x40 : 0;
-		
+
 		if (_player.getSiegeState() == 1)
 			_relation |= 0x180;
 		if (_player.getSiegeState() == 2)
 			_relation |= 0x80;
 	}
-	
+
 	@Override
-	protected final void writeImpl()
-	{
+	protected final void writeImpl() {
 		writeC(0x04);
 		writeD(_player.getX());
 		writeD(_player.getY());
@@ -55,7 +55,10 @@ public class UserInfo extends L2GameServerPacket
 		writeD(_player.getCurrentLoad());
 		writeD(_player.getMaxLoad());
 		writeD(_player.getActiveWeaponItem() != null ? 40 : 20);
-		
+
+		final DressMe dress = _player.getDress();
+		final DressMeWeapom dressW = _player.getDressWeapom();
+
 		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_HAIRALL));
 		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_REAR));
 		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LEAR));
@@ -63,17 +66,25 @@ public class UserInfo extends L2GameServerPacket
 		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_RFINGER));
 		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LFINGER));
 		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_HEAD));
-		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_RHAND));
-		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LHAND));
-		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_GLOVES));
-		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_CHEST));
-		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LEGS));
-		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_FEET));
+		writeD((dressW != null) && (dressW.getRHandId() > 0) ? dressW.getRHandId()
+				: _player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_RHAND));
+		writeD((dressW != null) && (dressW.getLHandId() > 0) ? dressW.getLHandId()
+				: _player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LHAND));
+		writeD((dress != null) && (dress.getGlovesId() > 0) ? dress.getGlovesId()
+				: _player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_GLOVES));
+		writeD((dress != null) && (dress.getChestId() > 0) ? dress.getChestId()
+				: _player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_CHEST));
+		writeD((dress != null) && (dress.getLegsId() > 0) ? dress.getLegsId()
+				: _player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LEGS));
+		writeD((dress != null) && (dress.getLegsId() > 0) ? dress.getLegsId()
+				: _player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_FEET));
 		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_BACK));
-		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_RHAND));
-		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_HAIR));
+		writeD((dressW != null) && (dressW.getRHandId() > 0) ? dressW.getRHandId()
+				: _player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_RHAND));
+		writeD((dress != null) && (dress.getHairId() > 0) ? dress.getHairId()
+				: _player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_HAIR));
 		writeD(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_FACE));
-		
+
 		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HAIRALL));
 		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_REAR));
 		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LEAR));
@@ -81,17 +92,25 @@ public class UserInfo extends L2GameServerPacket
 		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RFINGER));
 		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LFINGER));
 		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HEAD));
-		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
-		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LHAND));
-		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_GLOVES));
-		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_CHEST));
-		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LEGS));
-		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_FEET));
+		writeD((dressW != null) && (dressW.getRHandId() > 0) ? dressW.getRHandId()
+				: _player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
+		writeD((dressW != null) && (dressW.getLHandId() > 0) ? dressW.getLHandId()
+				: _player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LHAND));
+		writeD((dress != null) && (dress.getGlovesId() > 0) ? dress.getGlovesId()
+				: _player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_GLOVES));
+		writeD((dress != null) && (dress.getChestId() > 0) ? dress.getChestId()
+				: _player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_CHEST));
+		writeD((dress != null) && (dress.getLegsId() > 0) ? dress.getLegsId()
+				: _player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LEGS));
+		writeD((dress != null) && (dress.getFeetId() > 0) ? dress.getFeetId()
+				: _player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_FEET));
 		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_BACK));
-		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
-		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HAIR));
+		writeD((dressW != null) && (dressW.getRHandId() > 0) ? dressW.getRHandId()
+				: _player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
+		writeD((dress != null) && (dress.getHairId() > 0) ? dress.getHairId()
+				: _player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HAIR));
 		writeD(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_FACE));
-		
+
 		writeH(0x00);
 		writeH(0x00);
 		writeH(0x00);
@@ -124,7 +143,7 @@ public class UserInfo extends L2GameServerPacket
 		writeH(0x00);
 		writeH(0x00);
 		writeH(0x00);
-		
+
 		writeD(_player.getPAtk(null));
 		writeD(_player.getPAtkSpd());
 		writeD(_player.getPDef(null));
@@ -137,11 +156,11 @@ public class UserInfo extends L2GameServerPacket
 		writeD(_player.getMDef(null, null));
 		writeD(_player.getPvpFlag());
 		writeD(_player.getKarma());
-		
+
 		final int runSpd = _player.getStat().getBaseRunSpeed();
 		final int walkSpd = _player.getStat().getBaseWalkSpeed();
 		final int swimSpd = _player.getStat().getBaseSwimSpeed();
-		
+
 		writeD(runSpd);
 		writeD(walkSpd);
 		writeD(swimSpd);
@@ -150,29 +169,26 @@ public class UserInfo extends L2GameServerPacket
 		writeD(0);
 		writeD((_player.isFlying()) ? runSpd : 0);
 		writeD((_player.isFlying()) ? walkSpd : 0);
-		
+
 		writeF(_player.getStat().getMovementSpeedMultiplier());
 		writeF(_player.getStat().getAttackSpeedMultiplier());
-		
+
 		final Summon summon = _player.getSummon();
-		if (_player.getMountType() != 0 && summon != null)
-		{
+		if (_player.getMountType() != 0 && summon != null) {
 			writeF(summon.getCollisionRadius());
 			writeF(summon.getCollisionHeight());
-		}
-		else
-		{
+		} else {
 			writeF(_player.getCollisionRadius());
 			writeF(_player.getCollisionHeight());
 		}
-		
+
 		writeD(_player.getAppearance().getHairStyle());
 		writeD(_player.getAppearance().getHairColor());
 		writeD(_player.getAppearance().getFace());
 		writeD((_player.isGM()) ? 1 : 0);
-		
+
 		writeS((_player.getPolyType() != PolyType.DEFAULT) ? "Morphed" : _player.getTitle());
-		
+
 		writeD(_player.getClanId());
 		writeD(_player.getClanCrestId());
 		writeD(_player.getAllyId());
@@ -183,13 +199,15 @@ public class UserInfo extends L2GameServerPacket
 		writeC((_player.hasDwarvenCraft()) ? 1 : 0);
 		writeD(_player.getPkKills());
 		writeD(_player.getPvpKills());
-		
+
 		writeH(_player.getCubics().size());
 		for (int id : _player.getCubics().keySet())
 			writeH(id);
-		
+
 		writeC((_player.isInPartyMatchRoom()) ? 1 : 0);
-		writeD((_player.getAppearance().getInvisible() && _player.isGM()) ? (_player.getAbnormalEffect() | AbnormalEffect.STEALTH.getMask()) : _player.getAbnormalEffect());
+		writeD((_player.getAppearance().getInvisible() && _player.isGM())
+				? (_player.getAbnormalEffect() | AbnormalEffect.STEALTH.getMask())
+				: _player.getAbnormalEffect());
 		writeC(0x00);
 		writeD(_player.getClanPrivileges());
 		writeH(_player.getRecomLeft());
@@ -201,7 +219,8 @@ public class UserInfo extends L2GameServerPacket
 		writeD(_player.getMaxCp());
 		writeD((int) _player.getCurrentCp());
 		writeC((_player.isMounted()) ? 0 : _player.getEnchantEffect());
-		writeC((Config.PLAYER_SPAWN_PROTECTION > 0 && _player.isSpawnProtected()) ? TeamType.BLUE.getId() : _player.getTeam().getId());
+		writeC((Config.PLAYER_SPAWN_PROTECTION > 0 && _player.isSpawnProtected()) ? TeamType.BLUE.getId()
+				: _player.getTeam().getId());
 		writeD(_player.getClanCrestLargeId());
 		writeC((_player.isNoble()) ? 1 : 0);
 		writeC((_player.isHero() || (_player.isGM() && Config.GM_HERO_AURA)) ? 1 : 0);

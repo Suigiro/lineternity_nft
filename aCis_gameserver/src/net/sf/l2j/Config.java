@@ -144,6 +144,11 @@ public final class Config {
 	public static int BANKING_SYSTEM_ADENA;
 	public static IntIntHolder[] BANKING_SYSTEM_GOLDCOIN;
 
+	/**	Skins */
+	public static boolean CMD_SKIN;
+	public static int DRESS_SKILL_ID;
+	public static int DRESS_SKILL_LVL;
+
 	// --------------------------------------------------
 	// Clans settings
 	// --------------------------------------------------
@@ -911,6 +916,11 @@ public final class Config {
 		BANKING_SYSTEM_ENABLED = lineternity.getProperty("BankingEnabled", false);
 		BANKING_SYSTEM_GOLDCOIN = lineternity.parseIntIntList("BankingGoldCoin", "3470-1");
 		BANKING_SYSTEM_ADENA = lineternity.getProperty("BankingAdenaCount", 500000000);
+
+		/** Skins*/
+		CMD_SKIN = Boolean.parseBoolean(lineternity.getProperty("EnableSkinCMD", "True"));
+		DRESS_SKILL_ID = Integer.parseInt(lineternity.getProperty("DressSkillId", "0"));
+		DRESS_SKILL_LVL = Integer.parseInt(lineternity.getProperty("DressSkillLvl", "0"));
 
 	}
 

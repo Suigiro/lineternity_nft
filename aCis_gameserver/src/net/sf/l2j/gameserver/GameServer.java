@@ -7,6 +7,8 @@ import java.net.InetAddress;
 import java.util.logging.LogManager;
 
 import com.dev.Main;
+import com.dev.dressme.DressMeData;
+import com.dev.dressme.DressMeDataWeapom;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
@@ -306,6 +308,10 @@ public class GameServer {
 
 		StringUtil.printSection("Lineternity - Addons");
 		Main.init();
+
+		StringUtil.printSection("DressMe Manager");
+		DressMeData.getInstance();
+		DressMeDataWeapom.getInstance();
 
 		StringUtil.printSection("Login");
 		LoginServerThread.getInstance().start();
