@@ -24,4 +24,5 @@ public class AutofarmCommandHandler implements IVoicedCommandHandler {
 	public String[] getVoicedCommands() {
 		return new String[] { "farm", "farmon", "farmoff" };
 	}
+
 }

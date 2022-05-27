@@ -21,6 +21,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 
+import com.dev.dressme.DressMe;
+import com.dev.dressme.DressMeWeapom;
 import com.dev.dungeon.Dungeon;
 import com.dev.dungeon.Instance;
 import com.dev.manager.NewCharTaskManager;
@@ -332,6 +334,10 @@ public final class Player extends Playable {
 
 	private boolean _isCubicBypass;
 	private int _nameChangeItemId;
+	private boolean _dressed;
+	private DressMe _dressMe;
+	private DressMeWeapom _dressMeWeapom;
+	private boolean _disableddressed;
 
 	/* --------------------- */
 
@@ -8686,7 +8692,6 @@ public final class Player extends Playable {
 		_summonSkillRequest = null;
 	}
 
-
 	public void activateGate(int answer, int type) {
 		if (_requestedGate == null)
 			return;
@@ -8792,6 +8797,8 @@ public final class Player extends Playable {
 		return getMemos().getInteger("cafe_points", 0);
 	}
 
+	/** lineternity methods, gets e setters */
+
 	public void increasePcCafePoints(int count, boolean doubleAmount) {
 		count = doubleAmount ? count * 2 : count;
 		final int newAmount = Math.min(getMemos().getInteger("cafe_points", 1) + count, Config.PCB_Max_POINTS_ALLOWED);
@@ -8849,6 +8856,54 @@ public final class Player extends Playable {
 
 	public void setNameChangeItemId(int itemId) {
 		this._nameChangeItemId = itemId;
+	}
+
+	public boolean isDressMeEnabled() {
+		return _dressed;
+	}
+
+	public boolean isDressMeWeapomEnabled() {
+		return _dressed;
+	}
+
+	public void setDressMeEnabled(boolean val) {
+		_dressed = val;
+	}
+
+	public void setDressMeWeapomEnabled(boolean val) {
+		_dressed = val;
+	}
+
+	public boolean isDressMeDisabled() {
+		return _disableddressed;
+	}
+
+	public boolean isDressMeWeapomDisabled() {
+		return _disableddressed;
+	}
+
+	public void setDressMeDisabled(boolean val) {
+		_disableddressed = val;
+	}
+
+	public void setDressMeWDisabled(boolean val) {
+		_disableddressed = val;
+	}
+
+	public DressMe getDress() {
+		return _dressMe;
+	}
+
+	public DressMeWeapom getDressWeapom() {
+		return _dressMeWeapom;
+	}
+
+	public void setDress(DressMe val) {
+		_dressMe = val;
+	}
+
+	public void setDressWeapom(DressMeWeapom val) {
+		_dressMeWeapom = val;
 	}
 
 	/* -------------------------------- */
