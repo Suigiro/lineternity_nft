@@ -3,11 +3,11 @@
 # L2J Server is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
 
-FROM openjdk:16-alpine
+FROM openjdk:16-alpine3.13
 
 LABEL maintainer="Lineternity" \
-      version="2.6.2.0" \
-      website="lineternity.jogatinando.com.br"
+    version="0.0.0.1" \
+    website="lineternity.jogatinando.com.br"
 
 COPY entrypoint.sh /entrypoint.sh
 
@@ -15,22 +15,15 @@ ARG branch_gs=develop
 ARG branch_dp=develop
 
 RUN apk update \ 
-    && apk --no-cache add maven mariadb-client unzip git \
+    && apk --no-cache add ant mariadb-client git \
     && mkdir -p /opt/l2j/server && mkdir -p /opt/l2j/target && cd /opt/l2j/target/ \
-    && git clone --branch master --single-branch https://git@bitbucket.org/l2jserver/l2j-server-cli.git cli \
-    && git clone --branch master --single-branch https://git@bitbucket.org/l2jserver/l2j-server-login.git login \
-    && git clone --branch $branch_gs --single-branch https://git@bitbucket.org/l2jserver/l2j-server-game.git game \
-    && git clone --branch $branch_dp --single-branch https://git@bitbucket.org/l2jserver/l2j-server-datapack.git datapack \
-    && cd /opt/l2j/target/cli && chmod 755 mvnw && ./mvnw install \
-    && cd /opt/l2j/target/login && chmod 755 mvnw && ./mvnw install \
-    && cd /opt/l2j/target/game && chmod 755 mvnw && ./mvnw install \
-    && cd /opt/l2j/target/datapack && chmod 755 mvnw && ./mvnw install \
-    && unzip /opt/l2j/target/cli/target/*.zip -d /opt/l2j/server/cli \
-    && unzip /opt/l2j/target/login/target/*.zip -d /opt/l2j/server/login \
-    && unzip /opt/l2j/target/game/target/*.zip -d /opt/l2j/server/game \
-    && unzip /opt/l2j/target/datapack/target/*.zip -d /opt/l2j/server/game \
-    && rm -rf /opt/l2j/target/ && apk del maven git \
-    && chmod +x /opt/l2j/server/cli/*.sh /opt/l2j/server/game/*.sh /opt/l2j/server/login/*.sh /entrypoint.sh
+    && git clone --branch main --single-branch https://git@github.com:kazuyabr/lineternity_nft.git lineternity \
+    && cd /opt/l2j/target/lineternity/aCis_datapack && chmod 755 && ./ant build \
+    && cd /opt/l2j/target/lineternity/aCis_gameserver && chmod 755 && ./ant dist \
+    && cp -rp /opt/l2j/target/lineternity/aCis_datapack/build/ /opt/l2j/server/ \
+    && cp -rp /opt/l2j/target/lineternity/aCis_gameserver/build/dist/ /opt/l2j/server/ \
+    && rm -rf /opt/l2j/target/ && apk del ant git \
+    && chmod +x /opt/l2j/server/cli/*.sh /opt/l2j/server/game/*.sh /opt/l2j/server/auth/*.sh /entrypoint.sh
 
 
 WORKDIR /opt/l2j/server

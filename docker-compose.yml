@@ -3,12 +3,12 @@
 # L2J Server is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 
-version: '3.3'
+version: '0.1'
 
 services:
   mariadb:
-    container_name: l2j-server-mariadb
-    image: yobasystems/alpine-mariadb:latest
+    container_name: lineternity-server-mariadb
+    image: yobasystems/alpine-mariadb:10.4.13
     volumes:
       - /var/lib/mariadb
     restart: always
@@ -17,7 +17,7 @@ services:
     ports:
       - "3306:3306"
   lineternity-server:
-    container_name: l2j-server-docker
+    container_name: lineternity-server-docker
     image: lineternity/lineternity-server-docker:latest
     restart: always
     environment:
