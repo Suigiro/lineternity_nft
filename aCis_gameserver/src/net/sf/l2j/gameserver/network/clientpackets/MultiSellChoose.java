@@ -174,11 +174,14 @@ public class MultiSellChoose extends L2GameClientPacket {
 					player.sendPacket(SystemMessageId.THE_CLAN_REPUTATION_SCORE_IS_TOO_LOW);
 					return;
 				}
-			} else if (e.getItemId() == PC_BANG_POINTS && e.getItemCount() * _amount > player.getPcCafePoints()) {
-
-				player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.SHORT_OF_ACCUMULATED_POINTS));
-				return;
-
+			}
+			else if (e.getItemId() == PC_BANG_POINTS)
+			{
+				if (player.getPcCafePoints() < e.getItemCount() * _amount)
+				{
+					player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.SHORT_OF_ACCUMULATED_POINTS));
+					return;
+				}
 			} else {
 				// if this is not a list that maintains enchantment, check the count of all
 				// items that have the given id.
