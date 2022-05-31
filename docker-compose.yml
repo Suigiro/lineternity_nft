@@ -15,7 +15,7 @@ services:
     environment:
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
     ports:
-      - "3306:3306"
+      - "3307:3306"
   lineternity-server:
     container_name: lineternity-server-docker
     image: lineternity/lineternity-server-docker:latest
@@ -39,6 +39,7 @@ services:
       CUSTOM_ITEMS_LOAD: "True"
       CUSTOM_MULTISELL_LOAD: "True"
       CUSTOM_BUYLIST_LOAD: "True"
+      ALT_WEIGHT_LIMIT: "100"
     depends_on:
       - mariadb
     ports:

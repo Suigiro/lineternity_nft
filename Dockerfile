@@ -14,8 +14,18 @@ COPY entrypoint.sh /entrypoint.sh
 ARG branch_gs=develop
 ARG branch_dp=develop
 
-RUN apk update \ 
-    && apk --no-cache add ant mariadb-client git \
+# install apache ant
+ENV ANT_VERSION 1.10.1
+ENV ANT_DOWNLOAD_URL http://archive.apache.org/dist/ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz
+ENV ANT_HOME /usr/share/ant
+ENV PATH $PATH:$ANT_HOME/bin
+
+# download and extract apache ant
+RUN apk --update add --no-cache curl -f#L $ANT_DOWNLOAD_URL | bsdtar -C /usr/share/ -xf- \
+    && ln -s /usr/share/apache-ant-$ANT_VERSION /usr/share/ant 
+
+
+RUN apk --update add  --no-cache mariadb-client git \
     && mkdir -p /opt/l2j/server && mkdir -p /opt/l2j/target && cd /opt/l2j/target/ \
     && git clone --branch main --single-branch https://git@github.com:kazuyabr/lineternity_nft.git lineternity \
     && cd /opt/l2j/target/lineternity/aCis_datapack && chmod 755 && ./ant build \
@@ -23,7 +33,7 @@ RUN apk update \
     && cp -rp /opt/l2j/target/lineternity/aCis_datapack/build/ /opt/l2j/server/ \
     && cp -rp /opt/l2j/target/lineternity/aCis_gameserver/build/dist/ /opt/l2j/server/ \
     && rm -rf /opt/l2j/target/ && apk del ant git \
-    && chmod +x /opt/l2j/server/cli/*.sh /opt/l2j/server/game/*.sh /opt/l2j/server/auth/*.sh /entrypoint.sh
+    && chmod +x /opt/l2j/server/game/*.sh /opt/l2j/server/auth/*.sh /entrypoint.sh
 
 
 WORKDIR /opt/l2j/server

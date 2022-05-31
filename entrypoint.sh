@@ -5,13 +5,12 @@
 # L2J Server is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
 
-JAVA_XMS=${JAVA_XMS:-"512m"}
 JAVA_XMX=${JAVA_XMX:-"2g"}
 IP_ADDRESS=${IP_ADDRESS:-"127.0.0.1"}
 DATABASE_USER=${DATABASE_USER:-"root"}
-DATABASE_PASS=${DATABASE_PASS:-"root"}
+DATABASE_PASS=${DATABASE_PASS:-""}
 DATABASE_ADDRESS=${DATABASE_ADDRESS:-"mariadb"}
-DATABASE_PORT=${DATABASE_PORT:-"3306"}
+DATABASE_PORT=${DATABASE_PORT:-"3307"}
 LAN_ADDRESS=${LAN_ADDRESS:-"10.0.0.0"}
 LAN_SUBNET=${LAN_SUBNET:-"10.0.0.0/8"}
 RATE_XP=${RATE_XP:-"1"}
@@ -38,7 +37,7 @@ MAX_WAREHOUSE_SLOTS_CLAN=${MAX_WAREHOUSE_SLOTS_CLAN:-"200"}
 PET_XP_RATE=${PET_XP_RATE:-"1"}
 ITEM_SPOIL_MULTIPLIER=${ITEM_SPOIL_MULTIPLIER:-"1"}
 ITEM_DROP_MULTIPLIER=${ITEM_DROP_MULTIPLIER:-"1"}
-WEIGHT_LIMIT=${WEIGHT_LIMIT:-"1"}
+ALT_WEIGHT_LIMIT=${ALT_WEIGHT_LIMIT:-"1"}
 RUN_SPEED_BOOST=${RUN_SPEED_BOOST:-"0"}
 RATE_ADENA=${RATE_ADENA:-"1"}
 ADMIN_RIGHTS=${ADMIN_RIGHTS:-"False"}
@@ -63,10 +62,6 @@ BUFFER_SERVICE_VOICED=${BUFFER_SERVICE_VOICED:-"False"}
 BUFFER_SERVICE_VOICED_COMMAND=${BUFFER_SERVICE_VOICED_COMMAND:-"bufferservice"}
 BUFFER_SERVICE_VOICED_NAME=${BUFFER_SERVICE_VOICED_NAME:-"Voiced"}
 BUFFER_SERVICE_VOICED_REQUIRED_ITEM=${BUFFER_SERVICE_VOICED_REQUIRED_ITEM:-"0"}
-DISCORD_BOT_ENABLE=${DISCORD_BOT_ENABLE:-"False"}
-DISCORD_BOT_PREFIX=${DISCORD_BOT_PREFIX:-"//"}
-DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN:-"NzY3Mzg5NjE"}
-DISCORD_BOT_CHANNEL_ID=${DISCORD_BOT_CHANNEL_ID:-"732358666681843752"}
 
 echo "Using environment configuration:"
 printenv | sort
@@ -90,13 +85,13 @@ if [ "$DATABASE" != "l2jls" ]; then
     mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "DROP DATABASE IF EXISTS l2jls";
     mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "DROP DATABASE IF EXISTS l2jgs";
     
-    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "CREATE OR REPLACE USER 'l2j'@'%' IDENTIFIED BY 'l2jserver2019';";
-    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "GRANT ALL PRIVILEGES ON *.* TO 'l2j'@'%' IDENTIFIED BY 'l2jserver2019';";
+    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "CREATE OR REPLACE USER 'l2j'@'%' IDENTIFIED BY 'lineternity';";
+    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "GRANT ALL PRIVILEGES ON *.* TO 'l2j'@'%' IDENTIFIED BY 'lineternity';";
     mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "FLUSH PRIVILEGES;";
     
-    chmod +x /opt/l2j/server/cli/l2jcli.sh
-    java -jar /opt/l2j/server/cli/l2jcli.jar db install -sql /opt/l2j/server/login/sql -u l2j -p l2jserver2019 -m FULL -t LOGIN -c -mods -url jdbc:mariadb://$DATABASE_ADDRESS:$DATABASE_PORT
-    java -jar /opt/l2j/server/cli/l2jcli.jar db install -sql /opt/l2j/server/game/sql -u l2j -p l2jserver2019 -m FULL -t GAME -c -mods -url jdbc:mariadb://$DATABASE_ADDRESS:$DATABASE_PORT
+    chmod +x /opt/l2j/server/tools/database_installer.sh
+    # java -jar /opt/l2j/server/cli/l2jcli.jar db install -sql /opt/l2j/server/login/sql -u l2j -p l2jserver2019 -m FULL -t LOGIN -c -mods -url jdbc:mariadb://$DATABASE_ADDRESS:$DATABASE_PORT
+    # java -jar /opt/l2j/server/cli/l2jcli.jar db install -sql /opt/l2j/server/game/sql -u l2j -p l2jserver2019 -m FULL -t GAME -c -mods -url jdbc:mariadb://$DATABASE_ADDRESS:$DATABASE_PORT
     #java -jar /opt/l2j/server/cli/l2jcli.jar account create -u l2j -p l2j -a 8 -url jdbc:mariadb://mariadb:3306
 fi
 
@@ -104,7 +99,7 @@ fi
 # Log folders
 # ---------------------------------------------------------------------------
 
-LF="/opt/l2j/server/login/log"
+LF="/opt/l2j/server/auth/log"
 if test -d "$LF"; then
     echo "Login log folder server exists"
 else
@@ -137,23 +132,7 @@ sed -i "s#Debug = False#Debug = $SERVER_DEBUG#g" /opt/l2j/server/game/config/gen
 # ---------------------------------------------------------------------------
 # Character
 # ---------------------------------------------------------------------------
-sed -i "s#WeightLimit = 1#WeightLimit = $WEIGHT_LIMIT#g" /opt/l2j/server/game/config/character.properties
-sed -i "s#RunSpeedBoost = 0#RunSpeedBoost = $RUN_SPEED_BOOST#g" /opt/l2j/server/game/config/character.properties
-sed -i "s#AutoLearnSkills = False#AutoLearnSkills = $AUTO_LEARN_SKILLS#g" /opt/l2j/server/game/config/character.properties
-sed -i "s#MaximumFreightSlots = 200#MaximumFreightSlots = $MAX_FREIGHT_SLOTS#g" /opt/l2j/server/game/config/character.properties
-
-sed -i "s#DwarfRecipeLimit = 50#DwarfRecipeLimit = $DWARF_RECIPE_LIMIT#g" /opt/l2j/server/game/config/character.properties
-sed -i "s#CommonRecipeLimit = 50#CommonRecipeLimit = $COMM_RECIPE_LIMIT#g" /opt/l2j/server/game/config/character.properties
-sed -i "s#CraftingSpeed = 1#CraftingSpeed = $CRAFTING_SPEED_MULTIPLIER#g" /opt/l2j/server/game/config/character.properties
-
-sed -i "s#StartingAdena = 0#StartingAdena = $STARTING_ADENA#g" /opt/l2j/server/game/config/character.properties
-sed -i "s#StartingLevel = 1#StartingLevel = $STARTING_LEVEL#g" /opt/l2j/server/game/config/character.properties
-sed -i "s#StartingSP = 0#StartingSP = $STARTING_SP#g" /opt/l2j/server/game/config/character.properties
-sed -i "s#FreeTeleporting = False#FreeTeleporting = $FREE_TELEPORTING#g" /opt/l2j/server/game/config/character.properties
-
-sed -i "s#MaximumWarehouseSlotsForDwarf = 120#MaximumWarehouseSlotsForDwarf = $MAX_WAREHOUSE_SLOTS_DWARF#g" /opt/l2j/server/game/config/character.properties
-sed -i "s#MaximumWarehouseSlotsForNoDwarf = 100#MaximumWarehouseSlotsForNoDwarf = $MAX_WAREHOUSE_SLOTS_NO_DWARF#g" /opt/l2j/server/game/config/character.properties
-sed -i "s#MaximumWarehouseSlotsForClan = 200#MaximumWarehouseSlotsForClan = $MAX_WAREHOUSE_SLOTS_CLAN#g" /opt/l2j/server/game/config/character.properties
+sed -i "s#AltWeightLimit = 1#AltWeightLimit = $ALT_WEIGHT_LIMIT#g" /opt/l2j/server/game/config/players.properties
 
 # ---------------------------------------------------------------------------
 # Geodata
