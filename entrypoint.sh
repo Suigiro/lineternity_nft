@@ -135,21 +135,6 @@ sed -i "s#Debug = False#Debug = $SERVER_DEBUG#g" /opt/l2j/server/game/config/gen
 sed -i "s#AltWeightLimit = 1#AltWeightLimit = $ALT_WEIGHT_LIMIT#g" /opt/l2j/server/game/config/players.properties
 
 # ---------------------------------------------------------------------------
-# Geodata
-# ---------------------------------------------------------------------------
-
-if [ "$FORCE_GEODATA" = "True" ]; then
-    apk add git && git clone --branch master --single-branch https://git@bitbucket.org/l2jgeo/l2j_geodata.git /opt/l2j/server/geodata && apk del git
-    mv -v /opt/l2j/server/geodata/geodata/* /opt/l2j/server/geodata/ && rm -rf /opt/l2j/server/geodata/geodata/
-    sed -i 's#GeoDataPath = ./data/geodata#GeoDataPath = /opt/l2j/server/geodata#g' /opt/l2j/server/game/config/geodata.properties
-    sed -i "s#ForceGeoData = True#ForceGeoData = $FORCE_GEODATA#g" /opt/l2j/server/game/config/geodata.properties
-fi
-
-if [ "$COORD_SYNC" != "-1" ]; then
-    sed -i "s#CoordSynchronize = -1#CoordSynchronize = $COORD_SYNC#g" /opt/l2j/server/game/config/geodata.properties
-fi
-
-# ---------------------------------------------------------------------------
 # Custom Components
 # ---------------------------------------------------------------------------
 
@@ -165,50 +150,6 @@ sed -i "s#CustomMultisellLoad = False#CustomMultisellLoad = $CUSTOM_MULTISELL_LO
 sed -i "s#CustomBuyListLoad = False#CustomBuyListLoad = $CUSTOM_BUYLIST_LOAD#g" /opt/l2j/server/game/config/general.properties
 
 # ---------------------------------------------------------------------------
-# Rates
-# ---------------------------------------------------------------------------
-
-sed -i "s#RateXp = 1#RateXp = $RATE_XP#g" /opt/l2j/server/game/config/rates.properties
-sed -i "s#RateSp = 1#RateSp = $RATE_SP#g" /opt/l2j/server/game/config/rates.properties
-sed -i "s#RateQuestRewardXP = 1#RateQuestRewardXP = $QUEST_MULTIPLIER_XP#g" /opt/l2j/server/game/config/rates.properties
-sed -i "s#RateQuestRewardSP = 1#RateQuestRewardSP = $QUEST_MULTIPLIER_SP#g" /opt/l2j/server/game/config/rates.properties
-sed -i "s#RateQuestReward = 1#RateQuestReward = $QUEST_MULTIPLIER_REWARD#g" /opt/l2j/server/game/config/rates.properties
-sed -i "s#PetXpRate = 1#PetXpRate = $PET_XP_RATE#g" /opt/l2j/server/game/config/rates.properties
-
-sed -i "s#DeathDropAmountMultiplier = 1#DeathDropAmountMultiplier = $ITEM_DROP_MULTIPLIER#g" /opt/l2j/server/game/config/rates.properties
-sed -i "s#CorpseDropAmountMultiplier = 1#CorpseDropAmountMultiplier = $ITEM_SPOIL_MULTIPLIER#g" /opt/l2j/server/game/config/rates.properties
-
-sed -i "s#DropAmountMultiplierByItemId = 57,1#DropAmountMultiplierByItemId = 57,$RATE_ADENA#g" /opt/l2j/server/game/config/rates.properties
-
-# ---------------------------------------------------------------------------
-# Vitaliy System
-# ---------------------------------------------------------------------------
-
-sed -i "s#Enabled = True#Enabled = $VITALITY_SYSTEM#g" /opt/l2j/server/game/config/vitality.properties
-
-# ---------------------------------------------------------------------------
-# Buffer Service
-# ---------------------------------------------------------------------------
-
-sed -i "s#Enable=True#Enable=$BUFFER_SERVICE#g" /opt/l2j/server/game/config/bufferservice.properties
-sed -i "s#HealCooldown=60#HealCooldown=$BUFFER_SERVICE_COOLDOWN#g" /opt/l2j/server/game/config/bufferservice.properties
-sed -i "s#MaxUniqueLists=5#MaxUniqueLists=$BUFFER_SERVICE_MAX_LISTS#g" /opt/l2j/server/game/config/bufferservice.properties
-sed -i "s#Debug=False#Debug=$BUFFER_DEBUG#g" /opt/l2j/server/game/config/bufferservice.properties
-sed -i "s#VoicedEnable=False#VoicedEnable=$BUFFER_SERVICE_VOICED#g" /opt/l2j/server/game/config/bufferservice.properties
-sed -i "s#VoicedCommand=bufferservice#VoicedCommand=$BUFFER_SERVICE_VOICED_COMMAND#g" /opt/l2j/server/game/config/bufferservice.properties
-sed -i "s#VoicedName=Voiced#VoicedName=$BUFFER_SERVICE_VOICED_NAME#g" /opt/l2j/server/game/config/bufferservice.properties
-sed -i "s#VoicedRequiredItem=0#VoicedRequiredItem=$BUFFER_SERVICE_VOICED_REQUIRED_ITEM#g" /opt/l2j/server/game/config/bufferservice.properties
-
-# ---------------------------------------------------------------------------
-# Discord Properties
-# ---------------------------------------------------------------------------
-
-sed -i "s#BotEnable = False#BotEnable=$DISCORD_BOT_ENABLE#g" /opt/l2j/server/game/config/discord.properties
-sed -i "s#BotPrefix = //#BotPrefix = $DISCORD_BOT_PREFIX#g" /opt/l2j/server/game/config/discord.properties
-sed -i "s#BotToken = NzY3Mzg5NjE#BotToken=$DISCORD_BOT_TOKEN#g" /opt/l2j/server/game/config/discord.properties
-sed -i "s#ConsoleLogChannelId = 732358666681843752#ConsoleLogChannelId=$DISCORD_BOT_CHANNEL_ID#g" /opt/l2j/server/game/config/discord.properties
-
-# ---------------------------------------------------------------------------
 # Server Properties
 # ---------------------------------------------------------------------------
 
@@ -218,22 +159,14 @@ sed -i "s#MaxOnlineUsers = 500#MaxOnlineUsers = $MAX_ONLINE_USERS#g" /opt/l2j/se
 # Database
 # ---------------------------------------------------------------------------
 
-sed -i "s#jdbc:mariadb://localhost/l2jls#jdbc:mariadb://mariadb:3306/l2jls#g" /opt/l2j/server/login/config/database.properties
-sed -i "s#jdbc:mariadb://localhost/l2jgs#jdbc:mariadb://mariadb:3306/l2jgs#g" /opt/l2j/server/game/config/database.properties
-
-# ---------------------------------------------------------------------------
-# Networking
-# ---------------------------------------------------------------------------
-
-cp /opt/l2j/server/game/config/default-ipconfig.xml /opt/l2j/server/game/config/ipconfig.xml
-sed -i "s#gameserver address=\"127.0.0.1\"#gameserver address=\"$IP_ADDRESS\"#g" /opt/l2j/server/game/config/ipconfig.xml
-sed -i "s#define subnet=\"10.0.0.0/8\" address=\"10.0.0.0\"#define subnet=\"$LAN_SUBNET\" address=\"$LAN_ADDRESS\"#g" /opt/l2j/server/game/config/ipconfig.xml
+sed -i "s#jdbc:mariadb://localhost:3307/lineternity#jdbc:mariadb://mariadb:3307/l2jls#g" /opt/l2j/server/auth/config/loginserver.properties
+sed -i "s#jdbc:mariadb://localhost/l2jgs#jdbc:mariadb://mariadb:3307/l2jgs#g" /opt/l2j/server/game/config/server.properties
 
 # ---------------------------------------------------------------------------
 # Login and Gameserver start
 # ---------------------------------------------------------------------------
 
-cd /opt/l2j/server/login/
+cd /opt/l2j/server/auth/
 sh startLoginServer.sh
 
 sed -i "s#Xms512m#Xms$JAVA_XMS#g" /opt/l2j/server/game/GameServer_loop.sh
@@ -247,4 +180,5 @@ echo "Waiting the server log"
 
 sleep 5s
 
-tail -f /opt/l2j/server/game/logs/server.log
+tail -f /opt/l2j/server/game/log/login.log
+tail -f /opt/l2j/server/game/log/server.log
