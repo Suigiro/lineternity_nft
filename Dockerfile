@@ -14,16 +14,37 @@ COPY entrypoint.sh /entrypoint.sh
 ARG branch_gs=develop
 ARG branch_dp=develop
 
-RUN apk update \ 
-    && apk --no-cache add ant mariadb-client git \
+#####
+# Ant
+#####
+
+# Preparation
+
+ENV ANT_VERSION 1.10.12
+ENV ANT_HOME /etc/ant-${ANT_VERSION}
+
+# Installation
+
+RUN cd /tmp \
+    && wget https://dlcdn.apache.org/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz \
+    && mkdir ant-${ANT_VERSION} \
+    && tar -zxvf apache-ant-${ANT_VERSION}-bin.tar.gz \
+    && mv apache-ant-${ANT_VERSION} ${ANT_HOME} \
+    && rm apache-ant-${ANT_VERSION}-bin.tar.gz \
+    && rm -rf ant-${ANT_VERSION} \
+    && rm -rf ${ANT_HOME}/manual \
+    && unset ANT_VERSION
+ENV PATH ${PATH}:${ANT_HOME}/bin
+
+RUN apk --update add  --no-cache mariadb-client git \
     && mkdir -p /opt/l2j/server && mkdir -p /opt/l2j/target && cd /opt/l2j/target/ \
-    && git clone --branch main --single-branch https://git@github.com:kazuyabr/lineternity_nft.git lineternity \
-    && cd /opt/l2j/target/lineternity/aCis_datapack && chmod 755 && ./ant build \
-    && cd /opt/l2j/target/lineternity/aCis_gameserver && chmod 755 && ./ant dist \
-    && cp -rp /opt/l2j/target/lineternity/aCis_datapack/build/ /opt/l2j/server/ \
-    && cp -rp /opt/l2j/target/lineternity/aCis_gameserver/build/dist/ /opt/l2j/server/ \
-    && rm -rf /opt/l2j/target/ && apk del ant git \
-    && chmod +x /opt/l2j/server/cli/*.sh /opt/l2j/server/game/*.sh /opt/l2j/server/auth/*.sh /entrypoint.sh
+    && git clone --branch main --single-branch https://github.com/kazuyabr/lineternity_nft.git lineternity \
+    && cd /opt/l2j/target/lineternity/aCis_datapack && chmod 755 ./ && ant build \
+    && cd /opt/l2j/target/lineternity/aCis_gameserver && chmod 755 ./ && ant dist \
+    && cp -avR /opt/l2j/target/lineternity/aCis_datapack/build/* /opt/l2j/server/ \
+    && cp -avR /opt/l2j/target/lineternity/aCis_gameserver/build/dist/* /opt/l2j/server/ \
+    && rm -rf /opt/l2j/target/ && apk del git \
+    && chmod +x /opt/l2j/server/game/*.sh /opt/l2j/server/auth/*.sh /entrypoint.sh
 
 
 WORKDIR /opt/l2j/server
