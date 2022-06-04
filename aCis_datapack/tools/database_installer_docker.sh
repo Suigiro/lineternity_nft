@@ -21,9 +21,9 @@ MYL="mysql -h $LSDBHOST -u $LSUSER -p$LSPASS -D $LSDB"
 MYG="mysql -h $GSDBHOST -u $GSUSER -p$GSPASS -D $GSDB"
 
 echo "Deleting all tables for new content."
-$MYG < ../sql/gs_install.sql &> /dev/null
-$MYG < ../sql/full_install.sql &> /dev/null
-$MYL < ../sql/full_install.sql &> /dev/null
+$MYG < ./gs_install.sql &> /dev/null
+$MYG < ./full_install.sql &> /dev/null
+$MYL < ./full_install.sql &> /dev/null
 
 $MYL < ../sql/accounts.sql &> /dev/null
 $MYL < ../sql/gameservers.sql &> /dev/null
