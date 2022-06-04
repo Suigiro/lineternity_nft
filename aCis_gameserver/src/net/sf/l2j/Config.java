@@ -26,15 +26,32 @@ import net.sf.l2j.gameserver.model.location.Location;
 public final class Config {
 	private static final CLogger LOGGER = new CLogger(Config.class.getName());
 
-	public static final String CLANS_FILE = "./config/clans.properties";
-	public static final String EVENTS_FILE = "./config/events.properties";
-	public static final String GEOENGINE_FILE = "./config/geoengine.properties";
-	public static final String HEXID_FILE = "./config/hexid.txt";
-	public static final String LOGIN_CONFIGURATION_FILE = "./config/loginserver.properties";
-	public static final String NPCS_FILE = "./config/npcs.properties";
-	public static final String PLAYERS_FILE = "./config/players.properties";
-	public static final String SERVER_FILE = "./config/server.properties";
-	public static final String SIEGE_FILE = "./config/siege.properties";
+	public static final String CLANS_FILE = System.getenv("CONFIG_CLANS_FILE") != null
+			? System.getenv("CONFIG_CLANS_FILE")
+			: "./config/clans.properties";
+	public static final String EVENTS_FILE = System.getenv("CONFIG_EVENTS_FILE") != null
+			? System.getenv("CONFIG_EVENTS_FILE")
+			: "./config/events.properties";
+	public static final String GEOENGINE_FILE = System.getenv("CONFIG_GEOENGINE_FILE") != null
+			? System.getenv("CONFIG_GEOENGINE_FILE")
+			: "./config/geoengine.properties";
+	public static final String HEXID_FILE = System.getenv("CONFIG_HEXID_FILE") != null
+			? System.getenv("CONFIG_HEXID_FILE")
+			: "./config/hexid.txt";
+	public static final String LOGIN_CONFIGURATION_FILE = System.getenv("CONFIG_LOGIN_CONFIGURATION_FILE") != null
+			? System.getenv("CONFIG_LOGIN_CONFIGURATION_FILE")
+			: "./config/loginserver.properties";
+	public static final String NPCS_FILE = System.getenv("CONFIG_NPCS_FILE") != null ? System.getenv("CONFIG_NPCS_FILE")
+			: "./config/npcs.properties";
+	public static final String PLAYERS_FILE = System.getenv("CONFIG_PLAYERS_FILE") != null
+			? System.getenv("CONFIG_PLAYERS_FILE")
+			: "./config/players.properties";
+	public static final String SERVER_FILE = System.getenv("CONFIG_SERVER_FILE") != null
+			? System.getenv("CONFIG_SERVER_FILE")
+			: "./config/server.properties";
+	public static final String SIEGE_FILE = System.getenv("CONFIG_SIEGE_FILE") != null
+			? System.getenv("CONFIG_SIEGE_FILE")
+			: "./config/siege.properties";
 
 	// LINETERNITY NFT
 	// -------------------------------------------------
