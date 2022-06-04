@@ -18,7 +18,7 @@ services:
       - "3308:3306"
   lineternity-server:
     container_name: lineternity-server
-    image: sorameshi/lineternity-server:0.0.2.5
+    image: sorameshi/lineternity-server:0.0.2.6
     restart: always
     environment:
       IP_ADDRESS: ${GAMESERVER_ADDRESS}
