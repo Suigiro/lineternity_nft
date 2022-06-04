@@ -161,7 +161,7 @@ sed -i "s#Xms512m#Xms$JAVA_XMS#g" /opt/l2j/server/game/GameServer_loop.sh
 sed -i "s#Xmx2g#Xmx$JAVA_XMX#g" /opt/l2j/server/game/GameServer_loop.sh
 
 cd /opt/l2j/server/game/
-chmod +x /opt/l2j/server/auth/GameServer_loop.sh
+chmod +x /opt/l2j/server/game/GameServer_loop.sh
 sh GameServer_loop.sh
 
 #Temp
