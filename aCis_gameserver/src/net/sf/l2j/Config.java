@@ -1647,35 +1647,35 @@ public final class Config {
 	 * IP addresses, database, account, misc.
 	 */
 	private static final void loadLogin() {
-		final ExProperties server = initProperties(LOGIN_CONFIGURATION_FILE);
-		HOSTNAME = server.getProperty("Hostname", "localhost");
+		final ExProperties login = initProperties(LOGIN_CONFIGURATION_FILE);
+		HOSTNAME = login.getProperty("Hostname", "localhost");
 
-		LOGIN_BIND_ADDRESS = server.getProperty("LoginserverHostname", "*");
-		PORT_LOGIN = server.getProperty("LoginserverPort", 2106);
+		LOGIN_BIND_ADDRESS = login.getProperty("LoginserverHostname", "*");
+		PORT_LOGIN = login.getProperty("LoginserverPort", 2106);
 
-		GAME_SERVER_LOGIN_HOST = server.getProperty("LoginHostname", "*");
-		GAME_SERVER_LOGIN_PORT = server.getProperty("LoginPort", 9014);
+		GAME_SERVER_LOGIN_HOST = login.getProperty("LoginHostname", "*");
+		GAME_SERVER_LOGIN_PORT = login.getProperty("LoginPort", 9014);
 
-		LOGIN_TRY_BEFORE_BAN = server.getProperty("LoginTryBeforeBan", 3);
-		LOGIN_BLOCK_AFTER_BAN = server.getProperty("LoginBlockAfterBan", 600);
-		ACCEPT_NEW_GAMESERVER = server.getProperty("AcceptNewGameServer", false);
+		LOGIN_TRY_BEFORE_BAN = login.getProperty("LoginTryBeforeBan", 3);
+		LOGIN_BLOCK_AFTER_BAN = login.getProperty("LoginBlockAfterBan", 600);
+		ACCEPT_NEW_GAMESERVER = login.getProperty("AcceptNewGameServer", false);
 
-		SHOW_LICENCE = server.getProperty("ShowLicence", true);
+		SHOW_LICENCE = login.getProperty("ShowLicence", true);
 
-		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://mariadb:3306/acis");
-		DATABASE_LOGIN = server.getProperty("Login", "root");
-		DATABASE_PASSWORD = server.getProperty("Password", "z5fOEm03j");
-		DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 10);
+		DATABASE_URL = login.getProperty("URL", "jdbc:mariadb://mariadb:3306/acis");
+		DATABASE_LOGIN = login.getProperty("Login", "root");
+		DATABASE_PASSWORD = login.getProperty("Password", "z5fOEm03j");
+		DATABASE_MAX_CONNECTIONS = login.getProperty("MaximumDbConnections", 10);
 
-		AUTO_CREATE_ACCOUNTS = server.getProperty("AutoCreateAccounts", true);
+		AUTO_CREATE_ACCOUNTS = login.getProperty("AutoCreateAccounts", true);
 
-		LOG_LOGIN_CONTROLLER = server.getProperty("LogLoginController", false);
+		LOG_LOGIN_CONTROLLER = login.getProperty("LogLoginController", false);
 
-		FLOOD_PROTECTION = server.getProperty("EnableFloodProtection", true);
-		FAST_CONNECTION_LIMIT = server.getProperty("FastConnectionLimit", 15);
-		NORMAL_CONNECTION_TIME = server.getProperty("NormalConnectionTime", 700);
-		FAST_CONNECTION_TIME = server.getProperty("FastConnectionTime", 350);
-		MAX_CONNECTION_PER_IP = server.getProperty("MaxConnectionPerIP", 50);
+		FLOOD_PROTECTION = login.getProperty("EnableFloodProtection", true);
+		FAST_CONNECTION_LIMIT = login.getProperty("FastConnectionLimit", 15);
+		NORMAL_CONNECTION_TIME = login.getProperty("NormalConnectionTime", 700);
+		FAST_CONNECTION_TIME = login.getProperty("FastConnectionTime", 350);
+		MAX_CONNECTION_PER_IP = login.getProperty("MaxConnectionPerIP", 50);
 	}
 
 	public static final void loadGameServer() {
