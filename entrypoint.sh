@@ -116,7 +116,8 @@ fi
 # ---------------------------------------------------------------------------
 # Registrando servidor
 # ---------------------------------------------------------------------------
-#sh /opt/l2j/server/auth/RegisterGameServerDocker.sh
+cd /opt/l2j/server/game/config
+sh ../../auth/RegisterGameServerDocker.sh
 
 
 # ---------------------------------------------------------------------------
@@ -168,5 +169,5 @@ echo "Waiting the server log"
 
 sleep 5s
 
-tail -f /opt/l2j/server/game/log/login.log
-tail -f /opt/l2j/server/game/log/server.log
+tail -n 500 -f /opt/l2j/server/auth/log/login.log
+tail -n 500 -f /opt/l2j/server/game/log/server.log
