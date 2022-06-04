@@ -10,7 +10,7 @@ LABEL maintainer="Lineternity"
 COPY entrypoint.sh /entrypoint.sh
 
 #BRANCH do GIT
-ARG branch=docker
+ARG branch=main
 
 
 #####
