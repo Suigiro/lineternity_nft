@@ -1,6 +1,2 @@
 #!/bin/bash
-
-./LoginServer_loop.sh &
-
-
-
+sh LoginServer_loop.sh &

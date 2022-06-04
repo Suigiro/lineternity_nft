@@ -1,4 +1,4 @@
 #! /bin/sh
 
-./GameServer_loop.sh &
+sh GameServer_loop.sh &
 

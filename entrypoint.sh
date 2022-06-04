@@ -158,10 +158,10 @@ sed -i "s#Xms512m#Xms$JAVA_XMS#g" /opt/l2j/server/game/GameServer_loop.sh
 sed -i "s#Xmx2g#Xmx$JAVA_XMX#g" /opt/l2j/server/game/GameServer_loop.sh
 
 cd /opt/l2j/server/auth/
-sh LoginServer_loop.sh
+sh startLoginServer.sh
 
 cd /opt/l2j/server/game/
-sh GameServer_loop.sh
+sh startGameServer.sh
 
 #Temp
 echo "Waiting the server log"
