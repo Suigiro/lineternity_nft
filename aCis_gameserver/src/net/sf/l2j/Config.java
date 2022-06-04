@@ -26,32 +26,15 @@ import net.sf.l2j.gameserver.model.location.Location;
 public final class Config {
 	private static final CLogger LOGGER = new CLogger(Config.class.getName());
 
-	public static final String CLANS_FILE = System.getenv("CONFIG_CLANS_FILE") != null
-			? System.getenv("CONFIG_CLANS_FILE")
-			: "./config/clans.properties";
-	public static final String EVENTS_FILE = System.getenv("CONFIG_EVENTS_FILE") != null
-			? System.getenv("CONFIG_EVENTS_FILE")
-			: "./config/events.properties";
-	public static final String GEOENGINE_FILE = System.getenv("CONFIG_GEOENGINE_FILE") != null
-			? System.getenv("CONFIG_GEOENGINE_FILE")
-			: "./config/geoengine.properties";
-	public static final String HEXID_FILE = System.getenv("CONFIG_HEXID_FILE") != null
-			? System.getenv("CONFIG_HEXID_FILE")
-			: "./config/hexid.txt";
-	public static final String LOGIN_CONFIGURATION_FILE = System.getenv("CONFIG_LOGIN_CONFIGURATION_FILE") != null
-			? System.getenv("CONFIG_LOGIN_CONFIGURATION_FILE")
-			: "./config/loginserver.properties";
-	public static final String NPCS_FILE = System.getenv("CONFIG_NPCS_FILE") != null ? System.getenv("CONFIG_NPCS_FILE")
-			: "./config/npcs.properties";
-	public static final String PLAYERS_FILE = System.getenv("CONFIG_PLAYERS_FILE") != null
-			? System.getenv("CONFIG_PLAYERS_FILE")
-			: "./config/players.properties";
-	public static final String SERVER_FILE = System.getenv("CONFIG_SERVER_FILE") != null
-			? System.getenv("CONFIG_SERVER_FILE")
-			: "./config/server.properties";
-	public static final String SIEGE_FILE = System.getenv("CONFIG_SIEGE_FILE") != null
-			? System.getenv("CONFIG_SIEGE_FILE")
-			: "./config/siege.properties";
+	public static final String CLANS_FILE = "./config/clans.properties";
+	public static final String EVENTS_FILE = "./config/events.properties";
+	public static final String GEOENGINE_FILE = "./config/geoengine.properties";
+	public static final String HEXID_FILE = "./config/hexid.txt";
+	public static final String LOGIN_CONFIGURATION_FILE = "./config/loginserver.properties";
+	public static final String NPCS_FILE = "./config/npcs.properties";
+	public static final String PLAYERS_FILE = "./config/players.properties";
+	public static final String SERVER_FILE = "./config/server.properties";
+	public static final String SIEGE_FILE = "./config/siege.properties";
 
 	// LINETERNITY NFT
 	// -------------------------------------------------
@@ -1664,35 +1647,35 @@ public final class Config {
 	 * IP addresses, database, account, misc.
 	 */
 	private static final void loadLogin() {
-		final ExProperties login = initProperties(LOGIN_CONFIGURATION_FILE);
-		HOSTNAME = login.getProperty("Hostname", "localhost");
+		final ExProperties server = initProperties(LOGIN_CONFIGURATION_FILE);
+		HOSTNAME = server.getProperty("Hostname", "localhost");
 
-		LOGIN_BIND_ADDRESS = login.getProperty("LoginserverHostname", "*");
-		PORT_LOGIN = login.getProperty("LoginserverPort", 2106);
+		LOGIN_BIND_ADDRESS = server.getProperty("LoginserverHostname", "*");
+		PORT_LOGIN = server.getProperty("LoginserverPort", 2106);
 
-		GAME_SERVER_LOGIN_HOST = login.getProperty("LoginHostname", "*");
-		GAME_SERVER_LOGIN_PORT = login.getProperty("LoginPort", 9014);
+		GAME_SERVER_LOGIN_HOST = server.getProperty("LoginHostname", "*");
+		GAME_SERVER_LOGIN_PORT = server.getProperty("LoginPort", 9014);
 
-		LOGIN_TRY_BEFORE_BAN = login.getProperty("LoginTryBeforeBan", 3);
-		LOGIN_BLOCK_AFTER_BAN = login.getProperty("LoginBlockAfterBan", 600);
-		ACCEPT_NEW_GAMESERVER = login.getProperty("AcceptNewGameServer", false);
+		LOGIN_TRY_BEFORE_BAN = server.getProperty("LoginTryBeforeBan", 3);
+		LOGIN_BLOCK_AFTER_BAN = server.getProperty("LoginBlockAfterBan", 600);
+		ACCEPT_NEW_GAMESERVER = server.getProperty("AcceptNewGameServer", false);
 
-		SHOW_LICENCE = login.getProperty("ShowLicence", true);
+		SHOW_LICENCE = server.getProperty("ShowLicence", true);
 
-		DATABASE_URL = login.getProperty("URL", "jdbc:mariadb://mariadb:3306/acis");
-		DATABASE_LOGIN = login.getProperty("Login", "root");
-		DATABASE_PASSWORD = login.getProperty("Password", "z5fOEm03j");
-		DATABASE_MAX_CONNECTIONS = login.getProperty("MaximumDbConnections", 10);
+		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://mariadb:3306/acis");
+		DATABASE_LOGIN = server.getProperty("Login", "root");
+		DATABASE_PASSWORD = server.getProperty("Password", "z5fOEm03j");
+		DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 10);
 
-		AUTO_CREATE_ACCOUNTS = login.getProperty("AutoCreateAccounts", true);
+		AUTO_CREATE_ACCOUNTS = server.getProperty("AutoCreateAccounts", true);
 
-		LOG_LOGIN_CONTROLLER = login.getProperty("LogLoginController", false);
+		LOG_LOGIN_CONTROLLER = server.getProperty("LogLoginController", false);
 
-		FLOOD_PROTECTION = login.getProperty("EnableFloodProtection", true);
-		FAST_CONNECTION_LIMIT = login.getProperty("FastConnectionLimit", 15);
-		NORMAL_CONNECTION_TIME = login.getProperty("NormalConnectionTime", 700);
-		FAST_CONNECTION_TIME = login.getProperty("FastConnectionTime", 350);
-		MAX_CONNECTION_PER_IP = login.getProperty("MaxConnectionPerIP", 50);
+		FLOOD_PROTECTION = server.getProperty("EnableFloodProtection", true);
+		FAST_CONNECTION_LIMIT = server.getProperty("FastConnectionLimit", 15);
+		NORMAL_CONNECTION_TIME = server.getProperty("NormalConnectionTime", 700);
+		FAST_CONNECTION_TIME = server.getProperty("FastConnectionTime", 350);
+		MAX_CONNECTION_PER_IP = server.getProperty("MaxConnectionPerIP", 50);
 	}
 
 	public static final void loadGameServer() {
