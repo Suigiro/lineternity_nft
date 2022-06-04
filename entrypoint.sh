@@ -153,21 +153,23 @@ sed -i "s#Password = #Password = lineternity#g" /opt/l2j/server/game/config/serv
 # Login and Gameserver start
 # ---------------------------------------------------------------------------
 
-cd /opt/l2j/server/auth/
-chmod +x /opt/l2j/server/auth/LoginServer_loop.sh
-sh LoginServer_loop.sh
 
 sed -i "s#Xms512m#Xms$JAVA_XMS#g" /opt/l2j/server/game/GameServer_loop.sh
 sed -i "s#Xmx2g#Xmx$JAVA_XMX#g" /opt/l2j/server/game/GameServer_loop.sh
 
+cd /opt/l2j/server/auth/
+chmod +x /opt/l2j/server/auth/LoginServer_loop.sh
+
 cd /opt/l2j/server/game/
 chmod +x /opt/l2j/server/game/GameServer_loop.sh
-sh GameServer_loop.sh
+
+sh /opt/l2j/server/auth/LoginServer_loop.sh
+
+sh /opt/l2j/server/game/GameServer_loop.sh
 
 #Temp
-echo "Waiting the server log"
+echo "Waiting the server logs"
 
 sleep 5s
 
-tail -n 500 -f /opt/l2j/server/auth/log/login.log
-tail -n 500 -f /opt/l2j/server/game/log/server.log
+tail -n 500 -f /opt/l2j/server/auth/log/login.log & tail -n 500 -f /opt/l2j/server/game/log/server.log
