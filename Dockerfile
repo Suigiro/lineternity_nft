@@ -34,7 +34,7 @@ RUN cd /tmp \
 ENV PATH ${PATH}:${ANT_HOME}/bin
 
 RUN apk update \
-    && apk add --no-cache micro mariadb-client git xclip xsel \
+    && apk add --no-cache micro mariadb-client git xclip \
     && mkdir -p /opt/l2j/server && mkdir -p /opt/l2j/target && cd /opt/l2j/target/ \
     && git clone --branch docker --single-branch https://github.com/kazuyabr/lineternity_nft.git lineternity \
     && cd /opt/l2j/target/lineternity/aCis_datapack && chmod 755 ./ && ant build \
