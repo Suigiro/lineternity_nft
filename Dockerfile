@@ -3,11 +3,9 @@
 # L2J Server is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
 
-FROM openjdk:16-alpine3.13
+FROM openjdk:16-alpine
 
-LABEL maintainer="Lineternity" \
-    version="0.0.0.1" \
-    website="lineternity.jogatinando.com.br"
+LABEL maintainer="Lineternity"
 
 COPY entrypoint.sh /entrypoint.sh
 
@@ -34,7 +32,7 @@ RUN cd /tmp \
 ENV PATH ${PATH}:${ANT_HOME}/bin
 
 RUN apk update \
-    && apk add --no-cache micro mariadb-client git xclip \
+    && apk add --no-cache micro mariadb-client git \
     && mkdir -p /opt/l2j/server && mkdir -p /opt/l2j/target && cd /opt/l2j/target/ \
     && git clone --branch docker --single-branch https://github.com/kazuyabr/lineternity_nft.git lineternity \
     && cd /opt/l2j/target/lineternity/aCis_datapack && chmod 755 ./ && ant build \
