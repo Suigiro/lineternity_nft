@@ -144,7 +144,7 @@ public final class Config {
 	public static int BANKING_SYSTEM_ADENA;
 	public static IntIntHolder[] BANKING_SYSTEM_GOLDCOIN;
 
-	/**	Skins */
+	/** Skins */
 	public static boolean CMD_SKIN;
 	public static int DRESS_SKILL_ID;
 	public static int DRESS_SKILL_LVL;
@@ -917,7 +917,7 @@ public final class Config {
 		BANKING_SYSTEM_GOLDCOIN = lineternity.parseIntIntList("BankingGoldCoin", "3470-1");
 		BANKING_SYSTEM_ADENA = lineternity.getProperty("BankingAdenaCount", 500000000);
 
-		/** Skins*/
+		/** Skins */
 		CMD_SKIN = Boolean.parseBoolean(lineternity.getProperty("EnableSkinCMD", "True"));
 		DRESS_SKILL_ID = Integer.parseInt(lineternity.getProperty("DressSkillId", "0"));
 		DRESS_SKILL_LVL = Integer.parseInt(lineternity.getProperty("DressSkillLvl", "0"));
@@ -1518,9 +1518,9 @@ public final class Config {
 		REQUEST_ID = server.getProperty("RequestServerID", 0);
 		ACCEPT_ALTERNATE_ID = server.getProperty("AcceptAlternateID", true);
 
-		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://localhost/acis382");
+		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://mariadb:3306/acis");
 		DATABASE_LOGIN = server.getProperty("Login", "root");
-		DATABASE_PASSWORD = server.getProperty("Password", "");
+		DATABASE_PASSWORD = server.getProperty("Password", "z5fOEm03j");
 		DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 10);
 
 		SERVER_LIST_BRACKET = server.getProperty("ServerListBrackets", false);
@@ -1662,9 +1662,9 @@ public final class Config {
 
 		SHOW_LICENCE = server.getProperty("ShowLicence", true);
 
-		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://localhost/acis382");
+		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://mariadb:3306/acis");
 		DATABASE_LOGIN = server.getProperty("Login", "root");
-		DATABASE_PASSWORD = server.getProperty("Password", "");
+		DATABASE_PASSWORD = server.getProperty("Password", "z5fOEm03j");
 		DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 10);
 
 		AUTO_CREATE_ACCOUNTS = server.getProperty("AutoCreateAccounts", true);
