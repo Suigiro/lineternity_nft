@@ -107,7 +107,8 @@ if [ "$DATABASE" != "acis" ]; then
     echo "Dando permissao de execucao"
     chmod +x /opt/l2j/server/tools/database_installer_docker.sh
     echo "Executou database_installer_docker.sh"
-    sh /opt/l2j/server/tools/database_installer_docker.sh
+    cd /opt/l2j/server/tools/
+    sh database_installer_docker.sh
     # java -jar /opt/l2j/server/cli/l2jcli.jar db install -sql /opt/l2j/server/login/sql -u l2j -p l2jserver2019 -m FULL -t LOGIN -c -mods -url jdbc:mariadb://$DATABASE_ADDRESS:$DATABASE_PORT
     # java -jar /opt/l2j/server/cli/l2jcli.jar db install -sql /opt/l2j/server/game/sql -u l2j -p l2jserver2019 -m FULL -t GAME -c -mods -url jdbc:mariadb://$DATABASE_ADDRESS:$DATABASE_PORT
     #java -jar /opt/l2j/server/cli/l2jcli.jar account create -u l2j -p l2j -a 8 -url jdbc:mariadb://mariadb:3306
