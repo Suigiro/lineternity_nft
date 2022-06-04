@@ -3,22 +3,22 @@
 # L2J Server is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 
-version: '0.1'
+version: '3.3'
 
 services:
   mariadb:
     container_name: lineternity-server-mariadb
     image: yobasystems/alpine-mariadb:10.4.13
     volumes:
-      - /var/lib/mariadb
+      - /var/lib/mysql
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
-      - "3307:3306"
+      - "3308:3306"
   lineternity-server:
-    container_name: lineternity-server-docker
-    image: lineternity/lineternity-server-docker:latest
+    container_name: lineternity-server
+    image: sorameshi/lineternity-server:0.0.0.1
     restart: always
     environment:
       IP_ADDRESS: ${GAMESERVER_ADDRESS}

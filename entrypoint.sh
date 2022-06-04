@@ -5,12 +5,14 @@
 # L2J Server is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
 
+#Configurações GERAIS
+JAVA_XMS=${JAVA_XMS:-"512m"}
 JAVA_XMX=${JAVA_XMX:-"2g"}
 IP_ADDRESS=${IP_ADDRESS:-"127.0.0.1"}
 DATABASE_USER=${DATABASE_USER:-"root"}
-DATABASE_PASS=${DATABASE_PASS:-""}
+DATABASE_PASS=${DATABASE_PASS:-"z5fOEm03j"}
 DATABASE_ADDRESS=${DATABASE_ADDRESS:-"mariadb"}
-DATABASE_PORT=${DATABASE_PORT:-"3307"}
+DATABASE_PORT=${DATABASE_PORT:-"3306"}
 LAN_ADDRESS=${LAN_ADDRESS:-"10.0.0.0"}
 LAN_SUBNET=${LAN_SUBNET:-"10.0.0.0/8"}
 RATE_XP=${RATE_XP:-"1"}
@@ -79,21 +81,44 @@ done
 # ---------------------------------------------------------------------------
 # Database Installation
 # ---------------------------------------------------------------------------
-
-DATABASE=$(mysql -h "$DATABASE_ADDRESS" -P "$DATABASE_PORT" -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "SHOW DATABASES" | grep l2jls)
-if [ "$DATABASE" != "l2jls" ]; then
-    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "DROP DATABASE IF EXISTS l2jls";
-    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "DROP DATABASE IF EXISTS l2jgs";
-    
-    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "CREATE OR REPLACE USER 'l2j'@'%' IDENTIFIED BY 'lineternity';";
-    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "GRANT ALL PRIVILEGES ON *.* TO 'l2j'@'%' IDENTIFIED BY 'lineternity';";
+echo "Definindo database..."
+DATABASE=$(mysql -h "$DATABASE_ADDRESS" -P "$DATABASE_PORT" -u "$DATABASE_USER" -p "$DATABASE_PASS" -e "SHOW DATABASES" | grep acis)
+if [ "$DATABASE" != "acis" ]; then        
+    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "DROP DATABASE IF EXISTS acis";
+    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "CREATE DATABASE IF NOT EXISTS acis CHARACTER SET utf8 COLLATE utf8_general_ci";        
+    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "CREATE OR REPLACE USER 'l2j'@'%' IDENTIFIED BY 'lineternity';";    
+    mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "GRANT ALL PRIVILEGES ON *.* TO 'l2j'@'%' IDENTIFIED BY 'lineternity';";    
     mysql -h $DATABASE_ADDRESS -P $DATABASE_PORT -u "$DATABASE_USER" -p"$DATABASE_PASS" -e "FLUSH PRIVILEGES;";
     
-    chmod +x /opt/l2j/server/tools/database_installer.sh
+    echo "Verificando estrura da pasta server"
+    ls /opt/l2j/server
+    echo "Verificando estrutura da pasta tools"
+    ls /opt/l2j/server/tools
+    echo "Verificando estrutura da pasta sql"
+    ls /opt/l2j/server/sql
+    echo "Exibir conteudo de database_installer_docker.sh"
+    cat /opt/l2j/server/tools/database_installer_docker.sh
+    echo "Clonando pasta SQL"
+    cp -rp /opt/l2j/server/sql /opt/l2j/server/tools/
+    echo "Validando pasta SQL"
+    ls /opt/l2j/server/tools
+    echo "Dando permissoes"
+    chmod 775 -Rv /opt/l2j/server/tools
+    echo "Dando permissao de execucao"
+    chmod +x /opt/l2j/server/tools/database_installer_docker.sh
+    echo "Executou database_installer_docker.sh"
+    sh /opt/l2j/server/tools/database_installer_docker.sh
     # java -jar /opt/l2j/server/cli/l2jcli.jar db install -sql /opt/l2j/server/login/sql -u l2j -p l2jserver2019 -m FULL -t LOGIN -c -mods -url jdbc:mariadb://$DATABASE_ADDRESS:$DATABASE_PORT
     # java -jar /opt/l2j/server/cli/l2jcli.jar db install -sql /opt/l2j/server/game/sql -u l2j -p l2jserver2019 -m FULL -t GAME -c -mods -url jdbc:mariadb://$DATABASE_ADDRESS:$DATABASE_PORT
     #java -jar /opt/l2j/server/cli/l2jcli.jar account create -u l2j -p l2j -a 8 -url jdbc:mariadb://mariadb:3306
+    echo "finalizado"
 fi
+
+# ---------------------------------------------------------------------------
+# Registrando servidor
+# ---------------------------------------------------------------------------
+#sh /opt/l2j/server/auth/RegisterGameServerDocker.sh
+
 
 # ---------------------------------------------------------------------------
 # Log folders
@@ -113,67 +138,31 @@ else
     mkdir $GF
 fi
 
-#Temp fix
-#sed -i "s#/bin/bash#/bin/sh#g" /opt/l2j/server/login/LoginServer_loop.sh
-#sed -i "s#/bin/bash#/bin/sh#g" /opt/l2j/server/login/startLoginServer.sh
-
-# ---------------------------------------------------------------------------
-# General
-# ---------------------------------------------------------------------------
-
-# If this option is set to True every newly created character will have access level 127. This means that every character created will have Administrator Privileges.
-# Default: False
-sed -i "s#EverybodyHasAdminRights = False#EverybodyHasAdminRights = $ADMIN_RIGHTS#g" /opt/l2j/server/game/config/general.properties
-sed -i "s#HellboundWithoutQuest = False#HellboundWithoutQuest = $HELLBOUND_ACCESS#g" /opt/l2j/server/game/config/general.properties
-
-sed -i "s#AllowManor = True#AllowManor = $ALLOW_MANOR#g" /opt/l2j/server/game/config/general.properties
-sed -i "s#Debug = False#Debug = $SERVER_DEBUG#g" /opt/l2j/server/game/config/general.properties
-
-# ---------------------------------------------------------------------------
-# Character
-# ---------------------------------------------------------------------------
-sed -i "s#AltWeightLimit = 1#AltWeightLimit = $ALT_WEIGHT_LIMIT#g" /opt/l2j/server/game/config/players.properties
-
-# ---------------------------------------------------------------------------
-# Custom Components
-# ---------------------------------------------------------------------------
-
-sed -i "s#Enabled = False#Enabled = $TVT_ENABLED#g" /opt/l2j/server/game/config/tvt.properties
-sed -i "s#CustomSpawnlistTable = False#CustomSpawnlistTable = $CUSTOM_SPAWNLIST_TABLE#g" /opt/l2j/server/game/config/general.properties
-sed -i "s#SaveGmSpawnOnCustom = False#SaveGmSpawnOnCustom = $SAVE_GM_SPAWN_ON_CUSTOM#g" /opt/l2j/server/game/config/general.properties
-sed -i "s#CustomNpcData = False#CustomNpcData = $CUSTOM_NPC_DATA#g" /opt/l2j/server/game/config/general.properties
-sed -i "s#CustomTeleportTable = False#CustomTeleportTable = $CUSTOM_TELEPORT_TABLE#g" /opt/l2j/server/game/config/general.properties
-sed -i "s#CustomNpcBufferTables = False#CustomNpcBufferTables = $CUSTOM_NPC_BUFFER_TABLES#g" /opt/l2j/server/game/config/general.properties
-sed -i "s#CustomSkillsLoad = False#CustomSkillsLoad = $CUSTOM_SKILLS_LOAD#g" /opt/l2j/server/game/config/general.properties
-sed -i "s#CustomItemsLoad = False#CustomItemsLoad = $CUSTOM_ITEMS_LOAD#g" /opt/l2j/server/game/config/general.properties
-sed -i "s#CustomMultisellLoad = False#CustomMultisellLoad = $CUSTOM_MULTISELL_LOAD#g" /opt/l2j/server/game/config/general.properties
-sed -i "s#CustomBuyListLoad = False#CustomBuyListLoad = $CUSTOM_BUYLIST_LOAD#g" /opt/l2j/server/game/config/general.properties
-
-# ---------------------------------------------------------------------------
-# Server Properties
-# ---------------------------------------------------------------------------
-
-sed -i "s#MaxOnlineUsers = 500#MaxOnlineUsers = $MAX_ONLINE_USERS#g" /opt/l2j/server/game/config/server.properties
-
 # ---------------------------------------------------------------------------
 # Database
 # ---------------------------------------------------------------------------
 
-sed -i "s#jdbc:mariadb://localhost:3307/lineternity#jdbc:mariadb://mariadb:3307/l2jls#g" /opt/l2j/server/auth/config/loginserver.properties
-sed -i "s#jdbc:mariadb://localhost/l2jgs#jdbc:mariadb://mariadb:3307/l2jgs#g" /opt/l2j/server/game/config/server.properties
+sed -i "s#jdbc:mariadb://localhost:3307/lineternity#jdbc:mariadb://mariadb:3306/acis#g" /opt/l2j/server/auth/config/loginserver.properties
+sed -i "s#Login = root#Login = l2j#g" /opt/l2j/server/auth/config/loginserver.properties
+sed -i "s#Password =#Password = lineternity#g" /opt/l2j/server/auth/config/loginserver.properties
+sed -i "s#jdbc:mariadb://localhost:3307/lineternity#jdbc:mariadb://mariadb:3306/acis#g" /opt/l2j/server/game/config/server.properties
+sed -i "s#Login = root#Login = l2j#g" /opt/l2j/server/game/config/server.properties
+sed -i "s#Password =#Password = lineternity#g" /opt/l2j/server/game/config/server.properties
 
 # ---------------------------------------------------------------------------
 # Login and Gameserver start
 # ---------------------------------------------------------------------------
 
 cd /opt/l2j/server/auth/
-sh startLoginServer.sh
+chmod +x /opt/l2j/server/auth/LoginServer_loop.sh
+sh LoginServer_loop.sh
 
 sed -i "s#Xms512m#Xms$JAVA_XMS#g" /opt/l2j/server/game/GameServer_loop.sh
 sed -i "s#Xmx2g#Xmx$JAVA_XMX#g" /opt/l2j/server/game/GameServer_loop.sh
 
 cd /opt/l2j/server/game/
-sh startGameServer.sh
+chmod +x /opt/l2j/server/auth/GameServer_loop.sh
+sh GameServer_loop.sh
 
 #Temp
 echo "Waiting the server log"
