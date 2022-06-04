@@ -65,26 +65,6 @@ BUFFER_SERVICE_VOICED_COMMAND=${BUFFER_SERVICE_VOICED_COMMAND:-"bufferservice"}
 BUFFER_SERVICE_VOICED_NAME=${BUFFER_SERVICE_VOICED_NAME:-"Voiced"}
 BUFFER_SERVICE_VOICED_REQUIRED_ITEM=${BUFFER_SERVICE_VOICED_REQUIRED_ITEM:-"0"}
 
-#Configuracoes SERVER
-SERVER_NAMES_PATH="/opt/l2j/server/auth/serverNames.xml";
-CONFIG_CLANS_FILE="/opt/l2j/server/game/config/clans.properties";
-CONFIG_EVENTS_FILE="/opt/l2j/server/game/config/events.properties";
-CONFIG_GEOENGINE_FILE="/opt/l2j/server/game/config/geoengine.properties";
-CONFIG_HEXID_FILE="/opt/l2j/server/game/config/hexid.txt";
-CONFIG_LOGIN_CONFIGURATION_FILE="/opt/l2j/server/auth/config/loginserver.properties";
-CONFIG_NPCS_FILE="/opt/l2j/server/game/config/npcs.properties";
-CONFIG_PLAYERS_FILE="/opt/l2j/server/game/config/players.properties";
-CONFIG_SERVER_FILE="/opt/l2j/server/game/config/server.properties";
-CONFIG_SIEGE_FILE="/opt/l2j/server/game/config/siege.properties";
-
-# Configuracoes DEV
-CONFIG_DEV_FILE="/opt/l2j/server/game/config/dev/lineternity.properties"
-CONFIG_DEV_DUNGEON_REWARD_FILE="/opt/l2j/server/game/config/dev/dungeon.properties";
-
-# Registro de Servidores
-SERVER_NAMES_PATH="/opt/l2j/server/auth/serverNames.xml";
-PATH_HEXID="/opt/l2j/server/game/config/";
-
 echo "Using environment configuration:"
 printenv | sort
 
