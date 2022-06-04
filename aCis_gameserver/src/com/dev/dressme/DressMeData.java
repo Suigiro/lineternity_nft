@@ -22,7 +22,7 @@ public class DressMeData implements IXmlReader {
 
 	@Override
 	public void load() {
-		parseFile("./data/xml/dressme.xml");
+		parseFile("./data/xml/dressMe.xml");
 		LOGGER.info("Loaded {} DressMe templates.", _entries.size());
 	}
 

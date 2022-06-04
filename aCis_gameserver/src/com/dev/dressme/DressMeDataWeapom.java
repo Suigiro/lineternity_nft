@@ -22,7 +22,7 @@ public class DressMeDataWeapom implements IXmlReader {
 
 	@Override
 	public void load() {
-		parseFile("./data/xml/dressmeweapon.xml");
+		parseFile("./data/xml/dressMeWeapon.xml");
 		LOGGER.info("Loaded {} DressMe Weapon templates.", _entries.size());
 	}
 
