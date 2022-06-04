@@ -30,6 +30,7 @@
 				<include name="LoginServer_loop.sh" />
 				<include name="startLoginServer.*" />
 				<include name="RegisterGameServer.*" />
+				<include name="RegisterGameServerDocker.*" />
 			</fileset>
 		</copy>
 		<copy todir="${build.dist.game}">
