@@ -65,10 +65,8 @@ BUFFER_SERVICE_VOICED_COMMAND=${BUFFER_SERVICE_VOICED_COMMAND:-"bufferservice"}
 BUFFER_SERVICE_VOICED_NAME=${BUFFER_SERVICE_VOICED_NAME:-"Voiced"}
 BUFFER_SERVICE_VOICED_REQUIRED_ITEM=${BUFFER_SERVICE_VOICED_REQUIRED_ITEM:-"0"}
 
-echo "Using environment configuration:"
-printenv | sort
-
-echo "Waiting mariadb service in $DATABASE_ADDRESS:$DATABASE_PORT"
+#Configuracoes SERVER
+SERVER_NAMES_PATH="/opt/l2j/server/auth/servece in $DATABASE_ADDRESS:$DATABASE_PORT"
 sleep 5s
 
 STATUS=$(nc -z $DATABASE_ADDRESS $DATABASE_PORT; echo $?)
@@ -145,10 +143,10 @@ fi
 
 sed -i "s#jdbc:mariadb://localhost:3307/lineternity#jdbc:mariadb://mariadb:3306/acis#g" /opt/l2j/server/auth/config/loginserver.properties
 sed -i "s#Login = root#Login = l2j#g" /opt/l2j/server/auth/config/loginserver.properties
-sed -i "s#Password =#Password = lineternity#g" /opt/l2j/server/auth/config/loginserver.properties
+sed -i "s#Password = #Password = lineternity#g" /opt/l2j/server/auth/config/loginserver.properties
 sed -i "s#jdbc:mariadb://localhost:3307/lineternity#jdbc:mariadb://mariadb:3306/acis#g" /opt/l2j/server/game/config/server.properties
 sed -i "s#Login = root#Login = l2j#g" /opt/l2j/server/game/config/server.properties
-sed -i "s#Password =#Password = lineternity#g" /opt/l2j/server/game/config/server.properties
+sed -i "s#Password = #Password = lineternity#g" /opt/l2j/server/game/config/server.properties
 
 # ---------------------------------------------------------------------------
 # Login and Gameserver start
