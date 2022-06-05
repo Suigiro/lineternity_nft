@@ -20,10 +20,10 @@ MYSQLPATH=`which mysql 2>/dev/null`
 MYL="mysql -h $LSDBHOST -u $LSUSER -p$LSPASS -D $LSDB"
 MYG="mysql -h $GSDBHOST -u $GSUSER -p$GSPASS -D $GSDB"
 
-echo "Deleting all tables for new content."
-$MYG < ./gs_install.sql &> /dev/null
-$MYG < ./full_install.sql &> /dev/null
-$MYL < ./full_install.sql &> /dev/null
+# echo "Deleting all tables for new content."
+# $MYG < ./gs_install.sql &> /dev/null
+# $MYG < ./full_install.sql &> /dev/null
+# $MYL < ./full_install.sql &> /dev/null
 
 echo "Inserting data for all tables"
 $MYL < ../sql/accounts.sql &> /dev/null
