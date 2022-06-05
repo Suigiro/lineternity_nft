@@ -1518,10 +1518,9 @@ public final class Config {
 		REQUEST_ID = server.getProperty("RequestServerID", 0);
 		ACCEPT_ALTERNATE_ID = server.getProperty("AcceptAlternateID", true);
 
-		DATABASE_URL = server.getProperty("URL",
-				"jdbc:mariadb://cxmgkzhk95kfgbq4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/tsi85w7vvt9e8r5v");
-		DATABASE_LOGIN = server.getProperty("Login", "z3c067egsg6o1ufm");
-		DATABASE_PASSWORD = server.getProperty("Password", "u0rqebea6k8zl7xq");
+		DATABASE_URL = server.getProperty("URL", System.getenv("DATABASE_URI_GAME"));
+		DATABASE_LOGIN = server.getProperty("Login", System.getenv("DATABASE_USER"));
+		DATABASE_PASSWORD = server.getProperty("Password", System.getenv("DATABASE_PASS"));
 		DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 10);
 
 		SERVER_LIST_BRACKET = server.getProperty("ServerListBrackets", false);
@@ -1663,10 +1662,9 @@ public final class Config {
 
 		SHOW_LICENCE = login.getProperty("ShowLicence", true);
 
-		DATABASE_URL = login.getProperty("URL",
-				"jdbc:mariadb://cxmgkzhk95kfgbq4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/tsi85w7vvt9e8r5v");
-		DATABASE_LOGIN = login.getProperty("Login", "z3c067egsg6o1ufm");
-		DATABASE_PASSWORD = login.getProperty("Password", "u0rqebea6k8zl7xq");
+		DATABASE_URL = login.getProperty("URL", System.getenv("DATABASE_URI_AUTH"));
+		DATABASE_LOGIN = login.getProperty("Login", System.getenv("DATABASE_USER"));
+		DATABASE_PASSWORD = login.getProperty("Password", System.getenv("DATABASE_PASS"));
 		DATABASE_MAX_CONNECTIONS = login.getProperty("MaximumDbConnections", 10);
 
 		AUTO_CREATE_ACCOUNTS = login.getProperty("AutoCreateAccounts", true);
