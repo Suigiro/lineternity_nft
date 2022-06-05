@@ -1,14 +1,14 @@
 # Loginserver
-LSDBHOST="mariadb"
-LSDB="acis"
-LSUSER="l2j"
-LSPASS="lineternity"
+LSDBHOST="cxmgkzhk95kfgbq4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
+LSDB="tsi85w7vvt9e8r5v"
+LSUSER="z3c067egsg6o1ufm"
+LSPASS="u0rqebea6k8zl7xq"
 
 # Gameserver
-GSDBHOST="mariadb"
-GSDB="acis"
-GSUSER="l2j"
-GSPASS="lineternity"
+GSDBHOST="cxmgkzhk95kfgbq4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
+GSDB="tsi85w7vvt9e8r5v"
+GSUSER="z3c067egsg6o1ufm"
+GSPASS="u0rqebea6k8zl7xq"
 
 echo "                        aCis database installation"
 echo "                        __________________________"
@@ -25,6 +25,7 @@ $MYG < ./gs_install.sql &> /dev/null
 $MYG < ./full_install.sql &> /dev/null
 $MYL < ./full_install.sql &> /dev/null
 
+echo "Inserting data for all tables"
 $MYL < ../sql/accounts.sql &> /dev/null
 $MYL < ../sql/gameservers.sql &> /dev/null
 
