@@ -24,6 +24,7 @@
 * SHOP NFT = 10646
 * Ziggo's BUFF NFT = 10647 (Migrar sistema para usar o mesmo sistema do BufferScheme + adicao de vendas)
 * Teleporter NFT = 10648 (Adcionar sistema de vendas)
+* Niquel TOKEN = 10649
 
 ## Comandos UTEIS - ADMIN
 * Painel ADMIN = //admin
