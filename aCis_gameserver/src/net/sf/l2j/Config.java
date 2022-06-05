@@ -1519,8 +1519,8 @@ public final class Config {
 		ACCEPT_ALTERNATE_ID = server.getProperty("AcceptAlternateID", true);
 
 		DATABASE_URL = server.getProperty("URL", System.getenv("DATABASE_URI_GAME"));
-		DATABASE_LOGIN = server.getProperty("Login", System.getenv("DATABASE_USER"));
-		DATABASE_PASSWORD = server.getProperty("Password", System.getenv("DATABASE_PASS"));
+		DATABASE_LOGIN = server.getProperty("Login", System.getenv("DATABASE_URI_USER"));
+		DATABASE_PASSWORD = server.getProperty("Password", System.getenv("DATABASE_URI_PASS"));
 		DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 10);
 
 		SERVER_LIST_BRACKET = server.getProperty("ServerListBrackets", false);
@@ -1663,8 +1663,8 @@ public final class Config {
 		SHOW_LICENCE = login.getProperty("ShowLicence", true);
 
 		DATABASE_URL = login.getProperty("URL", System.getenv("DATABASE_URI_AUTH"));
-		DATABASE_LOGIN = login.getProperty("Login", System.getenv("DATABASE_USER"));
-		DATABASE_PASSWORD = login.getProperty("Password", System.getenv("DATABASE_PASS"));
+		DATABASE_LOGIN = login.getProperty("Login", System.getenv("DATABASE_URI_USER"));
+		DATABASE_PASSWORD = login.getProperty("Password", System.getenv("DATABASE_URI_PASS"));
 		DATABASE_MAX_CONNECTIONS = login.getProperty("MaximumDbConnections", 10);
 
 		AUTO_CREATE_ACCOUNTS = login.getProperty("AutoCreateAccounts", true);
