@@ -95,5 +95,10 @@
 		<set name="is_depositable" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="TeleportPortable" />
+	</item>	
+	<item id="10649" type="EtcItem" name="Niquel Token">
+		<set name="material" val="GOLD" />
+		<set name="price" val="1" />
+		<set name="is_stackable" val="true" />
 	</item>
 </list>
