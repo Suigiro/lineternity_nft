@@ -1,14 +1,14 @@
 # Loginserver
-LSDBHOST="cxmgkzhk95kfgbq4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
-LSDB="tsi85w7vvt9e8r5v"
-LSUSER="z3c067egsg6o1ufm"
-LSPASS="u0rqebea6k8zl7xq"
+LSDBHOST="mariadb"
+LSDB="acis"
+LSUSER="l2j"
+LSPASS="lineternity"
 
 # Gameserver
-GSDBHOST="cxmgkzhk95kfgbq4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
-GSDB="tsi85w7vvt9e8r5v"
-GSUSER="z3c067egsg6o1ufm"
-GSPASS="u0rqebea6k8zl7xq"
+GSDBHOST="mariadb"
+GSDB="acis"
+GSUSER="l2j"
+GSPASS="lineternity"
 
 echo "                        aCis database installation"
 echo "                        __________________________"
